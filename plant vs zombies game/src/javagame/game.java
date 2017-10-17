@@ -4,7 +4,7 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
 public class game extends StateBasedGame {
-	public static final String gamename = "plantsvszombies";
+	public static final String gamename = "Plants vs Zombies";
 	public static final int menu = 1;
 	public static final int play = 0;
 	
@@ -26,7 +26,7 @@ public class game extends StateBasedGame {
 		AppGameContainer appgc;
 		try {
 			appgc = new AppGameContainer(new game (gamename));
-			appgc.setDisplayMode(640, 360, false);
+			appgc.setDisplayMode(1360,768, false);
 			appgc.start();
 		}catch (SlickException e) {
 			e.printStackTrace();
