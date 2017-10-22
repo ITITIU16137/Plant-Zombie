@@ -31,7 +31,7 @@ public class Play extends BasicGameState
 		g.setColor(Color.red);
 		g.fillRect(zombie.xPos, zombie.yPos, 30, 40);    //draw zombies
 		
-		g.drawImage(small,smallX,smallY);
+		g.drawImage(small,shooter.xPos,shooter.yPos);      // draw plant shooter
 		
 	}
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
