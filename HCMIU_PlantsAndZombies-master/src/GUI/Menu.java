@@ -12,7 +12,7 @@ public class Menu extends BasicGameState {
 	
 	int xpos = Mouse.getX(); //0-1024
 	int ypos = Mouse.getY(); //0-768
-	
+	Main size;
 	Image Start;
 	//Image Exit;
 	public Menu (int state) {
@@ -34,11 +34,11 @@ public class Menu extends BasicGameState {
 	}
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException{
 		Input input = gc.getInput();
-		int xpos = Mouse.getX();
-		int ypos = Mouse.getY();
+		xpos = Mouse.getX();
+		ypos = size.HEIGHT- Mouse.getY();
 		//mouse = "Mouse position x: " +xpos + "y: " +ypos;
 		///Start button
-		if ((xpos>400 && xpos<611) && (ypos<501 && ypos >560)) {
+		if ( (xpos>430 && xpos<570) && (ypos>310 && ypos <360)) {
 			if (input.isMouseButtonDown(0)) { 
 				sbg.enterState(1);
 			}
