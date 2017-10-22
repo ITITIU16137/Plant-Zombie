@@ -20,8 +20,7 @@ public class Play extends BasicGameState {
 	}
 	
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
-		g.drawString("this is the game state", 50, 50);
-		
+		//g.drawString("this is the game state", 50, 50);
 		g.drawImage(small,smallX,smallY);
 		
 	}
@@ -33,6 +32,6 @@ public class Play extends BasicGameState {
 		if (input.isKeyDown(Input.KEY_DOWN)) {smallY +=1;}
 	}
 	public int getID() {
-         return 0;	
+         return 1;	
 	}
 }

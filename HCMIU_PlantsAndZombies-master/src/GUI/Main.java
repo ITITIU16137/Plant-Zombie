@@ -3,9 +3,6 @@ package GUI;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
-import GUI.Menu;
-import GUI.Play;
-
 
 public class Main extends StateBasedGame {
 	public static final String gamename = "Plants vs Zombies";
@@ -30,8 +27,8 @@ public class Main extends StateBasedGame {
 		AppGameContainer appgc;
 		try {
 			appgc = new AppGameContainer(new Main (gamename));
-			appgc.setDisplayMode(1360,768, false);
-			appgc.start();
+			appgc.setDisplayMode(1024,768, false);
+			appgc.start();  //Draw screen
 		}catch (SlickException e) {
 			e.printStackTrace();
 		}

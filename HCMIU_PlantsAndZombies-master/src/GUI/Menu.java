@@ -6,40 +6,54 @@ import org.newdawn.slick.state.*;
 
 public class Menu extends BasicGameState {
 	
-	int mouseX=200;
-	int mouseY=200;
-	String mouse  = "Press this to play";
+	//int mouseX=200;
+	//int mouseY=200;
+	//public String mouse  = "Click to start";
 	
-	int xpos = Mouse.getX();
-	int ypos = Mouse.getY();
+	int xpos = Mouse.getX(); //0-1024
+	int ypos = Mouse.getY(); //0-768
 	
-	
+	Image Start;
+	//Image Exit;
 	public Menu (int state) {
 		
 	}
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException {
-		 mouse = new String (mouse);
-	}
+		 //mouse = new String (mouse);
+		 Start = new Image("res/Start.png");
+		//Exit = new Image("res/Exit.png");
+	}	
 	///Draw stuff
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
 		
-		Image wallpaper = new Image ("res/c.png");
-		g.drawImage(wallpaper,0,0);
-		g.drawString(mouse, 200, 200);
+		Image Menuwallpaper = new Image ("res/c.png");
+		g.drawImage(Menuwallpaper,0,0);
+		Start.draw(430,310);
+		//Exit.draw(430,380);
+		//g.drawString(mouse, 200, 200);
 	}
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException{
 		Input input = gc.getInput();
 		int xpos = Mouse.getX();
-		//int ypos = Mouse.getY();
-		if (xpos>200 && xpos<400) {
-			if (input.isMouseButtonDown(0)) {
-				sbg.enterState(0);
+		int ypos = Mouse.getY();
+		//mouse = "Mouse position x: " +xpos + "y: " +ypos;
+		///Start button
+		if ((xpos>400 && xpos<611) && (ypos<501 && ypos >560)) {
+			if (input.isMouseButtonDown(0)) { 
+				sbg.enterState(1);
 			}
 		}
-        
-	}
+		/*//Exit button
+		if ((xpos>=430 && xpos<500) && (ypos >=380 && ypos <430){
+			if ((input.isMouseButtonDown(0)){
+				System.exit(0);
+			}
+		}*/
+				
+	}       
+	
 	///Return menu
 	public int getID() {
-         return 1;	
+         return 0;	
 	}
 }
