@@ -1,4 +1,4 @@
-package Feature;
+package GUI;
 
 public class Sound {
 
