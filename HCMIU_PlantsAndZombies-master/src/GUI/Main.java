@@ -8,6 +8,8 @@ public class Main extends StateBasedGame {
 	public static final String gamename = "Plants vs Zombies";
 	public static final int menu = 0;
 	public static final int play = 1;
+	public static int HEIGHT=768;
+	public static int WIDTH=1024;
 	
 	public Main(String gamename) {
 		super(gamename);
@@ -27,7 +29,7 @@ public class Main extends StateBasedGame {
 		AppGameContainer appgc;
 		try {
 			appgc = new AppGameContainer(new Main (gamename));
-			appgc.setDisplayMode(1024,768, false);
+			appgc.setDisplayMode(WIDTH,HEIGHT, false);
 			appgc.start();  //Draw screen
 		}catch (SlickException e) {
 			e.printStackTrace();
