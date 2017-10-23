@@ -14,14 +14,14 @@ public class Menu extends BasicGameState {
 	int ypos = Mouse.getY(); //0-768
 	Main size;
 	Image Start;
-	//Image Exit;
+	Image Exit;
 	public Menu (int state) {
 		
 	}
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException {
-		 //mouse = new String (mouse);
-		 Start = new Image("res/Start.png");
-		//Exit = new Image("res/Exit.png");
+		 
+		Start = new Image("res/Start.png");
+		Exit = new Image("res/Exit.png");
 	}	
 	///Draw stuff
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
@@ -29,8 +29,7 @@ public class Menu extends BasicGameState {
 		Image Menuwallpaper = new Image ("res/c.png");
 		g.drawImage(Menuwallpaper,0,0);
 		Start.draw(430,310);
-		//Exit.draw(430,380);
-		//g.drawString(mouse, 200, 200);
+		Exit.draw(430,380);
 	}
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException{
 		Input input = gc.getInput();
@@ -43,12 +42,12 @@ public class Menu extends BasicGameState {
 				sbg.enterState(1);
 			}
 		}
-		/*//Exit button
-		if ((xpos>=430 && xpos<500) && (ypos >=380 && ypos <430){
-			if ((input.isMouseButtonDown(0)){
+		//Exit button
+		if ((xpos>=430 && xpos<500) && (ypos >=380 && ypos <430)){
+			if ((input.isMouseButtonDown(0))){
 				System.exit(0);
 			}
-		}*/
+		}
 				
 	}       
 	
