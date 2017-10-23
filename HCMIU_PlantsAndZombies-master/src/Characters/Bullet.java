@@ -7,8 +7,8 @@ import org.newdawn.slick.*;
 public class Bullet{
 	
 	public int dX=40,dY=40;       //size of bullet
-	public int xPos,yPos;   // position of bullet
-	int speed=1;       // speed of bullet
+	public double xPos,yPos;   // position of bullet
+	double speed=0.5;       // speed of bullet           
 	
 	public Bullet(int x,int y)
 	{
@@ -30,9 +30,10 @@ public class Bullet{
 		xPos+=speed;
 	}
 	
-	public void draw(Graphics g)
+	public void draw(Graphics g, Image png)                  // load image
 	{
-		g.setColor(Color.blue);
-		g.fillOval(this.xPos, this.yPos, this.dX, this.dY);
+		g.drawImage(png,(int) this.xPos,(int)this.yPos);
+		//g.setColor(Color.blue);
+		//g.fillOval(this.xPos, this.yPos, this.dX, this.dY);
 	}
 }
