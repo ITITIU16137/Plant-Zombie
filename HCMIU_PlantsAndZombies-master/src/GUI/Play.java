@@ -9,7 +9,7 @@ public class Play extends BasicGameState
 	BulletsControl controller=new BulletsControl();
 	Zombies zombie= new Zombies();
 	Plants shooter=new Plants();
-	Image small;
+	Image small,background,bullet;
     
 	public Play (int state)
 	{
@@ -19,19 +19,20 @@ public class Play extends BasicGameState
 	
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException
 	{
-		 small = new Image ("res/f.png");
+		 small = new Image ("res/s.png");
+		 background=new Image("res/bgr.png");
+		 bullet=new Image("res/bl.png");
 	}
 	
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
-		//g.drawString("this is the game state", 50, 50);
-		
-		controller.render(g);                     // draw bullets
+		g.drawImage(background, 0,0);                      //draw background
+		g.drawString("this is the game state", 50, 50);
+		g.drawImage(small,shooter.xPos,shooter.yPos);      // draw plant shooter
+		controller.render(g,bullet);                     // draw bullets
 		
 		g.setColor(Color.red);
 		g.fillRect(zombie.xPos, zombie.yPos, 30, 40);    //draw zombies
-		
-		g.drawImage(small,shooter.xPos,shooter.yPos);      // draw plant shooter
 		
 	}
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -56,7 +57,7 @@ public class Play extends BasicGameState
 		}
 		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press space to shoot
 		{
-			controller.addBullet(new Bullet(shooter.xPos,shooter.yPos));     // bullets fly from plant position
+			controller.addBullet(new Bullet(shooter.xPos+120,shooter.yPos+25));     // bullets fly from plant position
 		}
 		
 		controller.shoot();
