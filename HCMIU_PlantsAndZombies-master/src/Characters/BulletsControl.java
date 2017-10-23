@@ -31,7 +31,7 @@ public class BulletsControl {
 		for(int i=0;i<bullets.size();i++)
 		{
 			tempBullet=bullets.get(i);
-			tempBullet.draw(g);
+			tempBullet.draw(g,png);
 		}
 	}
 	
