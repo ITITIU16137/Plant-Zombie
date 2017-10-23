@@ -21,13 +21,13 @@ public class Play extends BasicGameState
 	{
 		 small = new Image ("res/s.png");
 		 background=new Image("res/bgr.png");
-		 bullet=new Image("res/bl.png");
+		 bullet=new Image("res/Pea.png");
 	}
 	
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		g.drawImage(background, 0,0);                      //draw background
-		g.drawString("this is the game state", 50, 50);
+		//g.drawString("this is the game state", 50, 50);
 		g.drawImage(small,shooter.xPos,shooter.yPos);      // draw plant shooter
 		controller.render(g,bullet);                     // draw bullets
 		

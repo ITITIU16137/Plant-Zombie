@@ -26,8 +26,9 @@ public class BulletsControl {
 		}
 	}
 	
-	public void render(Graphics g)              // draw bullets
+	public void render(Graphics g,Image png)              // draw bullets
 	{
+		
 		for(int i=0;i<bullets.size();i++)
 		{
 			tempBullet=bullets.get(i);
