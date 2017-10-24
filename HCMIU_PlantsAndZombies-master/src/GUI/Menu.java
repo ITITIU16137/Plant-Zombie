@@ -61,7 +61,7 @@ public class Menu extends BasicGameState {
 			}
 		}
 		//Exit button
-		if ((xpos>445 && xpos<550) && (ypos >380 && ypos <440)){
+		if ((xpos>=430 && xpos<500) && (ypos >=380 && ypos <430)){
 			if ((input.isMouseButtonDown(0))){
 				System.exit(0);
 			}

@@ -1,20 +1,13 @@
 package Characters;
 
 import org.newdawn.slick.*;
-import java.util.ArrayList;
 
 public class Zombies{
 	
 	protected int hp;
 	protected int damage;
-	protected double speed=-0.05;
-	public double xPos,yPos;
-	
-	public Zombies(int x,int y)
-	{
-		this.xPos=x;
-		this.yPos=y;
-	}
+	protected int speed=-1;
+	public int xPos=500,yPos=90;
 	
 	public void moving()
 	{
@@ -33,11 +26,5 @@ public class Zombies{
 			return true;
 		}
 		return false;
-	}
-	
-	public void draw( ArrayList<Image> zom,double i)
-	{
-		zom.get((int)i).draw((int)this.xPos, (int)this.yPos, zom.get((int)i).getWidth()/3, zom.get((int)i).getHeight()/3);
-		//use this code to RESIZE image
 	}
 }
