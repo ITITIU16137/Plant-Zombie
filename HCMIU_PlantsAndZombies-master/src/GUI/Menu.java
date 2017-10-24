@@ -14,11 +14,13 @@ public class Menu extends BasicGameState {
 	Main size;
 	Image Start;
 	Image Exit;
+
+	private GameContainer gc;
 	public Menu (int state) {
 		
 	}
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException {
-		 
+		this.gc = gc; 
 		Start = new Image("res/Menu/Start.png");
 		Exit = new Image("res/Menu/Exit.png");
 		//Music background
@@ -26,7 +28,8 @@ public class Menu extends BasicGameState {
 		music.setVolume(0.8f);
 		music.loop();
 		
-		
+		Image cursor = new Image("res/cursor/MangekyouCursor.png");
+		gc.setMouseCursor(cursor, 0, 0);
 		
 	}	
 	///Draw stuff

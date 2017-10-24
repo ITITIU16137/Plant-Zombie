@@ -3,6 +3,7 @@ import Characters.*;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import org.newdawn.slick.GameContainer;
 
 public class Play extends BasicGameState
 {	
@@ -11,7 +12,7 @@ public class Play extends BasicGameState
 	Plants shooter=new Plants();
 	Image small,background,bullet;
     
-	private Music music;
+	private Music music1;
 	public Play (int state)
 	{
 		
@@ -24,11 +25,11 @@ public class Play extends BasicGameState
 		 background=new Image("res/Night.png");
 		 bullet=new Image("res/Pea.png");
 		 //while (enterState(1)) {
-		 music = new Music("res/Play/07_The_Dark_Place.ogg");
-		 music.setVolume(0.3f);
-		 music.loop();
-		 //}
-	}
+		 music1 = new Music("res/Play/07_The_Dark_Place.ogg");
+		 music1.setVolume(0.3f);
+		 music1.loop();
+	 }
+	
 	
 	private boolean enterState(int i) {
 		// TODO Auto-generated method stub
@@ -73,7 +74,7 @@ public class Play extends BasicGameState
 		{
 			controller.addBullet(new Bullet(shooter.xPos+120,shooter.yPos+25));     // bullets fly from plant position
 		}
-		
+	
 		controller.shoot();
 	}
 	
