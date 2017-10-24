@@ -3,11 +3,13 @@ package GUI;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import org.newdawn.slick.GameContainer;
+
 //import java.util.concurrent.TimeUnit;
 
 public class Menu extends BasicGameState {
 	
-	private Music music;
+	protected Music music;
 	
 	int xpos = Mouse.getX(); //0-1024
 	int ypos = Mouse.getY(); //0-768
@@ -19,15 +21,19 @@ public class Menu extends BasicGameState {
 	public Menu (int state) {
 		
 	}
+	
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException {
-		this.gc = gc; 
+		//Image button 
 		Start = new Image("res/Menu/Start.png");
 		Exit = new Image("res/Menu/Exit.png");
-		//Music background
-		music = new Music("res/Menu/Intro.ogg");
-		music.setVolume(0.8f);
-		music.loop();
 		
+		//Music background
+		music = new Music("res/Menu/07_The_Dark_Place.ogg");
+		music.setVolume(0.8f);
+		music.play();
+		
+		//Cursor
+		this.gc = gc;
 		Image cursor = new Image("res/cursor/MangekyouCursor.png");
 		gc.setMouseCursor(cursor, 0, 0);
 		
@@ -35,8 +41,10 @@ public class Menu extends BasicGameState {
 	///Draw stuff
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
 		
+		
 		Image Menuwallpaper = new Image ("res/Menu/c.png");
 		g.drawImage(Menuwallpaper,0,0);
+		
 		Start.draw(430,310);
 		Exit.draw(430,380);
 	}
@@ -44,7 +52,7 @@ public class Menu extends BasicGameState {
 		Input input = gc.getInput();
 		xpos = Mouse.getX();
 		ypos = size.HEIGHT- Mouse.getY();
-		//mouse = "Mouse position x: " +xpos + "y: " +ypos;
+		
 		///Start button
 		if ( (xpos>430 && xpos<570) && (ypos>310 && ypos <360)) {
 			if (input.isMouseButtonDown(0)) { 
@@ -55,16 +63,6 @@ public class Menu extends BasicGameState {
 		//Exit button
 		if ((xpos>=430 && xpos<500) && (ypos >=380 && ypos <430)){
 			if ((input.isMouseButtonDown(0))){
-			//	Thread.sleep(6);
-				
-				/*try        
-				{
-				    Thread.sleep(1000);
-				} 
-				catch(InterruptedException ex) 
-				{
-				    Thread.currentThread().interrupt();
-				}*/
 				System.exit(0);
 			}
 		}

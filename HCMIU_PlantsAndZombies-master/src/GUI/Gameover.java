@@ -3,8 +3,8 @@ package GUI;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 public class Gameover {
-	Image gameover;
-	private Music music;
+	//Image gameover;
+	//private Music music;
 	private GameContainer gc;
 	public Gameover(int state){
 	}
