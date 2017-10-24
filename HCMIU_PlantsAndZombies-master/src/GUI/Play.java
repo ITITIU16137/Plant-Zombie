@@ -4,23 +4,53 @@ import Characters.*;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import org.newdawn.slick.GameContainer;
-
+import java.util.ArrayList;
 
 public class Play extends BasicGameState
 {	
 	
-	BulletsControl controller=new BulletsControl();
-	Zombies zombie= new Zombies();
+	PlayControl controller=new PlayControl();
 	Plants shooter=new Plants();
 	Image small,background,bullet;
-    
 	private Music music1;
-	//private Audio wavEffect;
+	
+	private Integer[] zomInitPos=new Integer[5];
+	
+	private ArrayList<Image> zombieImages=new ArrayList<>();
+	
+	private double count=0;                                 //  this is
+	private double frequencyImage=0.002;                    //  for object speed
+	
+	private int delayTime=0;                                // this is for
+	private int delay=getDelayTime(10000);//max 10s         // delay time to spawn zombies
+	
+	public int getDelayTime(int maxTime)
+	{	
+		return (int)(Math.random()*maxTime)+1;
+	}
+	
 	public Play (int state){	
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException
 	{
+		zomInitPos[0]=120;
+		zomInitPos[1]=220;
+		zomInitPos[2]=320;
+		zomInitPos[3]=420;
+		zomInitPos[4]=520;
+		
+		zombieImages.add(new Image("res/Zombie/male/walk1.png"));
+		zombieImages.add(new Image("res/Zombie/male/walk2.png"));
+		zombieImages.add(new Image("res/Zombie/male/walk3.png"));
+		zombieImages.add(new Image("res/Zombie/male/walk4.png"));
+		zombieImages.add(new Image("res/Zombie/male/walk5.png"));
+		zombieImages.add(new Image("res/Zombie/male/walk6.png"));
+		zombieImages.add(new Image("res/Zombie/male/walk7.png"));
+		zombieImages.add(new Image("res/Zombie/male/walk8.png"));
+		zombieImages.add(new Image("res/Zombie/male/walk9.png"));
+		zombieImages.add(new Image("res/Zombie/male/walk10.png"));
+		
 		 small = new Image ("res/s.png");
 		 background=new Image("res/Night.png");
 		 bullet=new Image("res/Pea.png");
@@ -34,14 +64,22 @@ public class Play extends BasicGameState
 	
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
-		g.drawImage(background, 0,0);                      //draw background
-		
+		g.drawImage(background, 0,0);                         //draw background
 		g.drawImage(small,shooter.xPos+40,shooter.yPos);      // draw plant shooter
+		                       
+		controller.render(g,bullet);                         // draw bullets
+		controller.renderZombie(zombieImages, this.count);   //draw zombies
 		
-		controller.render(g,bullet);                     // draw bullets
-		 
-	    //g.setColor(Color.red);
-		//g.fillRect(zombie.xPos, zombie.yPos, 30, 40);    //draw zombies
+		this.count+=this.frequencyImage ;                //  print multiple images to create animation
+		if(this.count>10){this.count=0;}
+		
+		/*g.setColor(Color.red);                              //debug
+		for(int i=0;i<5;i++)
+		{
+			g.fillOval(950, zomInitPos[i], 10, 10);
+		}*/
+		
+		//g.drawString(" "+this.count2+" "+delay, 500, 500);     //debug
 		
 	}
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -69,7 +107,16 @@ public class Play extends BasicGameState
 			controller.addBullet(new Bullet(shooter.xPos+120,shooter.yPos+25));     // bullets fly from plant position
 		}
 	
+		this.delayTime+=1;                                                                //system count 
+		if(this.delayTime==delay)                                                         //from 0 to delay
+		{                        							 //to spawn zombies
+			controller.addZombie(new Zombies(950,zomInitPos[(int)(Math.random()*5)]));
+			delay=getDelayTime(10000);
+			this.delayTime=0;
+		}
+		
 		controller.shoot();
+		controller.zomWalk();
 	}
 	
 	public int getID()
