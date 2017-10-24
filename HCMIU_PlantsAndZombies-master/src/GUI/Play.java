@@ -11,6 +11,7 @@ public class Play extends BasicGameState
 	Plants shooter=new Plants();
 	Image small,background,bullet;
     
+	private Music music;
 	public Play (int state)
 	{
 		
@@ -22,6 +23,10 @@ public class Play extends BasicGameState
 		 small = new Image ("res/s.png");
 		 background=new Image("res/bgr.png");
 		 bullet=new Image("res/Pea.png");
+		 
+		/* music = new Music("res/Play/07_The_Dark_Place.ogg");
+		 music.setVolume(0.3f);
+		 music.loop();*/
 	}
 	
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException

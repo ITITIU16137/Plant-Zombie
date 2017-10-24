@@ -3,7 +3,7 @@ package GUI;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
-import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.TimeUnit;
 
 public class Menu extends BasicGameState {
 	
@@ -19,10 +19,11 @@ public class Menu extends BasicGameState {
 	}
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException {
 		 
-		Start = new Image("res/Start.png");
-		Exit = new Image("res/Exit.png");
-		music = new Music("sound/03-choose-your-seeds.ogg");
-		music.setVolume(0.5f);
+		Start = new Image("res/Menu/Start.png");
+		Exit = new Image("res/Menu/Exit.png");
+		//Music background
+		music = new Music("res/Menu/Intro.ogg");
+		music.setVolume(0.8f);
 		music.loop();
 		
 		
@@ -31,7 +32,7 @@ public class Menu extends BasicGameState {
 	///Draw stuff
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
 		
-		Image Menuwallpaper = new Image ("res/c.png");
+		Image Menuwallpaper = new Image ("res/Menu/c.png");
 		g.drawImage(Menuwallpaper,0,0);
 		Start.draw(430,310);
 		Exit.draw(430,380);
