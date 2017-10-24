@@ -52,6 +52,8 @@ public class Menu extends BasicGameState {
 		//Exit button
 		if ((xpos>=430 && xpos<500) && (ypos >=380 && ypos <430)){
 			if ((input.isMouseButtonDown(0))){
+			//	Thread.sleep(6);
+				
 				/*try        
 				{
 				    Thread.sleep(1000);

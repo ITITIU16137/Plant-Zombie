@@ -21,23 +21,32 @@ public class Play extends BasicGameState
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException
 	{
 		 small = new Image ("res/s.png");
-		 background=new Image("res/bgr.png");
+		 background=new Image("res/Night.png");
 		 bullet=new Image("res/Pea.png");
-		 
-		/* music = new Music("res/Play/07_The_Dark_Place.ogg");
+		 //while (enterState(1)) {
+		 music = new Music("res/Play/07_The_Dark_Place.ogg");
 		 music.setVolume(0.3f);
-		 music.loop();*/
+		 music.loop();
+		 //}
 	}
 	
+	private boolean enterState(int i) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		g.drawImage(background, 0,0);                      //draw background
 		//g.drawString("this is the game state", 50, 50);
-		g.drawImage(small,shooter.xPos,shooter.yPos);      // draw plant shooter
+		g.drawImage(small,shooter.xPos+40,shooter.yPos);      // draw plant shooter
+		
 		controller.render(g,bullet);                     // draw bullets
 		
 		g.setColor(Color.red);
-		g.fillRect(zombie.xPos, zombie.yPos, 30, 40);    //draw zombies
+		 
+		//g.fillRect(zombie.xPos, zombie.yPos, 30, 40);    //draw zombies
 		
 	}
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException

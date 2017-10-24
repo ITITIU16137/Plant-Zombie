@@ -3,11 +3,14 @@ package GUI;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 public class Gameover {
+	Image gameover;
+	private Music music;
 	public Gameover(int state){
 	}
-
+	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException{
 	    //what should I put here?
+//		Gameover = new Image()
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
@@ -23,6 +26,6 @@ public class Gameover {
 	}
 
 	public int getID(){
-	    return 3;
+	    return 4;
 	}
 }

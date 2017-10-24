@@ -33,6 +33,7 @@ public class BulletsControl {
 		{
 			tempBullet=bullets.get(i);
 			tempBullet.draw(g,png);
+			//tempBullet.dr
 		}
 	}
 	
