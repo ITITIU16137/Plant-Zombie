@@ -10,8 +10,14 @@ public class Play extends BasicGameState
 {	
 	
 	PlayControl controller=new PlayControl();
+	PlayControl runer= new PlayControl();
 	Plants shooter=new Plants();
-	Image small,background,bullet;
+	Sf sunflower=new Sf();
+	Image small,background,bullet,sun;
+	SpriteSheet S1;
+    Animation S11;
+    
+    
 	private Music music1;
 	
 	private Integer[] zomInitPos=new Integer[5];
@@ -54,6 +60,11 @@ public class Play extends BasicGameState
 		 small = new Image ("res/s.png");
 		 background=new Image("res/Night.png");
 		 bullet=new Image("res/Pea.png");
+		 sun = new Image("res/sun.png");
+		 S1 = new SpriteSheet("res/khoa.png", 74, 73);// Sunflower 
+	     S11 = new Animation(S1, 40);				  // animatioon
+	     S11.setPingPong(true);						  // 
+		 
 		 
 		 music1 = new Music("res/Play/Intro.ogg");
 		
@@ -69,6 +80,9 @@ public class Play extends BasicGameState
 		                       
 		controller.render(g,bullet);                         // draw bullets
 		controller.renderZombie(zombieImages, this.count);   //draw zombies
+		
+		g.drawAnimation(S11,sunflower.xPos, sunflower.yPos); // draw sunflower
+		runer.render(g,sun);
 		
 		this.count+=this.frequencyImage ;                //  print multiple images to create animation
 		if(this.count>10){this.count=0;}
@@ -113,6 +127,7 @@ public class Play extends BasicGameState
 			controller.addZombie(new Zombies(950,zomInitPos[(int)(Math.random()*5)]));
 			delay=getDelayTime(10000);
 			this.delayTime=0;
+		
 		}
 		
 		controller.shoot();
