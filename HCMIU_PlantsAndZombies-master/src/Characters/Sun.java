@@ -16,15 +16,7 @@ public class Sun{
 		this.yPos=y;
 	}
 	
-	//public boolean checkEnemy(Zombies zom)              // haven't been used
-	//{
-		//if(this.xPos==zom.xPos)
-		//{
-		//	return true;
-		//}
-		//return false;
-	//}
-	
+
 	public void flying()
 	{
 		yPos+=speed;
