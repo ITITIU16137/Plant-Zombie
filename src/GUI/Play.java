@@ -116,7 +116,7 @@ public class Play extends BasicGameState
 		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-57.png"));
 		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-58.png"));
 		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-59.png"));*/
-		Image small = new Image("res/s.png");
+	     small = new Image("res/s.png");
 		 background=new Image("res/Night.png");
 		 bullet=new Image("res/Pea.png");
 		 
