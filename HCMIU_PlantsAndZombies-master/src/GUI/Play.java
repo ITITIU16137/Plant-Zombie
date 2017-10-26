@@ -7,9 +7,6 @@ import org.newdawn.slick.state.*;
 import org.newdawn.slick.GameContainer;
 import java.util.ArrayList;
 import java.io.File;
-import java.io.IOException;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
 
 public class Play extends BasicGameState
 {	
@@ -18,10 +15,10 @@ public class Play extends BasicGameState
 	SunRun runer= new SunRun();
 	Plants shooter=new Plants();
 	Sf sunflower=new Sf();
-	Image small,background,bullet,sun;
+	Image small,background,bullet,sun,khoa;
 	SpriteSheet S1;
     Animation S11;
-    
+    private Animation a;
     
 	private Music music1;
 	
@@ -82,17 +79,20 @@ public class Play extends BasicGameState
 		 S1 = new SpriteSheet("res/khoa.png", 74, 73);// Sunflower 
 	     S11 = new Animation(S1, 40);				  // animatioon
 	     S11.setPingPong(true);						  // 
+	   
 	     
-	     BufferedImage image = null;
+	     
+	     
+	     
+	
 	     File f = null;
 
-	     //read image file
-	     try{
+	   
 	       f = new File("res/Out.png");
-	       image = ImageIO.read(f);
-	     }catch(IOException e){
-	       System.out.println("Error: "+e);
-	     }
+	      
+	    
+	    
+	   // BigBufferedImage image = BigBufferedImage.create(f,32);
 
 		 
 		 music1 = new Music("res/Play/Intro.ogg");
