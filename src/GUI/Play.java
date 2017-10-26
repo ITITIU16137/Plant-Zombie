@@ -3,33 +3,25 @@ import Characters.*;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
-
+import org.newdawn.slick.GameContainer;
 import java.util.ArrayList;
-import java.util.Random;
 
 
 public class Play extends BasicGameState
 {	
 	
 	PlayControl controller=new PlayControl();
-	SunRun runer= new SunRun();
 	Plants shooter=new Plants();
-	Sf sunflower=new Sf();
-	Image small,background,bullet,sun,khoa;
-	SpriteSheet S1;
-    Animation S11;
-    
-    
+	Image small,background,bullet;
+	
 	private Music music1;
 	Menu menumusic = new Menu();
 	
 	
 	private Integer[] zomInitPos=new Integer[5];
-	private Integer[] sunInitPos=new Integer[9];
 	
 	private ArrayList<Image> zombieImages=new ArrayList<>();
-	
-	
+	private ArrayList<Image> plantImages=new ArrayList<>();
 	
 	private double count=0;                                 //  this is
 	private double frequencyImage=0.002;                    //  for object speed
@@ -52,16 +44,6 @@ public class Play extends BasicGameState
 		zomInitPos[2]=320;
 		zomInitPos[3]=420;
 		zomInitPos[4]=520;
-		
-		sunInitPos[0]=200;
-		sunInitPos[1]=276;
-		sunInitPos[2]=359;
-		sunInitPos[3]=447;
-		sunInitPos[4]=519;
-		sunInitPos[5]=607;
-		sunInitPos[6]=684;
-		sunInitPos[7]=764;
-		sunInitPos[8]=847;
 		
 		zombieImages.add(new Image("res/Zombie/male/walk1.png"));
 		zombieImages.add(new Image("res/Zombie/male/walk2.png"));
@@ -134,20 +116,16 @@ public class Play extends BasicGameState
 		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-57.png"));
 		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-58.png"));
 		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-59.png"));*/
-		
-		small = new Image ("res/s.png");
+	     small = new Image("res/s.png");
 		 background=new Image("res/Night.png");
 		 bullet=new Image("res/Pea.png");
-		 sun = new Image("res/sun.png");
-		 S1 = new SpriteSheet("res/khoa.png", 74, 73);// Sunflower 
-	     S11 = new Animation(S1, 40);				  // animatioon
-	     S11.setPingPong(true);
-		 
 		 
 		 music1 = new Music("res/Play/Intro.ogg");
-		
 		 music1.setVolume(0.3f);
+		
 		 music1.loop();
+		 
+		 
 	}
 	
 	
@@ -159,13 +137,9 @@ public class Play extends BasicGameState
 		controller.render(g,bullet);                         // draw bullets
 		controller.renderZombie(zombieImages, this.count);   //draw zombies
 		
-		g.drawAnimation(S11,sunflower.xPos, sunflower.yPos); // draw sunflower
-		runer.render(g,sun);
-		
 		this.count+=this.frequencyImage ;                //  print multiple images to create animation
 		if(this.count>10){this.count=0;}
-		 
-		g.drawString("X:  "+shooter.xPos+"Y:  "+shooter.yPos,400,200);
+		
 		/*g.setColor(Color.red);                              //debug
 		for(int i=0;i<5;i++)
 		{
@@ -174,12 +148,11 @@ public class Play extends BasicGameState
 		
 		//g.drawString(" "+this.count2+" "+delay, 500, 500);     //debug
 		
+		
 	}
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
 		Input input = gc.getInput();
-		Random rand = new Random(); // This is bullshit
-		int  random = rand.nextInt(8) ; // also bullshit
 		
 		if (input.isKeyDown(Input.KEY_RIGHT)) 
 		{
@@ -200,32 +173,18 @@ public class Play extends BasicGameState
 		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press space to shoot
 		{
 			controller.addBullet(new Bullet(shooter.xPos+120,shooter.yPos+25));     // bullets fly from plant position
-			
 		}
 	
 		this.delayTime+=1;                                                                //system count 
 		if(this.delayTime==delay)                                                         //from 0 to delay
 		{                        							 //to spawn zombies
 			controller.addZombie(new Zombies(950,zomInitPos[(int)(Math.random()*5)]));
-			runer.addSun(new Sun(sunInitPos[random],0)); 	//also spawn Sun but faster
 			delay=getDelayTime(10000);
 			this.delayTime=0;
-		
 		}
-		this.delayTime+=1;                                                                //system count 
-		if(this.delayTime==delay)                                                         //from 0 to delay
-		{                        							 //also spawn Sun but faster
-		
-			runer.addSun(new Sun(sunInitPos[random],0));
-			delay=getDelayTime(5000);
-			this.delayTime=0;
-		
-		}
-		                                                                //system count 
 		
 		controller.shoot();
 		controller.zomWalk();
-		runer.run();
 	}
 	
 	public int getID()
