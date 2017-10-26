@@ -6,6 +6,10 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import org.newdawn.slick.GameContainer;
 import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 
 public class Play extends BasicGameState
 {	
@@ -78,7 +82,18 @@ public class Play extends BasicGameState
 		 S1 = new SpriteSheet("res/khoa.png", 74, 73);// Sunflower 
 	     S11 = new Animation(S1, 40);				  // animatioon
 	     S11.setPingPong(true);						  // 
-		 
+	     
+	     BufferedImage image = null;
+	     File f = null;
+
+	     //read image file
+	     try{
+	       f = new File("res/Out.png");
+	       image = ImageIO.read(f);
+	     }catch(IOException e){
+	       System.out.println("Error: "+e);
+	     }
+
 		 
 		 music1 = new Music("res/Play/Intro.ogg");
 		
@@ -143,8 +158,17 @@ public class Play extends BasicGameState
 		if(this.delayTime==delay)                                                         //from 0 to delay
 		{                        							 //to spawn zombies
 			controller.addZombie(new Zombies(950,zomInitPos[(int)(Math.random()*5)]));
-			runer.addSun(new Sun(sunInitPos[random],0));
+			
 			delay=getDelayTime(10000);
+			this.delayTime=0;
+		
+		}
+		this.delayTime+=1;                                                                //system count 
+		if(this.delayTime==delay)                                                         //from 0 to delay
+		{                        							 //to spawn zombies
+		
+			runer.addSun(new Sun(sunInitPos[random],0));
+			delay=getDelayTime(5000);
 			this.delayTime=0;
 		
 		}

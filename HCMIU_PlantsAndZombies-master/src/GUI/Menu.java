@@ -1,6 +1,10 @@
 package GUI;
 
 import org.lwjgl.input.Mouse;
+import java.io.File;
+import java.io.IOException;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import org.newdawn.slick.GameContainer;
@@ -25,7 +29,7 @@ public class Menu extends BasicGameState {
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException {
 		//Image button 
 		Start = new Image("res/Menu/Start.png");
-		Exit = new Image("res/Menu/Exit.png");
+		Exit = new Image("res/Menu/Exit.png"); 
 		
 		//Music background
 		music = new Music("res/Menu/07_The_Dark_Place.ogg");
