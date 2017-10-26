@@ -1,4 +1,4 @@
-<<<<<<< HEAD:HCMIU_PlantsAndZombies-master/src/Characters/PlayControl.java
+
 package Characters;
 
 import GUI.*;
@@ -100,7 +100,7 @@ import Characters.*;
 import org.newdawn.slick.*;
 import java.util.ArrayList;
 
-public class PlayControl {
+/*public class PlayControl {
 	private ArrayList<Bullet> bullets=new ArrayList<>();
 	Bullet tempBullet;
 	private ArrayList<Zombies> zombies=new ArrayList<>();
@@ -180,5 +180,5 @@ public class PlayControl {
 	}
 	
 }
+*/
 
->>>>>>> 170aaa2c0b0dcf4714d729f90d1e00d926efebbc:src/Characters/PlayControl.java

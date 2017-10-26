@@ -189,6 +189,6 @@ public class Play extends BasicGameState
 	
 	public int getID()
 	{
-        	return 1;	
+        	return 0;	
 	}
 }
