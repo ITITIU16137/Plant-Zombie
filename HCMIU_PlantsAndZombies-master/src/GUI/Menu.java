@@ -7,23 +7,13 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import org.newdawn.slick.GameContainer;
 
 //import java.util.concurrent.TimeUnit;
 
 public class Menu extends BasicGameState {
 	
-	private Music music;
-
-	public Music getMusic() {
-		return music;
-	}
-	public void setMusic(Music music) {
-		this.music = music;
-	}
-	public Menu() {
-		// TODO Auto-generated constructor stub
-	}
-	
+	protected Music music;
 	
 	int xpos = Mouse.getX(); //0-1024
 	int ypos = Mouse.getY(); //0-768
@@ -36,8 +26,6 @@ public class Menu extends BasicGameState {
 		
 	}
 	
-	
-
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException {
 		//Image button 
 		Start = new Image("res/Menu/Start.png");
@@ -89,9 +77,5 @@ public class Menu extends BasicGameState {
 	///Return menu
 	public int getID() {
          return 0;	
-	}
-	public void pause() {
-		// TODO Auto-generated method stub
-		 music.stop();
 	}
 }
