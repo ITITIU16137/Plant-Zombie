@@ -81,14 +81,7 @@ public class Play extends BasicGameState
 	     S11.setPingPong(true);						  // 
 	   
 	     
-	     
-	     
-	     
-	
-	     File f = null;
 
-	   
-	       f = new File("res/Out.png");
 	      
 	    
 	    

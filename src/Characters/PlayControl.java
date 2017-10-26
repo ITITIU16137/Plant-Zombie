@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 package Characters;
 
@@ -89,9 +90,9 @@ public class PlayControl {
 	}
 	
 }
-
-
 =======
+>>>>>>> faf2459744776375b26e9eb0c04ed7ddf17a6ce2
+
 package Characters;
 
 import GUI.*;
@@ -180,5 +181,8 @@ import java.util.ArrayList;
 	}
 	
 }
+<<<<<<< HEAD
 */
 
+=======
+>>>>>>> faf2459744776375b26e9eb0c04ed7ddf17a6ce2
