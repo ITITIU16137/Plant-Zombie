@@ -32,7 +32,7 @@ public class Bullet{
 	
 	public void draw(Graphics g, Image png)                  // load image
 	{
-		g.drawImage(png,(int) this.xPos,(int)this.yPos);
+		g.drawImage(png,(int) this.xPos+20,(int)this.yPos+34);
 		//g.setColor(Color.blue);
 		//g.fillOval(this.xPos, this.yPos, this.dX, this.dY);
 	}
