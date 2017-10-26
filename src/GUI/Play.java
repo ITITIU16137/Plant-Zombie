@@ -21,6 +21,7 @@ public class Play extends BasicGameState
 	private Integer[] zomInitPos=new Integer[5];
 	
 	private ArrayList<Image> zombieImages=new ArrayList<>();
+	private ArrayList<Image> plantImages=new ArrayList<>();
 	
 	private double count=0;                                 //  this is
 	private double frequencyImage=0.002;                    //  for object speed
@@ -55,7 +56,67 @@ public class Play extends BasicGameState
 		zombieImages.add(new Image("res/Zombie/male/walk9.png"));
 		zombieImages.add(new Image("res/Zombie/male/walk10.png"));
 		
-		 small = new Image ("res/s.png");
+		/*plantImages.add(new Image("res/Plant/PeaShooter_Idle1-0.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-1.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-2.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-3.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-4.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-5.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-6.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-7.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-8.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-9.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-10.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-11.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-12.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-13.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-14.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-15.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-16.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-17.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-18.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-19.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-20.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-21.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-22.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-23.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-24.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-25.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-26.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-27.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-28.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-29.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-30.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-31.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-32.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-33.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-34.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-35.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-36.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-37.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-38.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-39.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-40.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-41.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-42.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-43.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-44.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-45.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-46.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-47.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-48.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-49.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-50.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-51.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-52.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-53.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-54.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-55.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-56.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-57.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-58.png"));
+		plantImages.add(new Image("res/Plant/PeaShooter_Idle1-59.png"));*/
+		Image small = new Image("res/s.png");
 		 background=new Image("res/Night.png");
 		 bullet=new Image("res/Pea.png");
 		 
