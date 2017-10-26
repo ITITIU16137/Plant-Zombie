@@ -6,13 +6,17 @@ import org.newdawn.slick.state.*;
 import org.newdawn.slick.GameContainer;
 import java.util.ArrayList;
 
+
 public class Play extends BasicGameState
 {	
 	
 	PlayControl controller=new PlayControl();
 	Plants shooter=new Plants();
 	Image small,background,bullet;
+	
 	private Music music1;
+	Menu menumusic = new Menu();
+	
 	
 	private Integer[] zomInitPos=new Integer[5];
 	
@@ -56,9 +60,11 @@ public class Play extends BasicGameState
 		 bullet=new Image("res/Pea.png");
 		 
 		 music1 = new Music("res/Play/Intro.ogg");
-		
 		 music1.setVolume(0.3f);
+		
 		 music1.loop();
+		 
+		 
 	}
 	
 	
@@ -80,6 +86,7 @@ public class Play extends BasicGameState
 		}*/
 		
 		//g.drawString(" "+this.count2+" "+delay, 500, 500);     //debug
+		
 		
 	}
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException

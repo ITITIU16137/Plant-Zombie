@@ -2,6 +2,8 @@ package GUI;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import org.newdawn.slick.state.transition.EmptyTransition;
+import org.newdawn.slick.state.transition.FadeInTransition;
 
 
 public class Main extends StateBasedGame {
@@ -13,19 +15,15 @@ public class Main extends StateBasedGame {
 	public static int HEIGHT=768;
 	public static int WIDTH=1024;
 	
-	public Main(String gamename) {
+	public Main(String gamename) throws SlickException {
 		super(gamename);
 		this.addState(new Menu(menu));
 		this.addState(new Play(play));
-//		this.addState(new Pause(pause));
 	//	this.addState(new Gameover(gameover));
 	}
 	
 	public void initStatesList(GameContainer gc) throws SlickException {
-		
-		this.getState(menu).init(gc,this);
-		this.getState(play).init(gc,this);
-		this.enterState(menu);
+		this.enterState(menu, new FadeInTransition(new Color(255, 1, 1)), new EmptyTransition());
 	}
 
 	
