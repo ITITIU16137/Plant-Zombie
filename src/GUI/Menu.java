@@ -59,8 +59,8 @@ public class Menu extends BasicGameState {
 		        fileLocation = "res/background/back ("+i+").png";
 		        Background [i] = new Image(fileLocation);
 		    }
-	
-		for (int i = 1; i < 102; i++)
+		int i = 1;
+		for(i = 1; i < 102; i++)
 	    {
 		
 			this.delayTime+=1;                                                             
@@ -69,7 +69,11 @@ public class Menu extends BasicGameState {
 				g.drawImage(Background[i],0,0);	
 				delay=(102);
 				this.delayTime=0;
-				if (i == 101) i = 1;
+				if (i == 101)
+					{i = 1;
+					delay=(102);
+					this.delayTime=0;
+					}
 			}	
 	    }
 		//Image Menuwallpaper = new Image ("res/Menu/c.png");
