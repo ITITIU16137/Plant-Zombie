@@ -3,17 +3,15 @@ package Characters;
 import org.newdawn.slick.*;
 import java.util.ArrayList;
 
-public class Zombies{
+public class Zombies extends GameObject{
 	
-	protected int hp;
+	protected int hp=100;
 	protected int damage;
-	protected double speed=-0.05;
-	public double xPos,yPos;
+	protected double speed=-0.2;
 	
 	public Zombies(int x,int y)
 	{
-		this.xPos=x;
-		this.yPos=y;
+		super(x,y);
 	}
 	
 	public void moving()
@@ -21,12 +19,12 @@ public class Zombies{
 		xPos+=speed;
 	}
 	
-	public void attack(Plants plant)
+	public void attack(Plants plant)        // have not been used yet
 	{
 		plant.hp-=this.damage;
 	}
 	
-	public boolean checkShot(Bullet b)
+	public boolean checkShot(Bullet b)        // have not been used yet
 	{
 		if(b.xPos==this.xPos)
 		{
