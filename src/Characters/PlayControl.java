@@ -15,7 +15,7 @@ public class PlayControl {
 	private ArrayList<Sun> sun=new ArrayList<>();
 	Sun tempSun;
 	Main screen;
-	Physic phy=new Physic();
+	
 	
 	public void shoot()                        
 	{
