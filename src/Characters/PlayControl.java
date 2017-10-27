@@ -20,16 +20,20 @@ public class PlayControl {
 		for(int i=0;i<bullets.size();i++)             //shoot all the bullets in the list
 		{
 			tempBullet=bullets.get(i);
-			tempBullet.flying();
 			
 			if(tempBullet.xPos>screen.WIDTH)       // remove bullets out of screen
 			{
 				bullets.remove(tempBullet);
 			}
+			if(phy.Collision(tempBullet, zombies))
+			{
+				bullets.remove(tempBullet);
+			}
+			tempBullet.flying();
 		}
 	}
 	
-	public void render(Graphics g,Image png)              // draw bullets
+	public void renderBullet(Graphics g,Image png)              // draw bullets
 	{
 		
 		for(int i=0;i<bullets.size();i++)
@@ -62,6 +66,10 @@ public class PlayControl {
 			if(tempZombie.xPos<0)       // remove bullets out of screen
 			{
 				bullets.remove(tempZombie);
+			}
+			if(phy.Collision(tempZombie, bullets))
+			{
+				tempZombie.hp-=20;
 			}
 		}
 	}
