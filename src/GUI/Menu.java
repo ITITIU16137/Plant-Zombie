@@ -34,7 +34,7 @@ public class Menu extends BasicGameState {
 		//Music background
 		music = new Music("res/Menu/07_The_Dark_Place.ogg");
 		music.setVolume(0.8f);
-		music.play();
+		music.loop();
 		
 		//Cursor
 		this.gc = gc;

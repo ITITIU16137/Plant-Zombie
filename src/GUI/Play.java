@@ -7,6 +7,7 @@ import org.newdawn.slick.state.*;
 import org.newdawn.slick.GameContainer;
 import java.util.ArrayList;
 import java.io.File;
+import org.newdawn.slick.Graphics;
 
 public class Play extends BasicGameState
 {	
@@ -95,10 +96,10 @@ public class Play extends BasicGameState
 	   // BigBufferedImage image = BigBufferedImage.create(f,32);
 
 		 
-		 music1 = new Music("res/Play/Intro.ogg");
+		// music1 = new Music("res/Play/Intro.ogg");
 		
-		 music1.setVolume(0.3f);
-		 music1.loop();
+		// music1.setVolume(0.3f);
+		 //music1.loop();
 	}
 	
 	
@@ -117,6 +118,10 @@ public class Play extends BasicGameState
 		if(this.count>10){this.count=0;}
 		 
 		g.drawString("X:  "+shooter.xPos+"Y:  "+shooter.yPos,400,200);
+		//Sun Collects
+		g.drawImage(sun, 0, 0);
+		g.setColor(Color.black);
+		g.fillRoundRect(100, 30, 150, 50, 10 );
 		/*g.setColor(Color.red);                              //debug
 		for(int i=0;i<5;i++)
 		{
