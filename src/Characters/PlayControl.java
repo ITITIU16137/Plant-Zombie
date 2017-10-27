@@ -15,7 +15,8 @@ public class PlayControl {
 	private ArrayList<Sun> sun=new ArrayList<>();
 	Sun tempSun;
 	Main screen;
-
+	Physic phy=new Physic();
+	
 	public void shoot()                        
 	{
 		for(int i=0;i<bullets.size();i++)             //shoot all the bullets in the list
@@ -26,6 +27,7 @@ public class PlayControl {
 			{
 				bullets.remove(tempBullet);
 			}
+			
 			if(phy.Collision(tempBullet, zombies))
 			{
 				bullets.remove(tempBullet);
