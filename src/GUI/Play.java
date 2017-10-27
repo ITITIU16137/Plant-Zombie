@@ -81,7 +81,7 @@ public class Play extends BasicGameState
 		 S1 = new SpriteSheet("res/khoa.png", 74, 73);// Sunflower 
 	     S11 = new Animation(S1, 40);				  // animatioon
 	     S11.setPingPong(true);						  // 
-	     S2 = new SpriteSheet("res/PeaShooter.png", 74, 73);// Peashooter 
+	     S2 = new SpriteSheet("res/PeaShooter.png", 125,133);// Peashooter 
 	     S22 = new Animation(S2, 40);				  // animatioon
 	     S22.setPingPong(true);		
 	     
