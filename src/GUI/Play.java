@@ -107,7 +107,7 @@ public class Play extends BasicGameState
 		g.drawImage(background, 0,0);                         //draw background
 		g.drawImage(small,shooter.xPos+40,shooter.yPos);      // draw plant shooter
 		                       
-		controller.render(g,bullet);                         // draw bullets
+		controller.renderBullet(g,bullet);                         // draw bullets
 		controller.renderZombie(zombieImages, this.count);   //draw zombies
 		
 		g.drawAnimation(S11,sunflower.xPos, sunflower.yPos); // draw sunflower
