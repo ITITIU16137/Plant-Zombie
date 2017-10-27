@@ -31,7 +31,7 @@ public class Bullet extends GameObject{
 	
 	public void draw(Graphics g, Image png)                  // load image
 	{
-		g.drawImage(png,(int) this.xPos+20,(int)this.yPos+34);
+		g.drawImage(png,(int) this.xPos+30,(int)this.yPos+0);
 		//g.setColor(Color.blue);
 		//g.fillOval(this.xPos, this.yPos, this.dX, this.dY);
 	}

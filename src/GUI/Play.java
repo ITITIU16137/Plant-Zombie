@@ -16,10 +16,9 @@ public class Play extends BasicGameState
 	Plants shooter=new Plants();
 	Sf sunflower=new Sf();
 	Image small,background,bullet,sun,khoa;
-	SpriteSheet S1;
-    Animation S11;
-    SpriteSheet S2;
-    Animation S22;
+	SpriteSheet S1,S2;
+    Animation S11,S22;
+
     private Animation a;
     
 	private Music music1;
@@ -81,8 +80,9 @@ public class Play extends BasicGameState
 		 S1 = new SpriteSheet("res/khoa.png", 74, 73);// Sunflower 
 	     S11 = new Animation(S1, 40);				  // animatioon
 	     S11.setPingPong(true);						  // 
-	     S2 = new SpriteSheet("res/PeaShooter.png", 125,133);// Peashooter 
-	     S22 = new Animation(S2, 40);				  // animatioon
+	     S2 = new SpriteSheet("res/PeaShooter.png", 125, 106);// Peashooter 
+	     
+	     S22 = new Animation(S2, 20);				  // animatioon
 	     S22.setPingPong(true);		
 	     
 	     
@@ -116,9 +116,12 @@ public class Play extends BasicGameState
 		
 		g.drawAnimation(S11,sunflower.xPos, sunflower.yPos); // draw sunflower
 		runer.render(g,sun);
+		
 		g.drawAnimation(S22,shooter.xPos+40, shooter.yPos); // draw peashooter
 		this.count+=this.frequencyImage ;                //  print multiple images to create animation
+		
 		if(this.count>10){this.count=0;}
+		
 		g.setColor(Color.white); 
 		g.drawString("X:  "+shooter.xPos+"Y:  "+shooter.yPos,400,100);
 		//Sun Collects
@@ -159,7 +162,7 @@ public class Play extends BasicGameState
 		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press space to shoot
 		{
 			controller.addBullet(new Bullet(shooter.xPos+120,shooter.yPos+25));     // bullets fly from plant position
-			
+					
 		}
 	
 		this.delayTime+=1;                                                                //system count 
