@@ -69,11 +69,7 @@ public class Menu extends BasicGameState {
 				g.drawImage(Background[i],0,0);	
 				delay=(102);
 				this.delayTime=0;
-				if (i == 101)
-					{i = 1;
-					delay=(102);
-					this.delayTime=0;
-					}
+				if (i == 101) i = 1;
 			}	
 	    }
 		//Image Menuwallpaper = new Image ("res/Menu/c.png");
