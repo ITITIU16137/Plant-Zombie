@@ -4,10 +4,9 @@ import java.util.Random;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
-import org.newdawn.slick.GameContainer;
+
 import java.util.ArrayList;
 import java.io.File;
-import org.newdawn.slick.Graphics;
 
 public class Play extends BasicGameState
 {	
@@ -19,6 +18,8 @@ public class Play extends BasicGameState
 	Image small,background,bullet,sun,khoa;
 	SpriteSheet S1;
     Animation S11;
+    SpriteSheet S2;
+    Animation S22;
     private Animation a;
     
 	private Music music1;
@@ -73,14 +74,16 @@ public class Play extends BasicGameState
 		zombieImages.add(new Image("res/Zombie/male/walk9.png"));
 		zombieImages.add(new Image("res/Zombie/male/walk10.png"));
 		
-		 small = new Image ("res/s.png");
+		 //small = new Image ("res/s.png");
 		 background=new Image("res/Night.png");
 		 bullet=new Image("res/Pea.png");
 		 sun = new Image("res/sun.png");
 		 S1 = new SpriteSheet("res/khoa.png", 74, 73);// Sunflower 
 	     S11 = new Animation(S1, 40);				  // animatioon
 	     S11.setPingPong(true);						  // 
-	   
+	     S2 = new SpriteSheet("res/PeaShooter.png", 74, 73);// Peashooter 
+	     S22 = new Animation(S2, 40);				  // animatioon
+	     S22.setPingPong(true);		
 	     
 	     
 	     
@@ -106,18 +109,18 @@ public class Play extends BasicGameState
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		g.drawImage(background, 0,0);                         //draw background
-		g.drawImage(small,shooter.xPos+40,shooter.yPos);      // draw plant shooter
+		//g.drawImage(small,shooter.xPos+40,shooter.yPos);      // draw plant shooter
 		                       
 		controller.renderBullet(g,bullet);                         // draw bullets
 		controller.renderZombie(zombieImages, this.count);   //draw zombies
 		
 		g.drawAnimation(S11,sunflower.xPos, sunflower.yPos); // draw sunflower
 		runer.render(g,sun);
-		
+		g.drawAnimation(S22,shooter.xPos+40, shooter.yPos); // draw peashooter
 		this.count+=this.frequencyImage ;                //  print multiple images to create animation
 		if(this.count>10){this.count=0;}
-		 
-		g.drawString("X:  "+shooter.xPos+"Y:  "+shooter.yPos,400,200);
+		g.setColor(Color.white); 
+		g.drawString("X:  "+shooter.xPos+"Y:  "+shooter.yPos,400,100);
 		//Sun Collects
 		g.drawImage(sun, 0, 0);
 		g.setColor(Color.black);
