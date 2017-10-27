@@ -116,7 +116,7 @@ public class Play extends BasicGameState
 		this.count+=this.frequencyImage ;                //  print multiple images to create animation
 		if(this.count>10){this.count=0;}
 		 
-		g.drawString("X:  "+shooter.xPos+"Y:  "+shooter.yPos,400,200);
+		g.drawString("X:  "+shooter.xPos+"Y:  "+shooter.yPos,400,155);
 		/*g.setColor(Color.red);                              //debug
 		for(int i=0;i<5;i++)
 		{
@@ -134,19 +134,25 @@ public class Play extends BasicGameState
 		
 		if (input.isKeyDown(Input.KEY_RIGHT)) 
 		{
+			if(shooter.xPos<845)
 			shooter.xPos+=shooter.speed;
 		}
 		else if (input.isKeyDown(Input.KEY_LEFT)) 
 		{
+			if(shooter.xPos>200)
 			shooter.xPos -=shooter.speed;
-		}
+		} 
 		else if (input.isKeyDown(Input.KEY_UP)) 
 		{
+			if(shooter.yPos>155)
 			shooter.yPos -=shooter.speed;
+			else shooter.yPos =155;
 		}
 		else if (input.isKeyDown(Input.KEY_DOWN)) 
 		{
+			if(shooter.yPos<555)
 			shooter.yPos +=shooter.speed;
+			else shooter.yPos =555;
 		}
 		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press space to shoot
 		{
