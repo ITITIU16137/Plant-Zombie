@@ -7,6 +7,7 @@ import org.newdawn.slick.*;
 import java.util.ArrayList;
 
 public class PlayControl {
+	Physic phy =new Physic();
 	private ArrayList<Bullet> bullets=new ArrayList<>();
 	Bullet tempBullet;
 	private ArrayList<Zombies> zombies=new ArrayList<>();
@@ -63,9 +64,9 @@ public class PlayControl {
 			tempZombie=zombies.get(i);
 			tempZombie.moving();
 			
-			if(tempZombie.xPos<0)       // remove bullets out of screen
+			if(tempZombie.xPos<0 || tempZombie.hp<=0)   //remove bullet and zombies from screen    
 			{
-				bullets.remove(tempZombie);
+				zombies.remove(tempZombie);
 			}
 			if(phy.Collision(tempZombie, bullets))
 			{

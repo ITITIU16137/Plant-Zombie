@@ -177,6 +177,10 @@ public class Play extends BasicGameState
 		controller.shoot();
 		controller.zomWalk();
 		runer.run();
+		if(input.isKeyPressed(input.KEY_0))
+		{
+			sbg.enterState(3);
+		}
 	}
 	
 	public int getID()
