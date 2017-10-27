@@ -4,16 +4,15 @@ package Characters;
 //import org.newdawn.slick.Color;
 import org.newdawn.slick.*;
 
-public class Bullet{
+public class Bullet extends GameObject{
 	
 	public int dX=40,dY=40;       //size of bullet
-	public double xPos,yPos;   // position of bullet
-	double speed=0.5;       // speed of bullet           
+	double speed=0.5;       // speed of bullet                    
+	private int damage=20;
 	
 	public Bullet(int x,int y)
 	{
-		this.xPos=x;
-		this.yPos=y;
+		super(x,y);
 	}
 	
 	public boolean checkEnemy(Zombies zom)              // haven't been used
