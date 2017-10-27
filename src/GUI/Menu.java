@@ -7,6 +7,9 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+
+import Characters.Zombies;
+
 import org.newdawn.slick.GameContainer;
 
 //import java.util.concurrent.TimeUnit;
@@ -20,7 +23,9 @@ public class Menu extends BasicGameState {
 	Main size;
 	Image Start;
 	Image Exit;
-
+	private int delayTime=0;                                // this is for
+	private int delay=(80);
+	
 	private GameContainer gc;
 	public Menu (int state) {
 		
@@ -40,19 +45,41 @@ public class Menu extends BasicGameState {
 		this.gc = gc;
 		Image cursor = new Image("res/cursor/MangekyouCursor.png");
 		gc.setMouseCursor(cursor, 0, 0);
+		gc.setTargetFrameRate(15);
+		
 		
 	}	
 	///Draw stuff
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
 		
+		Image[] Background = new Image[102];
+		String fileLocation = new String();
+		for (int i = 1; i < 102; i++)
+		    {
+		        fileLocation = "res/background/back ("+i+").png";
+		        Background [i] = new Image(fileLocation);
+		    }
+	
+		for (int i = 1; i < 102; i++)
+	    {
 		
-		Image Menuwallpaper = new Image ("res/Menu/c.png");
-		g.drawImage(Menuwallpaper,0,0);
+			this.delayTime+=1;                                                             
+			if(this.delayTime==delay)                                                         			{                        							
+				 	
+				g.drawImage(Background[i],0,0);	
+				delay=(102);
+				this.delayTime=0;
+				if (i == 101) i = 1;
+			}	
+	    }
+		//Image Menuwallpaper = new Image ("res/Menu/c.png");
+		//g.drawImage(Menuwallpaper,0,0);
 		
 		Start.draw(430,310);
 		Exit.draw(430,380);
 	}
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException{
+		
 		Input input = gc.getInput();
 		xpos = Mouse.getX();
 		ypos = size.HEIGHT- Mouse.getY();
@@ -60,6 +87,7 @@ public class Menu extends BasicGameState {
 		///Start button
 		if ( (xpos>430 && xpos<570) && (ypos>310 && ypos <360)) {
 			if (input.isMouseButtonDown(0)) { 
+				gc.setTargetFrameRate(999);
 				music.stop();
 				sbg.enterState(1);
 			}
