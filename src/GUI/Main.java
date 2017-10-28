@@ -26,7 +26,7 @@ public class Main extends StateBasedGame {
 		this.getState(menu).init(gc,this);
 		this.getState(play).init(gc,this);
 		this.getState(gameover);
-		this.enterState(menu);
+		this.enterState(0);
 	}
 
 	

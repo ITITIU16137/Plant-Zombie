@@ -14,6 +14,7 @@ public class Play extends BasicGameState
 	
 	PlayControl controller=new PlayControl();
 	Plants shooter=new Plants(200,200);
+	Zombies zombie;
 	SunFlower sunflower=new SunFlower(100,100);
 	Image small,background,bullet,sun,khoa,text;
 	SpriteSheet S1,S2;
@@ -143,25 +144,28 @@ public class Play extends BasicGameState
 		
 		if (input.isKeyDown(Input.KEY_RIGHT)) 
 		{
-			shooter.xPos+=shooter.speed;
+			if(shooter.xPos<850) shooter.xPos +=shooter.speed;
+			else shooter.xPos=850;
 		}
 		else if (input.isKeyDown(Input.KEY_LEFT)) 
 		{
-			shooter.xPos -=shooter.speed;
+			if(shooter.xPos>200) shooter.xPos -=shooter.speed;
+			else shooter.xPos=200;
 		}
 		else if (input.isKeyDown(Input.KEY_UP)) 
 		{
-			shooter.yPos -=shooter.speed;
+			if(shooter.yPos>200) shooter.yPos -=shooter.speed;
+			else shooter.yPos=200;
 		}
 		else if (input.isKeyDown(Input.KEY_DOWN)) 
 		{
-			shooter.yPos +=shooter.speed;
+			if(shooter.yPos<595) shooter.yPos +=shooter.speed;
+			else shooter.yPos=595;
 		}
 		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press space to shoot
 		{
 			controller.addBullet(new Bullet(shooter.xPos+120,shooter.yPos+25));     // bullets fly from plant position			
 		}
-	
 		this.delayTimeZom+=1;                                                                //system count 
 		if(this.delayTimeZom==delayZom)                                                      //from 0 to delay
 		{                        							                                 //to spawn zombies
@@ -181,11 +185,8 @@ public class Play extends BasicGameState
 		controller.shoot();
 		controller.zomWalk();
 		controller.fall();
-		
-		if(input.isKeyPressed(input.KEY_0))
-		{
-			sbg.enterState(2);
-		}
+		controller.gameStatus();
+		if(controller.gameStatus()==false) sbg.enterStage(3);
 	}
 	
 	public int getID()

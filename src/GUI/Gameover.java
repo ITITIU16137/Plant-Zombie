@@ -3,8 +3,8 @@ package GUI;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 public class Gameover extends BasicGameState {
-	//Image gameover;
-	//private Music music;
+	protected Music music;
+	Sound sound;
 	Animation goani = new Animation();
 	private GameContainer gc;
 	public Gameover(int state){
@@ -23,8 +23,8 @@ public class Gameover extends BasicGameState {
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
 		g.drawAnimation(goani, 512, 384);
-		g.drawString("PRESS 1 TO GO BACK TO MENU", 50 , 50);
-		g.drawString("PRESS 2 TO PLAY AGAIN", 100, 100);
+		g.drawString("PRESS 1 TO PLAY AGAIN", 50 , 50);
+		g.drawString("PRESS 2 TO EXIT", 100, 100);
 	//what should I put here?
 
 	}
@@ -33,13 +33,11 @@ public class Gameover extends BasicGameState {
 		Input input = gc.getInput();
 		if (input.isKeyPressed(Input.KEY_1))
 		{
-			input.clearKeyPressedRecord(); // clear record of what button you have pressed
-			sbg.enterState(0);
+			sbg.enterState(1);
 		}
 		if (input.isKeyPressed(Input.KEY_2))
 		{
-			input.clearKeyPressedRecord();
-			sbg.enterState(1);
+			System.exit(0);
 		}
 		
 	//what should I put here?
@@ -47,6 +45,6 @@ public class Gameover extends BasicGameState {
 	}
 
 	public int getID(){
-	    return 2;
+	    return 3;
 	}
 }

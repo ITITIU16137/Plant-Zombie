@@ -5,6 +5,8 @@ import GUI.*;
 import Characters.*;
 
 import org.newdawn.slick.*;
+import org.newdawn.slick.state.StateBasedGame;
+
 import java.util.ArrayList;
 
 public class PlayControl {
@@ -16,7 +18,8 @@ public class PlayControl {
 	Zombies tempZombie;
 	private ArrayList<Sun> sun=new ArrayList<>();
 	Sun tempSun;
-	
+	StateBasedGame sbg;
+	GameContainer gc;
 	Main screen;
 	
 	//--------------------------------------BULLET---------------------------------------
@@ -64,12 +67,12 @@ public class PlayControl {
 	//--------------------------------------ZOMBIE---------------------------------------
 	public void zomWalk()
 	{
-		for(int i=0;i<zombies.size();i++)             //shoot all the bullets in the list
+		for(int i=0;i<zombies.size();i++)
 		{
 			tempZombie=zombies.get(i);
-			tempZombie.moving();
+			tempZombie.moving(); 
 			
-			if(tempZombie.xPos<0 || tempZombie.getHp()<=0)   //remove bullet and zombies from screen    
+			if(tempZombie.xPos<165 || tempZombie.getHp()<=0)
 			{
 				removeZombie(tempZombie);
 			}
@@ -78,9 +81,9 @@ public class PlayControl {
 				tempZombie.setHp(tempZombie.getHp()-20);
 			}
 		}
+		int c=0;
 	}
-	
-	public void renderZombie(ArrayList<Image> png,double n)              // draw bullets
+	public void renderZombie(ArrayList<Image> png,double n)
 	{
 		
 		for(int i=0;i<zombies.size();i++)
@@ -99,6 +102,10 @@ public class PlayControl {
 	public void removeZombie(Zombies z)
 	{
 		zombies.remove(z);
+	}
+	public boolean gameStatus(){
+		if(tempZombie.xPos<165) return false;
+		else return true;
 	}
 	//--------------------------------------SUN---------------------------------------
 	

@@ -10,7 +10,6 @@ public class Zombies extends GameObject{
 	protected int hp=100;
 	protected int damage;
 	protected double speed=-0.2;
-	
 	public Zombies(int x,int y)
 	{
 		super(x,y);
@@ -19,6 +18,7 @@ public class Zombies extends GameObject{
 	public void moving()
 	{
 		xPos+=speed;
+		
 	}
 	
 	public void attack(Plants plant)        // have not been used yet
@@ -34,7 +34,6 @@ public class Zombies extends GameObject{
 		}
 		return false;
 	}
-	
 	public void draw( ArrayList<Image> zom,double i)
 	{
 		zom.get((int)i).draw((int)this.xPos, (int)this.yPos, zom.get((int)i).getWidth()/3, zom.get((int)i).getHeight()/3);
