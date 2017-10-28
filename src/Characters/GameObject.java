@@ -14,4 +14,17 @@ public class GameObject {
 	{
 		return new Rectangle((int)xPos,(int)yPos,width,height);
 	}
+	
+	public double getxPos() {
+		return xPos;
+	}
+	public void setxPos(double xPos) {
+		this.xPos = xPos;
+	}
+	public double getyPos() {
+		return yPos;
+	}
+	public void setyPos(double yPos) {
+		this.yPos = yPos;
+	}
 }
