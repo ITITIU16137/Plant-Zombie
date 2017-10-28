@@ -67,11 +67,11 @@ public class PlayControl {
 	//--------------------------------------ZOMBIE---------------------------------------
 	public void zomWalk()
 	{
-		for(int i=0;i<zombies.size();i++)
+		for(int i=0;i<zombies.size();i++)  ///shoot all the bullets in the list
 		{
 			tempZombie=zombies.get(i);
 			tempZombie.moving(); 
-			
+			//if(tempZombie.xPos<0 || tempZombie.getHp()<=0)
 			if(tempZombie.xPos<165 || tempZombie.getHp()<=0)
 			{
 				removeZombie(tempZombie);
@@ -81,7 +81,7 @@ public class PlayControl {
 				tempZombie.setHp(tempZombie.getHp()-20);
 			}
 		}
-		int c=0;
+		//int c=0;
 	}
 	public void renderZombie(ArrayList<Image> png,double n)
 	{
@@ -90,7 +90,6 @@ public class PlayControl {
 		{
 			tempZombie=zombies.get(i);
 			tempZombie.draw(png,n);
-			//tempBullet.dr
 		}
 	}
 	
@@ -103,7 +102,8 @@ public class PlayControl {
 	{
 		zombies.remove(z);
 	}
-	public boolean gameStatus(){
+	
+	public boolean gameStatus(){                              //Check GAMEOVER
 		if(tempZombie.xPos<165) return false;
 		else return true;
 	}

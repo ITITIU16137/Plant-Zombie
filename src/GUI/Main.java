@@ -17,7 +17,6 @@ public class Main extends StateBasedGame {
 		super(gamename);
 		this.addState(new Menu(menu));
 		this.addState(new Play(play));
-//		this.addState(new Pause(pause));
 		this.addState(new Gameover(gameover));
 	}
 	
@@ -26,7 +25,7 @@ public class Main extends StateBasedGame {
 		this.getState(menu).init(gc,this);
 		this.getState(play).init(gc,this);
 		this.getState(gameover);
-		this.enterState(0);
+		this.enterState(play);                            //Start with menu first
 	}
 
 	
@@ -35,7 +34,7 @@ public class Main extends StateBasedGame {
 		try {
 			appgc = new AppGameContainer(new Main (gamename));
 			appgc.setDisplayMode(WIDTH,HEIGHT, false);
-			appgc.start();  //Draw screen
+			appgc.start();                                   //Begin draw screen
 		}catch (SlickException e) {
 			e.printStackTrace();
 		}

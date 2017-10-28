@@ -2,6 +2,7 @@ package GUI;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+
 public class Gameover extends BasicGameState {
 	protected Music music;
 	Sound sound;
@@ -11,8 +12,6 @@ public class Gameover extends BasicGameState {
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException{
-	    //what should I put here?
-//		Gameover = new Image()
 		//Cursor
 		this.gc = gc;
 		Image cursor = new Image("res/cursor/MangekyouCursor.png");
@@ -25,8 +24,6 @@ public class Gameover extends BasicGameState {
 		g.drawAnimation(goani, 512, 384);
 		g.drawString("PRESS 1 TO PLAY AGAIN", 50 , 50);
 		g.drawString("PRESS 2 TO EXIT", 100, 100);
-	//what should I put here?
-
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException{
@@ -40,8 +37,6 @@ public class Gameover extends BasicGameState {
 			System.exit(0);
 		}
 		
-	//what should I put here?
-
 	}
 
 	public int getID(){
