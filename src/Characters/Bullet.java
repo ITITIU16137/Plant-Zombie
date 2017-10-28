@@ -1,5 +1,5 @@
 package Characters;
-
+import Event.*;
 
 //import org.newdawn.slick.Color;
 import org.newdawn.slick.*;
