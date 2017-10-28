@@ -17,11 +17,17 @@ import org.newdawn.slick.GameContainer;
 public class Menu extends BasicGameState {
 	
 	protected Music music;
+	Sound sound;
 	
 	int xpos = Mouse.getX(); //0-1024
 	int ypos = Mouse.getY(); //0-768
 	Main size;
+<<<<<<< HEAD
 	Image Start ,logo ;
+=======
+	Image Logo;
+	Image Start;
+>>>>>>> 2d31633c3eeea1fff576c238e44166b82cbf7ae3
 	Image Exit;
 	private int delayTime=0;                                // this is for
 	private int delay=(80);
@@ -32,15 +38,18 @@ public class Menu extends BasicGameState {
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException {
+		//Logo
+		Logo = new Image("res/logo.png");
 		//Image button 
 		Start = new Image("res/Menu/Start.png");
 		Exit = new Image("res/Menu/Exit.png"); 
 		logo = new Image("res/Menu/logo.png");
 		//Music background
 		music = new Music("res/Menu/07_The_Dark_Place.ogg");
-		music.setVolume(0.8f);
+		music.setVolume(0.5f);
 		music.loop();
-		
+		//Click sound
+		sound = new Sound("res/Menu/click.wav");
 		//Cursor
 		this.gc = gc;
 		Image cursor = new Image("res/cursor/MangekyouCursor.png");
@@ -74,10 +83,16 @@ public class Menu extends BasicGameState {
 	    }
 		//Image Menuwallpaper = new Image ("res/Menu/c.png");
 		//g.drawImage(Menuwallpaper,0,0);
+<<<<<<< HEAD
 		
 		Start.draw(430,310);
 		Exit.draw(430,380);
 		logo.draw(200,10);
+=======
+		Logo.draw(280, 50);
+		Start.draw(430,350);
+		Exit.draw(430,450);
+>>>>>>> 2d31633c3eeea1fff576c238e44166b82cbf7ae3
 	}
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException{
 		
@@ -86,15 +101,16 @@ public class Menu extends BasicGameState {
 		ypos = size.HEIGHT- Mouse.getY();
 		
 		///Start button
-		if ( (xpos>430 && xpos<570) && (ypos>310 && ypos <360)) {
+		if ( (xpos>430 && xpos<570) && (ypos>350 && ypos <400)) {
 			if (input.isMouseButtonDown(0)) { 
 				gc.setTargetFrameRate(999);
+				sound.play();
 				music.stop();
 				sbg.enterState(1);
 			}
 		}
 		//Exit button
-		if ((xpos>445 && xpos<550) && (ypos >380 && ypos <440))
+		if ((xpos>445 && xpos<550) && (ypos >450 && ypos <510))
 		{
 			if ((input.isMouseButtonDown(0))){
 				System.exit(0);
