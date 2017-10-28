@@ -144,23 +144,27 @@ public class Play extends BasicGameState
 		
 		if (input.isKeyDown(Input.KEY_RIGHT)) 
 		{
-			if(shooter.xPos<850) shooter.xPos +=shooter.speed;
-			else shooter.xPos=850;
+			shooter.xPos +=shooter.speed;
+			/*if(shooter.xPos<850) shooter.xPos +=shooter.speed;
+			else shooter.xPos=850;*/
 		}
 		else if (input.isKeyDown(Input.KEY_LEFT)) 
 		{
-			if(shooter.xPos>200) shooter.xPos -=shooter.speed;
-			else shooter.xPos=200;
+			shooter.xPos -=shooter.speed;
+			/*if(shooter.xPos>200) shooter.xPos -=shooter.speed;
+			else shooter.xPos=200;*/
 		}
 		else if (input.isKeyDown(Input.KEY_UP)) 
 		{
-			if(shooter.yPos>200) shooter.yPos -=shooter.speed;
-			else shooter.yPos=200;
+			shooter.yPos -=shooter.speed;
+			/*if(shooter.yPos>200) shooter.yPos -=shooter.speed;
+			else shooter.yPos=200;*/
 		}
 		else if (input.isKeyDown(Input.KEY_DOWN)) 
 		{
-			if(shooter.yPos<595) shooter.yPos +=shooter.speed;
-			else shooter.yPos=595;
+			shooter.yPos +=shooter.speed;
+			/*if(shooter.yPos<595) shooter.yPos +=shooter.speed;
+			else shooter.yPos=595;*/
 		}
 		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press space to shoot
 		{
@@ -175,16 +179,29 @@ public class Play extends BasicGameState
 		}
 		
 		this.delayTimeSun+=1;                                                                
-		if(this.delayTimeSun==delaySun)                                                         
+		if(this.delayTimeSun==delaySun)                                        //to spawn sun                 
 		{                        							 
 			controller.addSun(new Sun(sunInitPos[(int)(Math.random()*9)],0));
 			delaySun=getDelayTimeSun(5000);
 			this.delayTimeSun=0;
 		}
+<<<<<<< HEAD
 		this.delayText+=delta;
 		controller.shoot();
 		controller.zomWalk();
 		controller.fall();
+=======
+		/*if(controller.gameStatus()==false) 
+		{
+			sbg.enterState(3);
+		} */                                                               
+		controller.shoot();
+		controller.zomWalk();
+		controller.fall();
+		//controller.gameStatus();
+		
+		
+>>>>>>> 651c147ff6dee4bfc7d347f175e25fa27e23cfd6
 	}
 	
 	public int getID()
