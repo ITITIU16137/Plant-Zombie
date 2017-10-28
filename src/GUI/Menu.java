@@ -22,13 +22,12 @@ public class Menu extends BasicGameState {
 	int xpos = Mouse.getX(); //0-1024
 	int ypos = Mouse.getY(); //0-768
 	Main size;
-<<<<<<< HEAD
-	Image Start ,logo ;
-=======
+
+	Image Start ,Exit,logo ;
 	Image Logo;
-	Image Start;
->>>>>>> 2d31633c3eeea1fff576c238e44166b82cbf7ae3
-	Image Exit;
+
+
+
 	private int delayTime=0;                                // this is for
 	private int delay=(80);
 	
@@ -83,16 +82,15 @@ public class Menu extends BasicGameState {
 	    }
 		//Image Menuwallpaper = new Image ("res/Menu/c.png");
 		//g.drawImage(Menuwallpaper,0,0);
-<<<<<<< HEAD
+
 		
 		Start.draw(430,310);
 		Exit.draw(430,380);
 		logo.draw(200,10);
-=======
-		Logo.draw(280, 50);
-		Start.draw(430,350);
-		Exit.draw(430,450);
->>>>>>> 2d31633c3eeea1fff576c238e44166b82cbf7ae3
+		//Logo.draw(280, 50);
+		//Start.draw(430,350);
+		//Exit.draw(430,450);
+
 	}
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException{
 		
@@ -101,7 +99,7 @@ public class Menu extends BasicGameState {
 		ypos = size.HEIGHT- Mouse.getY();
 		
 		///Start button
-		if ( (xpos>430 && xpos<570) && (ypos>350 && ypos <400)) {
+		if ( (xpos>430 && xpos<570) && (ypos>310 && ypos <400)) {
 			if (input.isMouseButtonDown(0)) { 
 				gc.setTargetFrameRate(999);
 				sound.play();
@@ -110,7 +108,7 @@ public class Menu extends BasicGameState {
 			}
 		}
 		//Exit button
-		if ((xpos>445 && xpos<550) && (ypos >450 && ypos <510))
+		if ((xpos>430 && xpos<550) && (ypos >380 && ypos <510))
 		{
 			if ((input.isMouseButtonDown(0))){
 				System.exit(0);
