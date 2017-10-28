@@ -21,7 +21,7 @@ public class Menu extends BasicGameState {
 	int xpos = Mouse.getX(); //0-1024
 	int ypos = Mouse.getY(); //0-768
 	Main size;
-	Image Start;
+	Image Start ,logo ;
 	Image Exit;
 	private int delayTime=0;                                // this is for
 	private int delay=(80);
@@ -35,7 +35,7 @@ public class Menu extends BasicGameState {
 		//Image button 
 		Start = new Image("res/Menu/Start.png");
 		Exit = new Image("res/Menu/Exit.png"); 
-		
+		logo = new Image("res/Menu/logo.png");
 		//Music background
 		music = new Music("res/Menu/07_The_Dark_Place.ogg");
 		music.setVolume(0.8f);
@@ -77,6 +77,7 @@ public class Menu extends BasicGameState {
 		
 		Start.draw(430,310);
 		Exit.draw(430,380);
+		logo.draw(200,10);
 	}
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException{
 		
