@@ -8,8 +8,7 @@ public class Main extends StateBasedGame {
 	public static final String gamename = "Plants vs Zombies";
 	public static final int menu = 0;
 	public static final int play = 1;
-	public static final int pause = 2;
-	public static final int gameover = 3;
+	public static final int gameover = 2;
 	public static int HEIGHT=768;
 	public static int WIDTH=1024;
 	

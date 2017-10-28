@@ -36,7 +36,8 @@ public class Play extends BasicGameState
 	private int delayZom=getDelayTimeZom(10000);//max 10s         // delay time to spawn zombies
 	private int delayTimeSun=0;
 	private int delaySun=getDelayTimeSun(5000);
-	
+	private int delayText=0;
+	private int durationText=10000;
 	public int getDelayTimeZom(int maxTime)
 	{	
 		return (int)(Math.random()*maxTime)+1;
@@ -113,8 +114,7 @@ public class Play extends BasicGameState
 		//g.drawImage(small,shooter.xPos+40,shooter.yPos);      // draw plant shooter
 		g.drawAnimation(S22,(float)shooter.xPos+40,(float)shooter.yPos); // draw peashooter
 		g.drawAnimation(S11,(float)sunflower.xPos,(float) sunflower.yPos); // draw sunflower
-		g.drawImage(text, 80, 300);                        //draw text
-		
+		if(delayText<durationText) g.drawImage(text, 80, 300);                        //draw text
 		controller.renderBullet(g,bullet);                         // draw bullets
 		controller.renderZombie(zombieImages, this.count);   //draw zombies
 		controller.renderSun(g,sun);
@@ -181,12 +181,10 @@ public class Play extends BasicGameState
 			delaySun=getDelayTimeSun(5000);
 			this.delayTimeSun=0;
 		}
-		                                                                
+		this.delayText+=delta;
 		controller.shoot();
 		controller.zomWalk();
 		controller.fall();
-		controller.gameStatus();
-		if(controller.gameStatus()==false) sbg.enterStage(3);
 	}
 	
 	public int getID()
