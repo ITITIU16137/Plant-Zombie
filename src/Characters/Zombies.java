@@ -1,5 +1,7 @@
 package Characters;
 
+import Event.*;
+
 import org.newdawn.slick.*;
 import java.util.ArrayList;
 
@@ -37,5 +39,35 @@ public class Zombies extends GameObject{
 	{
 		zom.get((int)i).draw((int)this.xPos, (int)this.yPos, zom.get((int)i).getWidth()/3, zom.get((int)i).getHeight()/3);
 		//use this code to RESIZE image
+	}
+	
+	public int getHp()
+	{
+		return hp;
+	}
+
+	public void setHp(int hp) 
+	{
+		this.hp = hp;
+	}
+
+	public int getDamage()
+	{
+		return damage;
+	}
+
+	public void setDamage(int damage)
+	{
+		this.damage = damage;
+	}
+
+	public double getSpeed()
+	{
+		return speed;
+	}
+
+	public void setSpeed(double speed) 
+	{
+		this.speed = speed;
 	}
 }
