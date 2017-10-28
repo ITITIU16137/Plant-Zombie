@@ -15,7 +15,7 @@ public class Play extends BasicGameState
 	SunRun runer= new SunRun();
 	Plants shooter=new Plants();
 	Sf sunflower=new Sf();
-	Image small,background,bullet,sun,khoa;
+	Image small,background,bullet,sun,khoa,text;
 	SpriteSheet S1,S2;
     Animation S11,S22;
 
@@ -75,13 +75,18 @@ public class Play extends BasicGameState
 		
 		 //small = new Image ("res/s.png");
 		 background=new Image("res/Night.png");
+		 
 		 bullet=new Image("res/Pea.png");
+		 
 		 sun = new Image("res/sun.png");
+		 
+		 text = new Image("res/text.png");
+		 //text.destroy();
 		 S1 = new SpriteSheet("res/khoa.png", 74, 73);// Sunflower 
 	     S11 = new Animation(S1, 40);				  // animatioon
 	     S11.setPingPong(true);						  // 
-	     S2 = new SpriteSheet("res/PeaShooter.png", 125, 106);// Peashooter 
 	     
+	     S2 = new SpriteSheet("res/PeaShooter.png", 125, 106);// Peashooter 
 	     S22 = new Animation(S2, 20);				  // animatioon
 	     S22.setPingPong(true);		
 	     
@@ -98,9 +103,8 @@ public class Play extends BasicGameState
 	    
 	   // BigBufferedImage image = BigBufferedImage.create(f,32);
 
-		 
+		 //Background music
 		// music1 = new Music("res/Play/Intro.ogg");
-		
 		// music1.setVolume(0.3f);
 		 //music1.loop();
 	}
@@ -113,6 +117,7 @@ public class Play extends BasicGameState
 		                       
 		controller.renderBullet(g,bullet);                         // draw bullets
 		controller.renderZombie(zombieImages, this.count);   //draw zombies
+		g.drawImage(text, 80, 300);                        //draw text
 		
 		g.drawAnimation(S11,sunflower.xPos, sunflower.yPos); // draw sunflower
 		runer.render(g,sun);
@@ -121,7 +126,7 @@ public class Play extends BasicGameState
 		this.count+=this.frequencyImage ;                //  print multiple images to create animation
 		
 		if(this.count>10){this.count=0;}
-		
+		//debug
 		g.setColor(Color.white); 
 		g.drawString("X:  "+shooter.xPos+"Y:  "+shooter.yPos,400,100);
 		//Sun Collects
@@ -176,7 +181,7 @@ public class Play extends BasicGameState
 		}
 		this.delayTime+=1;                                                                //system count 
 		if(this.delayTime==delay)                                                         //from 0 to delay
-		{                        							 //to spawn zombies
+		{                        							 //to spawn sun
 		
 			runer.addSun(new Sun(sunInitPos[random],0));
 			delay=getDelayTime(5000);
@@ -190,7 +195,7 @@ public class Play extends BasicGameState
 		runer.run();
 		if(input.isKeyPressed(input.KEY_0))
 		{
-			sbg.enterState(3);
+			sbg.enterState(2);
 		}
 	}
 	
