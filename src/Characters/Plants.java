@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import org.newdawn.slick.Image;
 
-public class Plants 
+public class Plants extends GameObject
 {
 	
 	protected int speed =1;
