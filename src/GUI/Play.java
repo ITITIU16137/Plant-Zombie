@@ -144,27 +144,27 @@ public class Play extends BasicGameState
 		
 		if (input.isKeyDown(Input.KEY_RIGHT)) 
 		{
-			//shooter.xPos +=shooter.speed;
-			if(shooter.xPos<850) shooter.xPos +=shooter.speed;
-			else shooter.xPos=850;
+			shooter.xPos +=shooter.speed;
+			/*if(shooter.xPos<850) shooter.xPos +=shooter.speed;
+			else shooter.xPos=850;*/
 		}
 		else if (input.isKeyDown(Input.KEY_LEFT)) 
 		{
-			//shooter.xPos -=shooter.speed;
-			if(shooter.xPos>200) shooter.xPos -=shooter.speed;
-			else shooter.xPos=200;
+			shooter.xPos -=shooter.speed;
+			/*if(shooter.xPos>200) shooter.xPos -=shooter.speed;
+			else shooter.xPos=200;*/
 		}
 		else if (input.isKeyDown(Input.KEY_UP)) 
 		{
-			//shooter.yPos -=shooter.speed;
-			if(shooter.yPos>200) shooter.yPos -=shooter.speed;
-			else shooter.yPos=200;
+			shooter.yPos -=shooter.speed;
+			/*if(shooter.yPos>200) shooter.yPos -=shooter.speed;
+			else shooter.yPos=200;*/
 		}
 		else if (input.isKeyDown(Input.KEY_DOWN)) 
 		{
-			//shooter.yPos +=shooter.speed;
-			if(shooter.yPos<595) shooter.yPos +=shooter.speed;
-			else shooter.yPos=595;
+			shooter.yPos +=shooter.speed;
+			/*if(shooter.yPos<595) shooter.yPos +=shooter.speed;
+			else shooter.yPos=595;*/
 		}
 		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press space to shoot
 		{
@@ -185,14 +185,14 @@ public class Play extends BasicGameState
 			delaySun=getDelayTimeSun(5000);
 			this.delayTimeSun=0;
 		}
-		if(controller.gameStatus()==false) 
+		/*if(controller.gameStatus()==false) 
 		{
 			sbg.enterState(3);
-		}                                                                
+		} */                                                               
 		controller.shoot();
 		controller.zomWalk();
 		controller.fall();
-		controller.gameStatus();
+		//controller.gameStatus();
 		
 		
 	}
