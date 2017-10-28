@@ -5,10 +5,10 @@ public class GameObject {
 	
 	public double xPos,yPos;
 	
-	public GameObject(int x,int y)
+	public GameObject(double d,double e)
 	{
-		this.xPos=x;
-		this.yPos=y;
+		this.xPos=d;
+		this.yPos=e;
 	}
 	public Rectangle getBounds(int width,int height)
 	{

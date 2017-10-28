@@ -10,9 +10,9 @@ public class Bullet extends GameObject{
 	double speed=0.5;       // speed of bullet                    
 	private int damage=20;
 	
-	public Bullet(int x,int y)
+	public Bullet(double d,double e)
 	{
-		super(x,y);
+		super(d,e);
 	}
 	
 	public boolean checkEnemy(Zombies zom)              // haven't been used

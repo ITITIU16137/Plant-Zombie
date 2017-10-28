@@ -111,7 +111,7 @@ public class Play extends BasicGameState
 		g.drawImage(background, 0,0);                         //draw background
 		//g.drawImage(small,shooter.xPos+40,shooter.yPos);      // draw plant shooter
 		g.drawAnimation(S22,(float)shooter.xPos+40,(float)shooter.yPos); // draw peashooter
-		g.drawAnimation(S11,sunflower.xPos, sunflower.yPos); // draw sunflower
+		g.drawAnimation(S11,(float)sunflower.xPos,(float) sunflower.yPos); // draw sunflower
 		g.drawImage(text, 80, 300);                        //draw text
 		
 		controller.renderBullet(g,bullet);                         // draw bullets
