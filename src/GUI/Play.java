@@ -1,5 +1,6 @@
 package GUI;
 import Characters.*;
+import Event.*;
 import java.util.Random;
 
 import org.newdawn.slick.*;
@@ -12,9 +13,8 @@ public class Play extends BasicGameState
 {	
 	
 	PlayControl controller=new PlayControl();
-	SunRun runer= new SunRun();
-	Plants shooter=new Plants();
-	Sf sunflower=new Sf();
+	Plants shooter=new Plants(200,200);
+	SunFlower sunflower=new SunFlower(100,100);
 	Image small,background,bullet,sun,khoa,text;
 	SpriteSheet S1,S2;
     Animation S11,S22;
@@ -31,11 +31,17 @@ public class Play extends BasicGameState
 	private double count=0;                                 //  this is
 	private double frequencyImage=0.002;                    //  for object speed
 	
-	private int delayTime=0;                                // this is for
-	private int delay=getDelayTime(1000);//max 10s         // delay time to spawn zombies
+	private int delayTimeZom=0;                                // this is for
+	private int delayZom=getDelayTimeZom(10000);//max 10s         // delay time to spawn zombies
+	private int delayTimeSun=0;
+	private int delaySun=getDelayTimeSun(5000);
 	
-	public int getDelayTime(int maxTime)
+	public int getDelayTimeZom(int maxTime)
 	{	
+		return (int)(Math.random()*maxTime)+1;
+	}
+	public int getDelayTimeSun(int maxTime)
+	{
 		return (int)(Math.random()*maxTime)+1;
 	}
 	
@@ -89,18 +95,8 @@ public class Play extends BasicGameState
 	     S2 = new SpriteSheet("res/PeaShooter.png", 125, 106);// Peashooter 
 	     S22 = new Animation(S2, 20);				  // animatioon
 	     S22.setPingPong(true);		
-	     
-	     
-	     
-	     
-	
-	     File f = null;
 
-	   
-	       f = new File("res/Out.png");
-	      
-	    
-	    
+	     File f = new File("res/Out.png");	
 	   // BigBufferedImage image = BigBufferedImage.create(f,32);
 
 		 //Background music
@@ -114,17 +110,15 @@ public class Play extends BasicGameState
 	{
 		g.drawImage(background, 0,0);                         //draw background
 		//g.drawImage(small,shooter.xPos+40,shooter.yPos);      // draw plant shooter
-		                       
-		controller.renderBullet(g,bullet);                         // draw bullets
-		controller.renderZombie(zombieImages, this.count);   //draw zombies
+		g.drawAnimation(S22,(float)shooter.xPos+40,(float)shooter.yPos); // draw peashooter
+		g.drawAnimation(S11,sunflower.xPos, sunflower.yPos); // draw sunflower
 		g.drawImage(text, 80, 300);                        //draw text
 		
-		g.drawAnimation(S11,sunflower.xPos, sunflower.yPos); // draw sunflower
-		runer.render(g,sun);
+		controller.renderBullet(g,bullet);                         // draw bullets
+		controller.renderZombie(zombieImages, this.count);   //draw zombies
+		controller.renderSun(g,sun);
 		
-		g.drawAnimation(S22,shooter.xPos+40, shooter.yPos); // draw peashooter
 		this.count+=this.frequencyImage ;                //  print multiple images to create animation
-		
 		if(this.count>10){this.count=0;}
 		//debug
 		g.setColor(Color.white); 
@@ -142,11 +136,10 @@ public class Play extends BasicGameState
 		//g.drawString(" "+this.count2+" "+delay, 500, 500);     //debug
 		
 	}
+	
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
 		Input input = gc.getInput();
-		Random rand = new Random(); // This is bullshit
-		int  random = rand.nextInt(8) ; // also bullshit
 		
 		if (input.isKeyDown(Input.KEY_RIGHT)) 
 		{
@@ -166,33 +159,29 @@ public class Play extends BasicGameState
 		}
 		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press space to shoot
 		{
-			controller.addBullet(new Bullet(shooter.xPos+120,shooter.yPos+25));     // bullets fly from plant position
-					
+			controller.addBullet(new Bullet(shooter.xPos+120,shooter.yPos+25));     // bullets fly from plant position			
 		}
 	
-		this.delayTime+=1;                                                                //system count 
-		if(this.delayTime==delay)                                                         //from 0 to delay
-		{                        							 //to spawn zombies
+		this.delayTimeZom+=1;                                                                //system count 
+		if(this.delayTimeZom==delayZom)                                                      //from 0 to delay
+		{                        							                                 //to spawn zombies
 			controller.addZombie(new Zombies(950,zomInitPos[(int)(Math.random()*5)]));
-			
-			delay=getDelayTime(10000);
-			this.delayTime=0;
-		
+			delayZom=getDelayTimeZom(10000);
+			this.delayTimeZom=0;
 		}
-		this.delayTime+=1;                                                                //system count 
-		if(this.delayTime==delay)                                                         //from 0 to delay
-		{                        							 //to spawn sun
 		
-			runer.addSun(new Sun(sunInitPos[random],0));
-			delay=getDelayTime(5000);
-			this.delayTime=0;
-		
+		this.delayTimeSun+=1;                                                                
+		if(this.delayTimeSun==delaySun)                                                         
+		{                        							 
+			controller.addSun(new Sun(sunInitPos[(int)(Math.random()*9)],0));
+			delaySun=getDelayTimeSun(5000);
+			this.delayTimeSun=0;
 		}
-		                                                                //system count 
-		
+		                                                                
 		controller.shoot();
 		controller.zomWalk();
-		runer.run();
+		controller.fall();
+		
 		if(input.isKeyPressed(input.KEY_0))
 		{
 			sbg.enterState(2);
