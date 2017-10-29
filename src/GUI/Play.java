@@ -19,7 +19,7 @@ public class Play extends BasicGameState
 	Image small,background,bullet,sun,khoa,text;
 	SpriteSheet S1,S2;
     Animation S11,S22;
-
+    Sound sound;
     private Animation a;
     
 	private Music music1;
@@ -97,14 +97,14 @@ public class Play extends BasicGameState
 	     S2 = new SpriteSheet("res/PeaShooter.png", 125, 106);// Peashooter 
 	     S22 = new Animation(S2, 20);				  // animatioon
 	     S22.setPingPong(true);		
-
-	     File f = new File("res/Out.png");	
-	   // BigBufferedImage image = BigBufferedImage.create(f,32);
-
+	     
 		 //Background music
 		// music1 = new Music("res/Play/Intro.ogg");
 		// music1.setVolume(0.3f);
 		 //music1.loop();
+	     //Sound
+	     //sound = new Sound("res/sound/zombies_coming.wav");
+	     //sound.play();
 	}
 	
 	
@@ -185,12 +185,12 @@ public class Play extends BasicGameState
 			delaySun=getDelayTimeSun(5000);
 			this.delayTimeSun=0;
 		}
-<<<<<<< HEAD
+
 		this.delayText+=delta;
 		controller.shoot();
 		controller.zomWalk();
 		controller.fall();
-=======
+
 		/*if(controller.gameStatus()==false) 
 		{
 			sbg.enterState(3);
@@ -201,7 +201,7 @@ public class Play extends BasicGameState
 		//controller.gameStatus();
 		
 		
->>>>>>> 651c147ff6dee4bfc7d347f175e25fa27e23cfd6
+
 	}
 	
 	public int getID()
