@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class PlayControl {
 	Physic phy =new Physic();
-	
 	private ArrayList<Bullet> bullets=new ArrayList<>();
 	Bullet tempBullet;
 	private ArrayList<Zombies> zombies=new ArrayList<>();
@@ -21,6 +20,8 @@ public class PlayControl {
 	StateBasedGame sbg;
 	GameContainer gc;
 	Main screen;
+	Graphics g;
+	private int k=595;                                    // sun fall into random area
 	
 	//--------------------------------------BULLET---------------------------------------
 	public void shoot()                        
@@ -116,13 +117,14 @@ public class PlayControl {
 			tempSun=sun.get(i);
 			tempSun.falling();
 			
-			if(tempSun.xPos>screen.WIDTH)       // remove bullets out of screen
+			if(tempSun.yPos>k)       // remove bullets out of screen
 			{
 				removeSun(tempSun);
+				k-=100;                        //sun fall into random area;
+				if(k<=125) k=595;
 			}
 		}
 	}
-	
 	public void renderSun(Graphics g,Image png)              // draw bullets
 	{
 		

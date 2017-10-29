@@ -3,12 +3,13 @@ package Characters;
 
 //import org.newdawn.slick.Color;
 import org.newdawn.slick.*;
-
 public class Sun extends GameObject{
 	
 	protected int dX=400,dY=400;       //size of Sun
-	protected double speed=0.2;       // speed of Sun :D           
-	
+	double speed=0.2;       // speed of Sun :D
+
+	private int delaySun=0;
+	private int durationSun=5000;
 	public Sun(int x,int y)
 	{
 		super(x,y);
@@ -22,7 +23,5 @@ public class Sun extends GameObject{
 	public void draw(Graphics g, Image png)                  // load image
 	{
 		g.drawImage(png,(int) this.xPos,(int)this.yPos);
-		//g.setColor(Color.blue);
-		//g.fillOval(this.xPos, this.yPos, this.dX, this.dY);
 	}
 }

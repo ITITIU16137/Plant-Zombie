@@ -37,7 +37,7 @@ public class Play extends BasicGameState
 	private int delayTimeSun=0;
 	private int delaySun=getDelayTimeSun(5000);
 	private int delayText=0;
-	private int durationText=10000;
+	private int durationText=5000;
 	public int getDelayTimeZom(int maxTime)
 	{	
 		return (int)(Math.random()*maxTime)+1;
@@ -190,11 +190,10 @@ public class Play extends BasicGameState
 		controller.shoot();
 		controller.zomWalk();
 		controller.fall();
-
 		/*if(controller.gameStatus()==false) 
 		{
 			sbg.enterState(3);
-		} */                                                               
+		} */
 		controller.shoot();
 		controller.zomWalk();
 		controller.fall();
