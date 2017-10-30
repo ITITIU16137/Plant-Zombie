@@ -9,7 +9,7 @@ public class Zombies extends GameObject{
 	
 	protected int hp=100;
 	protected int damage;
-	protected double speed=-0.2;
+	protected double speed=-0.09;
 	public Zombies(int x,int y)
 	{
 		super(x,y);

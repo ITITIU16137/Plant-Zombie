@@ -6,7 +6,7 @@ import org.newdawn.slick.*;
 public class Sun extends GameObject{
 	
 	protected int dX=400,dY=400;       //size of Sun
-	double speed=0.2;       // speed of Sun :D
+	double speed=0.08;       // speed of Sun :D
 
 	private int delaySun=0;
 	private int durationSun=5000;

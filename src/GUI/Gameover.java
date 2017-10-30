@@ -12,10 +12,10 @@ public class Gameover extends BasicGameState {
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException{
-		//Cursor
+		/*//Cursor
 		this.gc = gc;
 		Image cursor = new Image("res/cursor/MangekyouCursor.png");
-		gc.setMouseCursor(cursor, 0, 0);
+		gc.setMouseCursor(cursor, 0, 0);*/
 		goani.addFrame(new Image ("res/gameover/0.png"), 300);   //animation of gameover 
 		goani.addFrame(new Image("res/gameover/0.5.png"), 300);
 	}
@@ -40,6 +40,6 @@ public class Gameover extends BasicGameState {
 	}
 
 	public int getID(){
-	    return 3;
+	    return 2;
 	}
 }

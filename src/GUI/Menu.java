@@ -51,7 +51,7 @@ public class Menu extends BasicGameState {
 		sound = new Sound("res/Menu/click.wav");
 		//Cursor
 		this.gc = gc;
-		Image cursor = new Image("res/cursor/MangekyouCursor.png");
+		Image cursor = new Image("res/cursor/cursor.png");
 		gc.setMouseCursor(cursor, 0, 0);
 		gc.setTargetFrameRate(15);
 		
