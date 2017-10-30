@@ -4,6 +4,8 @@ package Characters;
 import java.util.ArrayList;
 
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Music;
+import org.newdawn.slick.SlickException;
 
 public class Plants extends GameObject
 {
@@ -12,9 +14,12 @@ public class Plants extends GameObject
 	protected int hp;
 	protected int damage;
 	
-	public Plants(int x,int y)
+	
+	
+	public Plants(int x,int y) 
 	{
 		super(x,y);
+		
 	}
 	
 	public int getSpeed() {

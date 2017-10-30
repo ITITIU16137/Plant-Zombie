@@ -21,6 +21,9 @@ public class PlayControl {
 	GameContainer gc;
 	Main screen;
 	Graphics g;
+	Sound Punch;
+	Sound ZomWalk;
+	
 	private int k=595;                                    // sun fall into random area
 	
 	//--------------------------------------BULLET---------------------------------------
@@ -66,25 +69,30 @@ public class PlayControl {
 	
 	
 	//--------------------------------------ZOMBIE---------------------------------------
-	public void zomWalk()
+	public void zomWalk() throws SlickException
 	{
 		for(int i=0;i<zombies.size();i++)  ///shoot all the bullets in the list
 		{
+			Punch = new Sound("res/Play/Punch.wav");
+			ZomWalk = new Sound("res/Play/zombie.wav");
 			tempZombie=zombies.get(i);
 			tempZombie.moving(); 
+			//ZomWalk.loop();
 			//if(tempZombie.xPos<0 || tempZombie.getHp()<=0)
 			if(tempZombie.xPos<165 || tempZombie.getHp()<=0)
 			{
 				removeZombie(tempZombie);
+				
 			}
 			if(phy.Collision(tempZombie, bullets))
 			{
 				tempZombie.setHp(tempZombie.getHp()-20);
+				Punch.play();
 			}
 		}
 		//int c=0;
 	}
-	public void renderZombie(ArrayList<Image> png,double n)
+	public void renderZombie(ArrayList<Image> png,double n) 
 	{
 		
 		for(int i=0;i<zombies.size();i++)

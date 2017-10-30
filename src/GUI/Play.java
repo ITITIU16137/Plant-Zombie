@@ -21,7 +21,7 @@ public class Play extends BasicGameState
     Animation S11,S22;
     Sound sound;
     Sound pow;
-    Sound Punch;
+    
     private Animation a;
     
 	private Music music1;
@@ -104,11 +104,10 @@ public class Play extends BasicGameState
 		// music1 = new Music("res/Play/Intro.ogg");
 		// music1.setVolume(0.3f);
 		 //music1.loop();
+	     
 	     //Sound
 	     sound = new Sound("res/Play/zombies_coming.wav");
-	     
 	     pow = new Sound("res/Play/POW.wav");
-	     Punch = new Sound("res/Play/Punch.wav");
 	}
 	
 	
@@ -145,10 +144,7 @@ public class Play extends BasicGameState
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
 		Input input = gc.getInput();
-		/*while (input.isKeyDown(Input.KEY_0))
-		{
-			sound.play();
-		}*/
+		
 		if (input.isKeyDown(Input.KEY_RIGHT)) 
 		{
 			shooter.xPos +=shooter.speed;
@@ -196,7 +192,6 @@ public class Play extends BasicGameState
 			controller.addSun(new Sun(sunInitPos[(int)(Math.random()*9)],0));
 			delaySun=getDelayTimeSun(5000);
 			this.delayTimeSun=0;
-			
 		}
 
 		this.delayText+=delta;
