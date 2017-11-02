@@ -12,18 +12,20 @@ public class Gameover extends BasicGameState {
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException{
-		/*//Cursor
-		this.gc = gc;
-		Image cursor = new Image("res/cursor/MangekyouCursor.png");
-		gc.setMouseCursor(cursor, 0, 0);*/
+		
 		goani.addFrame(new Image ("res/gameover/0.png"), 300);   //animation of gameover 
 		goani.addFrame(new Image("res/gameover/0.5.png"), 300);
+		sound = new Sound ("res/gameover/Losing Game.wav");
+		
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
 		g.drawAnimation(goani, 512, 384);
+		g.setColor(Color.white);
 		g.drawString("PRESS 1 TO PLAY AGAIN", 50 , 50);
+		g.setColor(Color.white);
 		g.drawString("PRESS 2 TO EXIT", 100, 100);
+		sound.play();
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException{

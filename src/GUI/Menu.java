@@ -1,124 +1,116 @@
 package GUI;
 
 import org.lwjgl.input.Mouse;
-import java.io.File;
-import java.io.IOException;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
-
-import Characters.Zombies;
-
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.state.transition.FadeInTransition; 
+import org.newdawn.slick.state.transition.FadeOutTransition; 
+
 
 //import java.util.concurrent.TimeUnit;
 
 public class Menu extends BasicGameState {
-	
+
 	protected Music music;
 	Sound sound;
-	
-	int xpos = Mouse.getX(); //0-1024
-	int ypos = Mouse.getY(); //0-768
+
+	int xpos = Mouse.getX(); // 0-1024
+	int ypos = Mouse.getY(); // 0-768
 	Main size;
 
-	Image Start ,Exit,logo ;
-	Image Logo;
+	Image start, exit, logo;
 
-
-
-	private int delayTime=0;                                // this is for
-	private int delay=(80);
-	
+	private int delayTime = 0; // this is for
+	private int delay = (80);
+	private int delayStart=0;
+	private int durationStart=300;
 	private GameContainer gc;
-	public Menu (int state) {
-		
+
+	public Menu(int state) {
+
 	}
-	
-	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException {
-		//Logo
-		Logo = new Image("res/logo.png");
-		//Image button 
-		Start = new Image("res/Menu/Start.png");
-		Exit = new Image("res/Menu/Exit.png"); 
+
+	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+		
+		// Image button
+		start = new Image("res/Menu/Start.png");
+		exit = new Image("res/Menu/Exit.png");
 		logo = new Image("res/Menu/logo.png");
-		//Music background
+		// Music background
 		music = new Music("res/Menu/07_The_Dark_Place.ogg");
 		music.setVolume(0.5f);
 		music.loop();
-		//Click sound
+		// Click sound
 		sound = new Sound("res/Menu/click.wav");
-		//Cursor
+		// Cursor
 		this.gc = gc;
 		Image cursor = new Image("res/cursor/cursor.png");
 		gc.setMouseCursor(cursor, 0, 0);
 		gc.setTargetFrameRate(15);
-		
-		
-	}	
-	///Draw stuff
-	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
-		
-		Image[] Background = new Image[102];
-		String fileLocation = new String();
-		for (int i = 1; i < 102; i++)
-		    {
-		        fileLocation = "res/background/back ("+i+").png";
-		        Background [i] = new Image(fileLocation);
-		    }
-		int i = 1;
-		for(i = 1; i < 102; i++)
-	    {
-		
-			this.delayTime+=1;                                                             
-			if(this.delayTime==delay)                                                         			{                        							
-				 	
-				g.drawImage(Background[i],0,0);	
-				delay=(102);
-				this.delayTime=0;
-				if (i == 101) i = 1;
-			}	
-	    }
-		//Image Menuwallpaper = new Image ("res/Menu/c.png");
-		//g.drawImage(Menuwallpaper,0,0);
-
-		
-		Start.draw(430,310);
-		Exit.draw(430,380);
-		logo.draw(200,10);
-		//Logo.draw(280, 50);
-		//Start.draw(430,350);
-		//Exit.draw(430,450);
 
 	}
-	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException{
+
+	/// Draw stuff
+	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+
+		Image[] Background = new Image[102];
+		String fileLocation = new String();
+		for (int i = 1; i < 102; i++) {
+			fileLocation = "res/background/back (" + i + ").png";
+			Background[i] = new Image(fileLocation);
+		}
+		int i = 1;
+		for (i = 1; i < 102; i++) {
+
+			this.delayTime += 1;
+			if (this.delayTime == delay) {
+
+				g.drawImage(Background[i], 0, 0);
+				delay = (102);
+				this.delayTime = 0;
+				if (i == 101)
+					i = 1;
+			}
+		}
+		start.draw(430, 310);
+		exit.draw(430, 380);
+		logo.draw(200, 10);
 		
+	}
+
+	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+
 		Input input = gc.getInput();
 		xpos = Mouse.getX();
-		ypos = size.HEIGHT- Mouse.getY();
-		
-		///Start button
-		if ( (xpos>430 && xpos<570) && (ypos>310 && ypos <400)) {
-			if (input.isMouseButtonDown(0)) { 
+		ypos = size.HEIGHT - Mouse.getY();
+
+		/// Start button
+		if ((xpos > 430 && xpos < 570) && (ypos > 310 && ypos < 400)) {
+
+			if (input.isMouseButtonDown(0)) {
+				/*if(delayStart<durationStart) {
+					start.draw(430, 310, new Color(1, 1, 1, 0.5f));
+				}*/
 				gc.setTargetFrameRate(999);
 				sound.play();
 				music.stop();
 				sbg.enterState(1);
 			}
 		}
-		//Exit button
-		if ((xpos>430 && xpos<550) && (ypos >380 && ypos <510))
-		{
-			if ((input.isMouseButtonDown(0))){
+
+		// Exit button
+		if ((xpos > 430 && xpos < 550) && (ypos > 380 && ypos < 510)) {
+			if ((input.isMouseButtonDown(0))) {
+				exit.draw(1, 1, 1, 0.5f);
 				System.exit(0);
 			}
 		}
-				
-	}       
-	
-	///Return menu
+
+	}
+
+	/// Return menu
 	public int getID() {
-         return 0;	
+		return 0;
 	}
 }

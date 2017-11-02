@@ -10,7 +10,7 @@ import org.newdawn.slick.SlickException;
 public class Plants extends GameObject
 {
 	
-	public int speed =1;
+	public int speed = 1;
 	protected int hp;
 	protected int damage;
 	

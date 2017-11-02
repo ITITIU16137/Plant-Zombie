@@ -1,17 +1,13 @@
 package GUI;
 import Characters.*;
 import Event.*;
-import java.util.Random;
-
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
 import java.util.ArrayList;
-import java.io.File;
 
 public class Play extends BasicGameState
 {	
-	
 	PlayControl controller=new PlayControl();
 	Plants shooter=new Plants(200,200);
 	Zombies zombie;
@@ -19,12 +15,11 @@ public class Play extends BasicGameState
 	Image small,background,bullet,sun,khoa,text;
 	SpriteSheet S1,S2;
     Animation S11,S22;
-    Sound sound;
+   
     Sound pow;
+    Music coming;
     
     private Animation a;
-    
-	private Music music1;
 	
 	private Integer[] zomInitPos=new Integer[5];
 	private Integer[] sunInitPos=new Integer[9];
@@ -39,7 +34,7 @@ public class Play extends BasicGameState
 	private int delayTimeSun=0;
 	private int delaySun=getDelayTimeSun(5000);
 	private int delayText=0;
-	private int durationText=5000;
+	private int durationText=3000;
 	public int getDelayTimeZom(int maxTime)
 	{	
 		return (int)(Math.random()*maxTime)+1;
@@ -82,8 +77,7 @@ public class Play extends BasicGameState
 		zombieImages.add(new Image("res/Zombie/male/walk8.png"));
 		zombieImages.add(new Image("res/Zombie/male/walk9.png"));
 		zombieImages.add(new Image("res/Zombie/male/walk10.png"));
-		
-		 //small = new Image ("res/s.png");
+				
 		 background=new Image("res/Night.png");
 		 
 		 bullet=new Image("res/Pea.png");
@@ -99,14 +93,9 @@ public class Play extends BasicGameState
 	     S2 = new SpriteSheet("res/PeaShooter.png", 125, 106);// Peashooter 
 	     S22 = new Animation(S2, 20);				  // animatioon
 	     S22.setPingPong(true);		
-	     
-		 //Background music
-		// music1 = new Music("res/Play/Intro.ogg");
-		// music1.setVolume(0.3f);
-		 //music1.loop();
-	     
+	      
 	     //Sound
-	     sound = new Sound("res/Play/zombies_coming.wav");
+	     coming = new Music("res/Play/zombies_coming.ogg");
 	     pow = new Sound("res/Play/POW.wav");
 	}
 	
@@ -114,22 +103,28 @@ public class Play extends BasicGameState
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		g.drawImage(background, 0,0);                         //draw background
-		//g.drawImage(small,shooter.xPos+40,shooter.yPos);      // draw plant shooter
 		g.drawAnimation(S22,(float)shooter.xPos+40,(float)shooter.yPos); // draw peashooter
 		g.drawAnimation(S11,(float)sunflower.xPos,(float) sunflower.yPos); // draw sunflower
-		if(delayText<durationText) g.drawImage(text, 80, 300);                        //draw text
+		
+		if(delayText<durationText) 
+			{
+				coming.play();                                     //annoucement
+				g.drawImage(text, 80, 300);                        //draw text
+			}
+		
 		controller.renderBullet(g,bullet);                         // draw bullets
 		controller.renderZombie(zombieImages, this.count);   //draw zombies
 		controller.renderSun(g,sun);
 		
 		this.count+=this.frequencyImage ;                //  print multiple images to create animation
 		if(this.count>10){this.count=0;}
-		//debug
+		
 		g.setColor(Color.white); 
-		g.drawString("X:  "+shooter.xPos+"Y:  "+shooter.yPos,400,100);
+		g.drawString("X:  "+shooter.xPos+"Y:  "+shooter.yPos,400,100);          // debug
 		//Sun Collects
 		g.drawImage(sun, 0, 0);
 		g.setColor(Color.black);
+		//g.setColor(100, 30, new Color(1, 1, 1, 0.5f));
 		g.fillRoundRect(100, 30, 150, 50, 10 );
 		/*g.setColor(Color.red);                              //debug
 		for(int i=0;i<5;i++)
@@ -148,26 +143,26 @@ public class Play extends BasicGameState
 		if (input.isKeyDown(Input.KEY_RIGHT)) 
 		{
 			shooter.xPos +=shooter.speed;
-			/*if(shooter.xPos<850) shooter.xPos +=shooter.speed;
-			else shooter.xPos=850;*/
+			if(shooter.xPos<850) shooter.xPos +=shooter.speed;
+			else shooter.xPos=850;
 		}
 		else if (input.isKeyDown(Input.KEY_LEFT)) 
 		{
 			shooter.xPos -=shooter.speed;
-			/*if(shooter.xPos>200) shooter.xPos -=shooter.speed;
-			else shooter.xPos=200;*/
+			if(shooter.xPos>200) shooter.xPos -=shooter.speed;
+			else shooter.xPos=200;
 		}
 		else if (input.isKeyDown(Input.KEY_UP)) 
 		{
 			shooter.yPos -=shooter.speed;
-			/*if(shooter.yPos>200) shooter.yPos -=shooter.speed;
-			else shooter.yPos=200;*/
+			if(shooter.yPos>200) shooter.yPos -=shooter.speed;
+			else shooter.yPos=200;
 		}
 		else if (input.isKeyDown(Input.KEY_DOWN)) 
 		{
 			shooter.yPos +=shooter.speed;
-			/*if(shooter.yPos<595) shooter.yPos +=shooter.speed;
-			else shooter.yPos=595;*/
+			if(shooter.yPos<595) shooter.yPos +=shooter.speed;
+			else shooter.yPos=595;
 		}
 		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press space to shoot
 		{
@@ -176,7 +171,7 @@ public class Play extends BasicGameState
 		}
 		if (input.isKeyDown(Input.KEY_A))
 		{
-			sbg.enterState(2);
+			sbg.enterState(2);                                    //Gameover
 		}
 		this.delayTimeZom+=1;                                                                //system count 
 		if(this.delayTimeZom==delayZom)                                                      //from 0 to delay
@@ -207,8 +202,6 @@ public class Play extends BasicGameState
 		controller.fall();
 		//controller.gameStatus();
 		
-		
-
 	}
 	
 	public int getID()

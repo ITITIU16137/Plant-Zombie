@@ -28,4 +28,8 @@ public class Physic
 		}
 		return false;
 	}
+	/*public boolean Collission(Sun s,ArrayList<Sun> s)
+	{
+		
+	}*/
 }

@@ -16,6 +16,7 @@ public class PlayControl {
 	private ArrayList<Zombies> zombies=new ArrayList<>();
 	Zombies tempZombie;
 	private ArrayList<Sun> sun=new ArrayList<>();
+	Plants shooter;
 	Sun tempSun;
 	StateBasedGame sbg;
 	GameContainer gc;
@@ -23,6 +24,7 @@ public class PlayControl {
 	Graphics g;
 	Sound Punch;
 	Sound ZomWalk;
+	double a, b, c, d;
 	
 	private int k=595;                                    // sun fall into random area
 	
@@ -82,12 +84,11 @@ public class PlayControl {
 			if(tempZombie.xPos<165 || tempZombie.getHp()<=0)
 			{
 				removeZombie(tempZombie);
-				
+				Punch.play(); 
 			}
 			if(phy.Collision(tempZombie, bullets))
 			{
 				tempZombie.setHp(tempZombie.getHp()-20);
-				Punch.play();
 			}
 		}
 		//int c=0;
@@ -124,14 +125,14 @@ public class PlayControl {
 		{
 			tempSun=sun.get(i);
 			tempSun.falling();
-			
-			if(tempSun.yPos>k)       // remove bullets out of screen
+			//checkEat();
+			if(tempSun.yPos>screen.WIDTH)
 			{
 				removeSun(tempSun);
-				k-=100;                        //sun fall into random area;
-				if(k<=125) k=595;
 			}
+			
 		}
+		
 	}
 	public void renderSun(Graphics g,Image png)              // draw bullets
 	{
@@ -151,6 +152,13 @@ public class PlayControl {
 	public void removeSun(Sun b)
 	{
 		sun.remove(b);
+	}
+	public void checkEat() {
+		a=shooter.xPos-60;
+		b=shooter.xPos+60;
+		c=shooter.yPos-65;
+		d=shooter.yPos+65;
+		if (tempSun.yPos>=c && tempSun.yPos<=d && tempSun.xPos>=a && tempSun.xPos<=b ) removeSun(tempSun);
 	}
 }
 
