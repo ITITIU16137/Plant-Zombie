@@ -5,11 +5,16 @@ public class SunFlower extends GameObject{
 	public int speed =1;
 	int hp;
 	int damage;
-	
+	/*
+	 * 	Constructor
+	 */
 	public SunFlower(int x,int y)
 	{
 		super(x,y);
 	}
+	/*
+	 * 	Get-Set method
+	 */
 	public int getSpeed() {
 		return speed;
 	}

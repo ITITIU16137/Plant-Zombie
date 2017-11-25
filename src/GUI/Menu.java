@@ -4,22 +4,24 @@ import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.openal.SoundStore;
 import org.newdawn.slick.state.transition.FadeInTransition; 
 import org.newdawn.slick.state.transition.FadeOutTransition; 
 
 
-//import java.util.concurrent.TimeUnit;
 
 public class Menu extends BasicGameState {
 
-	protected Music music;
-	Sound sound;
+	private Music music;
+	private Music exitmusic;
+	private float volume = 0.3f;
+	private Sound sound;
 
-	int xpos = Mouse.getX(); // 0-1024
-	int ypos = Mouse.getY(); // 0-768
+	public int xpos = Mouse.getX(); // 0-1024
+	public int ypos = Mouse.getY(); // 0-768
 	Main size;
 
-	Image start, exit, logo;
+	private Image start, exit, logo;
 
 	private int delayTime = 0; // this is for
 	private int delay = (80);
@@ -39,8 +41,11 @@ public class Menu extends BasicGameState {
 		logo = new Image("res/Menu/logo.png");
 		// Music background
 		music = new Music("res/Menu/07_The_Dark_Place.ogg");
-		music.setVolume(0.5f);
-		music.loop();
+		SoundStore.get().setMusicVolume(volume);
+		music.play();
+		// Music exit
+		exitmusic = new Music("res/Menu/Goodbye.ogg");
+		SoundStore.get().setMusicVolume(volume);
 		// Click sound
 		sound = new Sound("res/Menu/click.wav");
 		// Cursor
@@ -51,7 +56,7 @@ public class Menu extends BasicGameState {
 
 	}
 
-	/// Draw stuff
+	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 
 		Image[] Background = new Image[102];
@@ -84,7 +89,7 @@ public class Menu extends BasicGameState {
 		Input input = gc.getInput();
 		xpos = Mouse.getX();
 		ypos = size.HEIGHT - Mouse.getY();
-
+		music.loop();
 		/// Start button
 		if ((xpos > 430 && xpos < 570) && (ypos > 310 && ypos < 400)) {
 
@@ -103,6 +108,14 @@ public class Menu extends BasicGameState {
 		if ((xpos > 430 && xpos < 550) && (ypos > 380 && ypos < 510)) {
 			if ((input.isMouseButtonDown(0))) {
 				exit.draw(1, 1, 1, 0.5f);
+				sound.play();
+				music.stop();
+				if (!music.playing()) 
+				{
+					exitmusic.play();
+				}
+				///Delay 2s
+				//gc.sleep(2000);
 				System.exit(0);
 			}
 		}

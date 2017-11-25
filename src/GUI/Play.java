@@ -1,6 +1,7 @@
 package GUI;
 import Characters.*;
 import Event.*;
+import CheckGame.*;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
@@ -10,8 +11,8 @@ public class Play extends BasicGameState
 {	
 	PlayControl controller=new PlayControl();
 	Plants shooter=new Plants(200,200);
-	Zombies zombie;
 	SunFlower sunflower=new SunFlower(100,100);
+	Zombies zombie;
 	Image small,background,bullet,sun,khoa,text;
 	SpriteSheet S1,S2;
     Animation S11,S22;

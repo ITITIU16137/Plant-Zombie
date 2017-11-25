@@ -10,16 +10,23 @@ public class Sun extends GameObject{
 
 	private int delaySun=0;
 	private int durationSun=5000;
+	/*
+	 * 	Constructor 
+	 */
 	public Sun(int x,int y)
 	{
 		super(x,y);
 	}
-	
+	/*
+	 * 	 Add sun one by one
+	 */
 	public void falling()
 	{
 		yPos+=speed;
 	}
-	
+	/*
+	 * 	
+	 */
 	public void draw(Graphics g, Image png)                  // load image
 	{
 		g.drawImage(png,(int) this.xPos,(int)this.yPos);

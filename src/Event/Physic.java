@@ -5,6 +5,9 @@ import java.util.ArrayList;
 
 public class Physic 
 {	
+	/*
+	 * 
+	 */
 	public boolean Collision(Bullet b,ArrayList<Zombies> z)
 	{
 		for(int i=0;i<z.size();i++)
@@ -16,7 +19,9 @@ public class Physic
 		}
 		return false;
 	}
-	
+	/*
+	 * 
+	 */
 	public boolean Collision(Zombies z,ArrayList<Bullet> b)
 	{
 		for(int i=0;i<b.size();i++)
@@ -28,8 +33,5 @@ public class Physic
 		}
 		return false;
 	}
-	/*public boolean Collission(Sun s,ArrayList<Sun> s)
-	{
-		
-	}*/
+	
 }

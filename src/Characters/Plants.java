@@ -14,14 +14,17 @@ public class Plants extends GameObject
 	protected int hp;
 	protected int damage;
 	
-	
-	
+	/*
+	 *  Constructor 
+	 */
 	public Plants(int x,int y) 
 	{
 		super(x,y);
 		
 	}
-	
+	/*
+	 * 	Get-Set method
+	 */
 	public int getSpeed() {
 		return speed;
 	}

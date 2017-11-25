@@ -113,10 +113,6 @@ public class PlayControl {
 		zombies.remove(z);
 	}
 	
-	public boolean gameStatus(){                              //Check GAMEOVER
-		if(tempZombie.xPos<165) return false;
-		else return true;
-	}
 	//--------------------------------------SUN---------------------------------------
 	
 	public void fall()                        

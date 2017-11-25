@@ -5,6 +5,9 @@ public class GameObject {
 	
 	public double xPos,yPos;
 	
+	/*
+	 *  Constructor
+	 */
 	public GameObject(double d,double e)
 	{
 		this.xPos=d;
@@ -15,6 +18,9 @@ public class GameObject {
 		return new Rectangle((int)xPos,(int)yPos,width,height);
 	}
 	
+	/*
+	 *  Get Set Method
+	 */
 	public double getxPos() {
 		return xPos;
 	}
