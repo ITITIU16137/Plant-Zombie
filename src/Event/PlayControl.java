@@ -16,7 +16,7 @@ public class PlayControl {
 	private ArrayList<Zombies> zombies=new ArrayList<>();
 	Zombies tempZombie;
 	private ArrayList<Sun> sun=new ArrayList<>();
-	Plants shooter;
+	Peashooter shooter;
 	Sun tempSun;
 	StateBasedGame sbg;
 	GameContainer gc;

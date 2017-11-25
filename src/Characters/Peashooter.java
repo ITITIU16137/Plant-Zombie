@@ -7,7 +7,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
-public class Plants extends GameObject
+public class Peashooter extends GameObject
 {
 	
 	public int speed = 1;
@@ -17,7 +17,7 @@ public class Plants extends GameObject
 	/*
 	 *  Constructor 
 	 */
-	public Plants(int x,int y) 
+	public Peashooter(int x,int y) 
 	{
 		super(x,y);
 		
