@@ -14,9 +14,9 @@ public class Main extends StateBasedGame {
 	public static final int menu = 0;
 	public static final int play = 1;
 	public static final int gameover = 2;
-	public static final int targetFPS = 60;
-  	public static final boolean showFPS = true;		  	
-  	public static final boolean fullScreen = false;
+	public static int targetFPS = 60;
+  	public static boolean showFPS = true;		  	
+  	public static boolean fullScreen = false;
   	//public static final boolean vSync = true;
 	public static int HEIGHT=768;
 	public static int WIDTH=1024;
@@ -30,9 +30,9 @@ public class Main extends StateBasedGame {
 			Ini ini = new Ini(new File(filename));
 			WIDTH      = Integer.parseInt	  (ini.get("DISPLAY", "width"	  ));
 			HEIGHT     = Integer.parseInt	  (ini.get("DISPLAY", "height"	  ));
-			//targetFPS  = Integer.parseInt	  (ini.get("DISPLAY", "targetFPS" ));
-			//showFPS    = Boolean.parseBoolean (ini.get("DISPLAY", "showFPS"	  ));
-			//fullScreen = Boolean.parseBoolean (ini.get("DISPLAY", "fullScreen"));
+			targetFPS  = Integer.parseInt	  (ini.get("DISPLAY", "targetFPS" ));
+			showFPS    = Boolean.parseBoolean (ini.get("DISPLAY", "showFPS"	  ));
+			fullScreen = Boolean.parseBoolean (ini.get("DISPLAY", "fullScreen"));
 		}catch (InvalidFileFormatException e) {
 		 		e.printStackTrace();
 		} catch (IOException e) {
