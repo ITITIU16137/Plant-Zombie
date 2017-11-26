@@ -34,10 +34,12 @@ public class Bullet extends GameObject{
 	public void flying()
 	{
 		xPos+=speed;
+		yPos+=speed;
+		yPos-=speed;
 	}
 	
 	/*
-	 * 	Position of bullet 
+	 * 	Draw position of bullet 
 	 */
 	public void draw(Graphics g, Image png)                  // load image
 	{

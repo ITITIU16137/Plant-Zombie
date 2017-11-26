@@ -9,7 +9,7 @@ import java.io.IOException;
 
 
 public class Main extends StateBasedGame {
-	public static final String gamename = "Peashooter vs Zombies";
+	public static final String gamename = "Plants vs Zombies";
 	public static final String filename = "Engine.ini";
 	public static final int menu = 0;
 	public static final int play = 1;

@@ -9,11 +9,12 @@ import java.util.ArrayList;
 
 public class Play extends BasicGameState
 {	
-	PlayControl controller=new PlayControl();
+	BulletShoot bullets = new BulletShoot();
+	PlayControl controller = new PlayControl();
 	Peashooter shooter=new Peashooter(200,200);
 	SunFlower sunflower=new SunFlower(100,100);
 	Zombies zombie;
-	Image small,background,bullet,sun,khoa,text;
+	Image small,background,bullet,sun,text;
 	SpriteSheet S1,S2;
     Animation S11,S22;
    
@@ -86,8 +87,8 @@ public class Play extends BasicGameState
 		 sun = new Image("res/sun.png");
 		 
 		 text = new Image("res/text.png");
-		 //text.destroy();
-		 S1 = new SpriteSheet("res/khoa.png", 74, 73);// Sunflower 
+		 
+		 S1 = new SpriteSheet("res/SunFlower.png", 74, 73);// Sunflower 
 	     S11 = new Animation(S1, 40);				  // animatioon
 	     S11.setPingPong(true);						  // 
 	     
@@ -122,7 +123,7 @@ public class Play extends BasicGameState
 		
 		g.setColor(Color.white); 
 		g.drawString("X:  "+shooter.xPos+"Y:  "+shooter.yPos,400,100);          // debug
-		//Sun Collects
+		//Sun Board
 		g.drawImage(sun, 0, 0);
 		g.setColor(Color.black);
 		//g.setColor(100, 30, new Color(1, 1, 1, 0.5f));
@@ -174,6 +175,8 @@ public class Play extends BasicGameState
 		{
 			sbg.enterState(2);                                    //Gameover
 		}
+		
+		
 		this.delayTimeZom+=1;                                                                //system count 
 		if(this.delayTimeZom==delayZom)                                                      //from 0 to delay
 		{                        							                                 //to spawn zombies
@@ -198,9 +201,6 @@ public class Play extends BasicGameState
 		{
 			sbg.enterState(3);
 		} */
-		controller.shoot();
-		controller.zomWalk();
-		controller.fall();
 		//controller.gameStatus();
 		
 	}

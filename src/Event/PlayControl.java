@@ -1,8 +1,6 @@
 package Event;
 import Characters.*;
-
 import GUI.*;
-import Characters.*;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
@@ -11,12 +9,12 @@ import java.util.ArrayList;
 
 public class PlayControl {
 	Physic phy =new Physic();
-	private ArrayList<Bullet> bullets=new ArrayList<>();
-	Bullet tempBullet;
 	private ArrayList<Zombies> zombies=new ArrayList<>();
-	Zombies tempZombie;
+	private ArrayList<Bullet> bullets=new ArrayList<>();
 	private ArrayList<Sun> sun=new ArrayList<>();
+	Zombies tempZombie;
 	Peashooter shooter;
+	Bullet tempBullet;
 	Sun tempSun;
 	StateBasedGame sbg;
 	GameContainer gc;
@@ -24,51 +22,49 @@ public class PlayControl {
 	Graphics g;
 	Sound Punch;
 	Sound ZomWalk;
-	double a, b, c, d;
+//	double a, b, c, d;
 	
-	private int k=595;                                    // sun fall into random area
-	
+	//private int k=595;                                    // sun fall into random area
 	//--------------------------------------BULLET---------------------------------------
-	public void shoot()                        
-	{
-		for(int i=0;i<bullets.size();i++)             //shoot all the bullets in the list
-		{
-			tempBullet=bullets.get(i);
-			
-			if(tempBullet.xPos>screen.WIDTH)       // remove bullets out of screen
+			public void shoot()                        
 			{
-				removeBullet(tempBullet);
+				for(int i=0;i<bullets.size();i++)             //shoot all the bullets in the list
+				{
+					tempBullet=bullets.get(i);
+					
+					if(tempBullet.xPos>screen.WIDTH)       // remove bullets out of screen
+					{
+						removeBullet(tempBullet);
+					}
+					
+					if(phy.Collision(tempBullet, zombies))
+					{
+						removeBullet(tempBullet);
+					}
+					tempBullet.flying();
+				}
 			}
 			
-			if(phy.Collision(tempBullet, zombies))
+			public void renderBullet(Graphics g,Image png)              // draw bullets
 			{
-				removeBullet(tempBullet);
+				
+				for(int i=0;i<bullets.size();i++)
+				{
+					tempBullet=bullets.get(i);
+					tempBullet.draw(g,png);
+				}
 			}
-			tempBullet.flying();
-		}
-	}
-	
-	public void renderBullet(Graphics g,Image png)              // draw bullets
-	{
-		
-		for(int i=0;i<bullets.size();i++)
-		{
-			tempBullet=bullets.get(i);
-			tempBullet.draw(g,png);
-			//tempBullet.dr
-		}
-	}
-	
-	public void addBullet(Bullet b)
-	{
-		bullets.add(b);
-	}
-	
-	public void removeBullet(Bullet b)
-	{
-		bullets.remove(b);
-	}
-	
+			
+			public void addBullet(Bullet b)
+			{
+				bullets.add(b);
+			}
+			
+			public void removeBullet(Bullet b)
+			{
+				bullets.remove(b);
+			}
+			
 	
 	//--------------------------------------ZOMBIE---------------------------------------
 	public void zomWalk() throws SlickException
@@ -154,7 +150,10 @@ public class PlayControl {
 		b=shooter.xPos+60;
 		c=shooter.yPos-65;
 		d=shooter.yPos+65;
-		if (tempSun.yPos>=c && tempSun.yPos<=d && tempSun.xPos>=a && tempSun.xPos<=b ) removeSun(tempSun);
+		if (tempSun.yPos>=c && tempSun.yPos<=d && tempSun.xPos>=a && tempSun.xPos<=b ) 
+			{
+				removeSun(tempSun);
+			}
 	}
 }
 

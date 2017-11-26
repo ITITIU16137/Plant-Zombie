@@ -114,8 +114,8 @@ public class Menu extends BasicGameState {
 				{
 					exitmusic.play();
 				}
-				///Delay 2s
-				//gc.sleep(2000);
+				
+				//gc.sleep(2000);           ///Delay 2s
 				System.exit(0);
 			}
 		}

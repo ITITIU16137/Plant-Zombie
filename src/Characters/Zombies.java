@@ -28,10 +28,10 @@ public class Zombies extends GameObject{
 	/*
 	 * 	
 	 */
-	public void attack(Peashooter plant)        // have not been used yet
+	/*public void attack(Peashooter plant)        // have not been used yet
 	{
 		plant.hp-=this.damage;
-	}
+	}*/
 	/*
 	 * 		
 	 */
