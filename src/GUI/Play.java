@@ -17,7 +17,8 @@ public class Play extends BasicGameState
 	Image small,background,bullet,sun,text;
 	SpriteSheet S1,S2;
     Animation S11,S22;
-   
+    private int delayTime = 0; // this is for
+	private int delay = (5000);
     Sound pow;
     Music coming;
     
@@ -25,6 +26,7 @@ public class Play extends BasicGameState
 	
 	private Integer[] zomInitPos=new Integer[5];
 	private Integer[] sunInitPos=new Integer[9];
+	private Integer[] stopPos=new Integer[5];
 	
 	private ArrayList<Image> zombieImages=new ArrayList<>();
 	
@@ -57,6 +59,11 @@ public class Play extends BasicGameState
 		zomInitPos[3]=420;
 		zomInitPos[4]=520;
 		
+		stopPos[0]=195;
+		stopPos[1]=295;
+		stopPos[2]=395;
+		stopPos[3]=495;
+		stopPos[4]=595;
 		
 		sunInitPos[0]=200;
 		sunInitPos[1]=276;
@@ -173,7 +180,8 @@ public class Play extends BasicGameState
 		}
 		if (input.isKeyDown(Input.KEY_A))
 		{
-			sbg.enterState(2);                                    //Gameover
+			sbg.enterState(2);   
+													//Gameover
 		}
 		
 		
@@ -189,21 +197,26 @@ public class Play extends BasicGameState
 		if(this.delayTimeSun==delaySun)                                        //to spawn sun                 
 		{                        							 
 			controller.addSun(new Sun(sunInitPos[(int)(Math.random()*9)],0));
+			
 			delaySun=getDelayTimeSun(5000);
 			this.delayTimeSun=0;
+			
 		}
-
+		
 		this.delayText+=delta;
 		controller.shoot();
 		controller.zomWalk();
 		controller.fall();
+
+		
+		}
 		/*if(controller.gameStatus()==false) 
 		{
 			sbg.enterState(3);
 		} */
 		//controller.gameStatus();
 		
-	}
+	
 	
 	public int getID()
 	{

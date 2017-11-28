@@ -1,10 +1,9 @@
 package Event;
 import Characters.*;
 import GUI.*;
-
+import java.util.concurrent.ThreadLocalRandom;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
-
 import java.util.ArrayList;
 
 public class PlayControl {
@@ -12,6 +11,7 @@ public class PlayControl {
 	private ArrayList<Zombies> zombies=new ArrayList<>();
 	private ArrayList<Bullet> bullets=new ArrayList<>();
 	private ArrayList<Sun> sun=new ArrayList<>();
+	private Integer[] stopPos=new Integer[5];
 	Zombies tempZombie;
 	Peashooter shooter;
 	Bullet tempBullet;
@@ -22,8 +22,15 @@ public class PlayControl {
 	Graphics g;
 	Sound Punch;
 	Sound ZomWalk;
-//	double a, b, c, d;
+	private int check ;
+	private int delayTimeSun=0;
+	private int delaySun=getDelayTimeSun(100);
 	
+//	double a, b, c, d;
+	public int getDelayTimeSun(int maxTime)
+	{
+		return (int)(Math.random()*maxTime)+1;
+	}
 	//private int k=595;                                    // sun fall into random area
 	//--------------------------------------BULLET---------------------------------------
 			public void shoot()                        
@@ -111,21 +118,85 @@ public class PlayControl {
 	
 	//--------------------------------------SUN---------------------------------------
 	
-	public void fall()                        
-	{
+	public void fall() throws SlickException                        
+	{	stopPos[0]=195;
+		stopPos[1]=295;
+		stopPos[2]=395;
+		stopPos[3]=495;
+		stopPos[4]=595;
+		
+		
 		for(int i=0;i<sun.size();i++)             //shoot all the bullets in the list
-		{
+		{ 	
 			tempSun=sun.get(i);
 			tempSun.falling();
-			//checkEat();
-			if(tempSun.yPos>screen.WIDTH)
-			{
-				removeSun(tempSun);
+			this.delayTimeSun+=1;                                                                
+			if(this.delayTimeSun==delaySun)                                        //to spawn sun                 
+			{                        							 
+				check = (int)(Math.random()*1)+(int)(Math.random()*4);
+				
+				delaySun=getDelayTimeSun(100);
+				this.delayTimeSun=0;
 			}
+			if(tempSun.yPos >= stopPos[check])
+				removeSun(tempSun);
+			/*if(check == 4 )
+				{tempSun.falling();
+				if(tempSun.yPos >= stopPos[4])
+					removeSun(tempSun);}
 			
-		}
+			if(check == 3 )
+				{tempSun.falling();
+				if(tempSun.yPos >= stopPos[3])
+				removeSun(tempSun);	}
+			if(check == 2 )
+				{tempSun.falling();
+				if(tempSun.yPos >= stopPos[2])
+				removeSun(tempSun);	}
+			if(check == 1 )
+				{tempSun.falling();
+				if(tempSun.yPos >= stopPos[1])
+				removeSun(tempSun);	}
+			if(check == 0 )
+				{tempSun.falling();
+				if(tempSun.yPos >= stopPos[0])
+				removeSun(tempSun);	}
+			*/
+			/*
+			switch(check) {
+			case 0:
+				if(tempSun.yPos >= stopPos[0])
+					removeSun(tempSun);
+				break;
+			case 1:
+				if(tempSun.yPos >= stopPos[1])
+					removeSun(tempSun);
+				break;
+			case 2:
+				if(tempSun.yPos >= stopPos[2])
+					removeSun(tempSun);
+				break;
+			case 3:
+				if(tempSun.yPos >= stopPos[3])
+					removeSun(tempSun);
+				break;
+			case 4:
+				if(tempSun.yPos >= stopPos[4])
+					removeSun(tempSun);
+				break;
+			
+			}*/
+				
+				 }
+			   }		
+			
 		
-	}
+	
+	
+	
+	
+
+	
 	public void renderSun(Graphics g,Image png)              // draw bullets
 	{
 		
@@ -143,8 +214,13 @@ public class PlayControl {
 	
 	public void removeSun(Sun b)
 	{
+		//tempSun.stop();
 		sun.remove(b);
+		/*
+		}*/
 	}
+}
+	/*
 	public void checkEat() {
 		a=shooter.xPos-60;
 		b=shooter.xPos+60;
@@ -156,5 +232,5 @@ public class PlayControl {
 			}
 	}
 }
-
+*/
 
