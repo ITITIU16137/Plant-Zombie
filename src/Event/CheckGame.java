@@ -1,4 +1,4 @@
-package CheckGame;
+package Event;
 import org.newdawn.slick.*;
 import Characters.*;
 public class CheckGame extends Zombies{
