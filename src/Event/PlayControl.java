@@ -146,10 +146,10 @@ public class PlayControl {
 		sun.remove(b);
 	}
 	public void checkEat() {
-		a=shooter.xPos-60;
-		b=shooter.xPos+60;
-		c=shooter.yPos-65;
-		d=shooter.yPos+65;
+		double a=shooter.xPos-60;
+		double b=shooter.xPos+60;
+		double c=shooter.yPos-65;
+		double d=shooter.yPos+65;
 		if (tempSun.yPos>=c && tempSun.yPos<=d && tempSun.xPos>=a && tempSun.xPos<=b ) 
 			{
 				removeSun(tempSun);
