@@ -24,7 +24,7 @@ public class PlayControl {
 	Sound ZomWalk;
 	private int check ;
 	private int delayTimeSun=0;
-	private int delaySun=getDelayTimeSun(100);
+	private int delaySun=getDelayTimeSun(80);
 	
 //	double a, b, c, d;
 	public int getDelayTimeSun(int maxTime)
@@ -129,13 +129,13 @@ public class PlayControl {
 		for(int i=0;i<sun.size();i++)             //shoot all the bullets in the list
 		{ 	
 			tempSun=sun.get(i);
-			tempSun.falling();
+			tempSun.falling(1);
 			this.delayTimeSun+=1;                                                                
 			if(this.delayTimeSun==delaySun)                                        //to spawn sun                 
 			{                        							 
-				check = (int)(Math.random()*1)+(int)(Math.random()*4);
+				check = (int)(Math.random()*1)+(int)(Math.random()*5);
 				
-				delaySun=getDelayTimeSun(100);
+				delaySun=getDelayTimeSun(80);
 				this.delayTimeSun=0;
 			}
 			if(tempSun.yPos >= stopPos[check])

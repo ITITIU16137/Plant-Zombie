@@ -6,7 +6,7 @@ import org.newdawn.slick.*;
 public class Sun extends GameObject{
 	
 	protected int dX=400,dY=400;       //size of Sun
-	double speed = 1;      // speed of Sun :D
+	int speed = 1;      // speed of Sun :D
 
 	
 	/*
@@ -19,9 +19,12 @@ public class Sun extends GameObject{
 	/*
 	 * 	 Add sun one by one
 	 */
-	public void falling()
+	public void falling(int k)
 	{
+		if (k == 1)
 		yPos+=speed;
+		else yPos -= 1 ; 
+		
 	}
 	public void stop() {
 	
