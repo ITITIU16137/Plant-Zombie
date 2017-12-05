@@ -1,9 +1,12 @@
 package Characters;
 
 import org.newdawn.slick.*;
+
+import Interface.Characters;
+
 import java.util.ArrayList;
 
-public class Zombies extends GameObject{
+public class Zombies extends GameObject implements Characters{
 	
 	protected int hp=100;
 	protected int damage;
@@ -23,16 +26,12 @@ public class Zombies extends GameObject{
 		xPos+=speed;
 		
 	}
-	/*
-	 * 	
-	 */
+	
 	/*public void attack(Peashooter plant)        // have not been used yet
 	{
 		plant.hp-=this.damage;
 	}*/
-	/*
-	 * 		
-	 */
+	
 	public boolean checkShot(Bullet b)        // have not been used yet
 	{
 		if(b.xPos==this.xPos)
@@ -52,33 +51,35 @@ public class Zombies extends GameObject{
 	/*
 	 * 	Get-Set method
 	 */
-	public int getHp()
-	{
-		return hp;
-	}
+	public int getHp()                { return hp; }
 
-	public void setHp(int hp) 
-	{
-		this.hp = hp;
-	}
+	public void setHp(int hp)         { this.hp = hp; }
 
-	public int getDamage()
-	{
-		return damage;
-	}
+	public int getDamage()            { return damage; }
 
-	public void setDamage(int damage)
-	{
-		this.damage = damage;
-	}
+	public void setDamage(int damage) { this.damage = damage;}
 
-	public double getSpeed()
-	{
-		return speed;
-	}
+	public double getSpeed()          { return speed; }
 
-	public void setSpeed(double speed) 
-	{
-		this.speed = speed;
+	public void setSpeed(double speed){ this.speed = speed; }
+	@Override
+	public void attack() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void render() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void add() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void remove() {
+		// TODO Auto-generated method stub
+		
 	}
 }
