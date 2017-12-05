@@ -129,66 +129,11 @@ public class PlayControl {
 		for(int i=0;i<sun.size();i++)             //shoot all the bullets in the list
 		{
 			tempSun=sun.get(i);
-			//tempSun.falling(1);
-			//this.delayTimeSun+=1;
-			//if(this.delayTimeSun==delaySun)                                        //to spawn sun
-			//{
-				//check = (int)(Math.random()*1)+(int)(Math.random()*5);
 
-				//delaySun=getDelayTimeSun(80);
-				//this.delayTimeSun=0;
-			//}
 			if(tempSun.yPos <= stopPos[tempSun.getRandomInt()])
 				tempSun.yPos += 1;
 			}			
-			/*if(check == 4 )
-				{tempSun.falling();
-				if(tempSun.yPos >= stopPos[4])
-					removeSun(tempSun);}
-
-			if(check == 3 )
-				{tempSun.falling();
-				if(tempSun.yPos >= stopPos[3])
-				removeSun(tempSun);	}
-			if(check == 2 )
-				{tempSun.falling();
-				if(tempSun.yPos >= stopPos[2])
-				removeSun(tempSun);	}
-			if(check == 1 )
-				{tempSun.falling();
-				if(tempSun.yPos >= stopPos[1])
-				removeSun(tempSun);	}
-			if(check == 0 )
-				{tempSun.falling();
-				if(tempSun.yPos >= stopPos[0])
-				removeSun(tempSun);	}
-			*/
-			/*
-			switch(check) {
-			case 0:
-				if(tempSun.yPos >= stopPos[0])
-					removeSun(tempSun);
-				break;
-			case 1:
-				if(tempSun.yPos >= stopPos[1])
-					removeSun(tempSun);
-				break;
-			case 2:
-				if(tempSun.yPos >= stopPos[2])
-					removeSun(tempSun);
-				break;
-			case 3:
-				if(tempSun.yPos >= stopPos[3])
-					removeSun(tempSun);
-				break;
-			case 4:
-				if(tempSun.yPos >= stopPos[4])
-					removeSun(tempSun);
-				break;
-
-			}*/
-
-
+			
 	}
 
 	public void renderSun(Graphics g,Image png)              // draw bullets

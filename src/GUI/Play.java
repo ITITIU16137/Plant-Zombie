@@ -65,15 +65,15 @@ public class Play extends BasicGameState
 		stopPos[3]=495;
 		stopPos[4]=595;
 		
-		sunInitPos[0]=200;
-		sunInitPos[1]=276;
-		sunInitPos[2]=359;
-		sunInitPos[3]=447;
-		sunInitPos[4]=519;
-		sunInitPos[5]=607;
-		sunInitPos[6]=684;
-		sunInitPos[7]=764;
-		sunInitPos[8]=847;
+		sunInitPos[0]=204+27;
+		sunInitPos[1]=276+27;
+		sunInitPos[2]=364+27;
+		sunInitPos[3]=442+27;
+		sunInitPos[4]=520+27;
+		sunInitPos[5]=602+27;
+		sunInitPos[6]=686+27;
+		sunInitPos[7]=764+27;
+		sunInitPos[8]=851+27;
 		
 		
 		zombieImages.add(new Image("res/Zombie/male/walk1.png"));
