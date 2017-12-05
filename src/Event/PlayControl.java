@@ -138,7 +138,7 @@ public class PlayControl {
 				//delaySun=getDelayTimeSun(80);
 				//this.delayTimeSun=0;
 			//}
-			if(tempSun.yPos <= stopPos[tempSun.getRandomInt])
+			if(tempSun.yPos <= stopPos[tempSun.getRandomInt()])
 				tempSun.yPos += 1;
 			}			
 			/*if(check == 4 )
