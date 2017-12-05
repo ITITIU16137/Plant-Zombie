@@ -1,7 +1,5 @@
 package Characters;
 
-import Event.*;
-
 import org.newdawn.slick.*;
 import java.util.ArrayList;
 

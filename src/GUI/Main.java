@@ -56,7 +56,7 @@ public class Main extends StateBasedGame {
 		AppGameContainer appgc;
 		try {
 			appgc = new AppGameContainer(new Main (gamename));
-			appgc.setDisplayMode(WIDTH,HEIGHT, fullScreen);
+			appgc.setDisplayMode(WIDTH,HEIGHT, false);
 			appgc.setTargetFrameRate(targetFPS);
 			//appgc.setVSync(vSync);
 			appgc.start();                                   //Begin draw screen

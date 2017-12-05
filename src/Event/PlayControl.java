@@ -13,7 +13,7 @@ public class PlayControl {
 	private ArrayList<Bullet> bullets=new ArrayList<>();
 	private ArrayList<Sun> sun=new ArrayList<>();
 	Zombies tempZombie;
-	Peashooter shooter;
+	Plants shooter;
 	Bullet tempBullet;
 	Sun tempSun;
 	StateBasedGame sbg;
@@ -154,6 +154,16 @@ public class PlayControl {
 			{
 				removeSun(tempSun);
 			}
+	}
+	//--------------------------------------CheckGame--------------------------------------------------//
+	private int getIndexZom(double xPos) {
+		return zombies.indexOf(xPos);
+	}
+	
+	public boolean checkGame() {
+		if (getIndexZom(tempZombie.xPos) <= 200)
+			return false;
+		else return true; 
 	}
 }
 

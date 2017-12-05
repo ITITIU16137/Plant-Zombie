@@ -1,7 +1,6 @@
 package GUI;
 import Characters.*;
 import Event.*;
-import CheckGame.*;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
@@ -9,9 +8,8 @@ import java.util.ArrayList;
 
 public class Play extends BasicGameState
 {	
-	BulletShoot bullets = new BulletShoot();
 	PlayControl controller = new PlayControl();
-	Peashooter shooter=new Peashooter(200,200);
+	Plants shooter=new Plants(200,200);
 	SunFlower sunflower=new SunFlower(100,100);
 	Zombies zombie;
 	Image small,background,bullet,sun,text;
@@ -197,10 +195,11 @@ public class Play extends BasicGameState
 		controller.shoot();
 		controller.zomWalk();
 		controller.fall();
-		/*if(controller.gameStatus()==false) 
+		
+		/*if(controller.checkGame()==false) 
 		{
-			sbg.enterState(3);
-		} */
+			sbg.enterState(2);
+		}*/ 
 		//controller.gameStatus();
 		
 	}
