@@ -1,6 +1,7 @@
 package GUI;
 import Characters.*;
 import Event.*;
+import Plants.*;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 public class Play extends BasicGameState
 {	
 	PlayControl controller = new PlayControl();
-	Plants shooter=new Plants(200,200);
+	Peashooter shooter=new Peashooter(200,200);
 	SunFlower sunflower=new SunFlower(100,100);
 	Zombies zombie;
 	Image small,background,bullet,sun,text;

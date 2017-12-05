@@ -10,19 +10,18 @@ public abstract class Bullet extends GameObject implements Characters{
 	double speed=0.5;                              // speed of bullet                    
 	//private int damage=20;
 	
-	public Bullet(double d,double e)
-	{
-		super(d,e);
-	}
-	
+	public Bullet(double d,double e)  {super(d,e);}
 	/*
 	 * 	Add bullet one by one
 	 */
-	public void flying()
+	public void flying()    {xPos+=speed;}
+	/*
+	 * 	Draw position of bullet 
+	 */
+	public void draw(Graphics g,Image png)                  // load image
 	{
-		xPos+=speed;
+		g.drawImage(png,(int) this.xPos+30,(int)this.yPos+0);
 	}
-	
 	/*public boolean checkEnemy(Zombies zom)              // haven't been used
 	{
 		if(this.xPos==zom.xPos)
@@ -37,10 +36,7 @@ public abstract class Bullet extends GameObject implements Characters{
 	public abstract void add();
 	public abstract void remove();
 
-	public void render(Graphics g, Image png) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void render(Graphics g, Image png) {}
 	
 	
 }

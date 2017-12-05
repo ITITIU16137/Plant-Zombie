@@ -22,10 +22,8 @@ public class PlayControl {
 	Graphics g;
 	Sound Punch;
 	Sound ZomWalk;
-//	double a, b, c, d;
-	
-	//private int k=595;                                    // sun fall into random area
-	//--------------------------------------BULLET---------------------------------------
+
+	/*//--------------------------------------BULLET---------------------------------------
 			public void shoot()                        
 			{
 				for(int i=0;i<bullets.size();i++)             //shoot all the bullets in the list
@@ -65,7 +63,7 @@ public class PlayControl {
 				bullets.remove(b);
 			}
 			
-	
+*/	
 	//--------------------------------------ZOMBIE---------------------------------------
 	public void zomWalk() throws SlickException
 	{
