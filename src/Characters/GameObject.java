@@ -13,9 +13,6 @@ public class GameObject {
 		this.xPos=d;
 		this.yPos=e;
 	}
-	public GameObject() {
-		// TODO Auto-generated constructor stub
-	}
 	public Rectangle getBounds(int width,int height)
 	{
 		return new Rectangle((int)xPos,(int)yPos,width,height);
