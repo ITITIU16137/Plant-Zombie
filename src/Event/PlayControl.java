@@ -139,8 +139,7 @@ public class PlayControl {
 				this.delayTimeSun=0;
 			}
 			if(tempSun.yPos >= stopPos[check])
-				removeSun(tempSun);
-			/*if(check == 4 )
+				tempSun.yPos -= 1 ;			/*if(check == 4 )
 				{tempSun.falling();
 				if(tempSun.yPos >= stopPos[4])
 					removeSun(tempSun);}
@@ -188,10 +187,7 @@ public class PlayControl {
 			}*/
 				
 				 }
-			   }		
-			
-		
-	
+			   }	
 	
 	
 	
