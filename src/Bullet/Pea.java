@@ -1,29 +1,31 @@
-package Plants;
+package Bullet;
 
 import java.util.ArrayList;
 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
-import Characters.*;
+import Characters.Bullet;
+import Characters.Zombies;
 import Event.Physic;
 import GUI.Main;
 import Interface.Characters;
 
-public class TripletPeashooter extends Plants implements Characters{
+public staticclass Pea extends Bullet implements Characters{
 	private ArrayList<Bullet> bullets=new ArrayList<>();
 	private ArrayList<Zombies> zombies=new ArrayList<>();
 	Physic phy =new Physic();
 	Bullet tempBullet;
 	Main screen;
-	Graphics g;
-	Image png;
-	
-	public TripletPeashooter(int x, int y)   {super(x, y);}
+	public Pea(double d, double e) 
+	{
+		super(d, e);
+	}
 	
 	@Override
-	public void attack()                        
-	{
+	public void attack() {
+		// TODO Auto-generated method stub
+
 		for(int i=0;i<bullets.size();i++)                     //shoot all the bullets in the list
 		{
 			tempBullet=bullets.get(i);
@@ -40,23 +42,17 @@ public class TripletPeashooter extends Plants implements Characters{
 			tempBullet.flying();
 		}
 	}
-	
+
 	@Override
-	public void render(Graphics g,Image png) {                // draw bullets
-		for(int i=0;i<bullets.size();i++)
-		{
-			tempBullet=bullets.get(i);
-			tempBullet.render(g,png);
-		}
+	public void render(Graphics g, Image png) {
+		// TODO Auto-generated method stub
+		g.drawImage(png,(int) this.xPos+30,(int)this.yPos+0);  //Draw position of Bullets
 	}
-	
+
 	@Override
-	public void add(Bullet b) {					              //add Bullets
+	public void add(Bullet b) {					             //add Bullets
 		bullets.add(b);
 	}
 	
-	@Override
-	public void remove(Bullet b) {				             //remove Bullets out of screen
-		bullets.remove(b);
-	}
+	
 }

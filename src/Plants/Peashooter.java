@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
-import Characters.Bullet;
-import Characters.Plants;
-import Characters.Zombies;
-import Event.Physic;
+import Characters.*;
+import Event.*;
 import GUI.Main;
 import Interface.*;
 public class Peashooter extends Plants implements Characters{
@@ -17,59 +15,17 @@ public class Peashooter extends Plants implements Characters{
 	Physic phy =new Physic();
 	Bullet tempBullet;
 	Main screen;
-	Graphics g;
-	Image png;
 	
-	public Peashooter(int x, int y) {
-		super(x, y);
-		// TODO Auto-generated constructor stub
-	}
+	public Peashooter(int x, int y)   {super(x, y);}
 	
 	@Override
-	public void attack()                        
-	{
-		for(int i=0;i<bullets.size();i++)             //shoot all the bullets in the list
-		{
-			tempBullet=bullets.get(i);
-			
-			if(tempBullet.xPos>screen.WIDTH)       // remove bullets out of screen
-			{
-				remove(tempBullet);
-			}
-			
-			if(phy.Collision(tempBullet, zombies))
-			{
-				remove(tempBullet);
-			}
-			tempBullet.flying();
-		}
-	}
-	
-	@Override
-	public void render() {                      // draw bullets
-		// TODO Auto-generated method stub
+	public void render(Graphics g,Image png) {                // draw bullets
 		for(int i=0;i<bullets.size();i++)
 		{
 			tempBullet=bullets.get(i);
-			//tempBullet.render(g,png);
+			tempBullet.render(g,png);
 		}
 	}
-	
-	@Override
-	public void add() {
-		// TODO Auto-generated method stub
-		bullets.add(tempBullet);
-	}
-	
-	@Override
-	public void remove() {
-		// TODO Auto-generated method stub
-		bullets.remove(tempBullet);
-	}
-
-	
-
-	
 	
 	
 }

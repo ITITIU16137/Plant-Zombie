@@ -1,12 +1,8 @@
-3package Characters;
-
+package Characters;
 import org.newdawn.slick.*;
-
-import Interface.Characters;
-
 import java.util.ArrayList;
 
-public abstract class Zombies extends GameObject implements Characters{
+public abstract class Zombies extends GameObject{
 	
 	protected int hp=100;
 	protected int damage;
@@ -28,7 +24,6 @@ public abstract class Zombies extends GameObject implements Characters{
 	public abstract void render();
 	public abstract void add();
 	public abstract void remove();
-	
 	
 	public void moving()
 	{

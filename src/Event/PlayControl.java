@@ -23,8 +23,8 @@ public class PlayControl {
 	Sound Punch;
 	Sound ZomWalk;
 
-	/*//--------------------------------------BULLET---------------------------------------
-			public void shoot()                        
+	//--------------------------------------BULLET---------------------------------------
+			/*public void shoot()                        
 			{
 				for(int i=0;i<bullets.size();i++)             //shoot all the bullets in the list
 				{
@@ -51,7 +51,7 @@ public class PlayControl {
 					tempBullet=bullets.get(i);
 					tempBullet.draw(g,png);
 				}
-			}
+			}*/
 			
 			public void addBullet(Bullet b)
 			{
@@ -63,7 +63,7 @@ public class PlayControl {
 				bullets.remove(b);
 			}
 			
-*/	
+
 	//--------------------------------------ZOMBIE---------------------------------------
 	public void zomWalk() throws SlickException
 	{
