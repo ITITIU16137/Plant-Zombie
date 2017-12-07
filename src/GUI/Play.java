@@ -129,7 +129,7 @@ public class Play extends BasicGameState
 		if(this.count>10){this.count=0;}
 		
 		g.setColor(Color.white); 
-		g.drawString("X:  "+shooter.xPos+"Y:  "+shooter.yPos,400,100);         // debug
+		g.drawString("X:  "+shooter.xPos+" Y:  "+shooter.yPos,400,100);         // debug
 		
 		g.drawImage(sun, 0, 0);                                                //
 		g.setColor(Color.black);                                               // Sun board
@@ -178,6 +178,7 @@ public class Play extends BasicGameState
 		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press SPACE to shoot
 		{
 			bullet.add(new Pea(bullet.xPos+120,bullet.yPos+25));  // bullets fly from plant position	
+			
 			pow.play();
 			System.out.println("SHOOTING");
 		} 

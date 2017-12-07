@@ -25,7 +25,6 @@ public class Pea extends Bullet implements Characters{
 	@Override
 	public void attack() {
 		// TODO Auto-generated method stub
-
 		for(int i=0;i<bullets.size();i++)                     //shoot all the bullets in the list
 		{
 			tempBullet=bullets.get(i);
