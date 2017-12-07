@@ -11,10 +11,7 @@ import Interface.*;
 public class Peashooter extends Plants implements Characters{
 	
 	private ArrayList<Bullet> bullets=new ArrayList<>();
-	private ArrayList<Zombies> zombies=new ArrayList<>();
-	Physic phy =new Physic();
 	Bullet tempBullet;
-	Main screen;
 	
 	public Peashooter(int x, int y)   {super(x, y);}
 	

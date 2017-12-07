@@ -12,9 +12,9 @@ import java.util.ArrayList;
 public class Play extends BasicGameState
 {	
 	PlayControl controller = new PlayControl();
-	Peashooter shooter=new Peashooter(300,300);
+	Peashooter shooter=new Peashooter(200,200);
 	SunFlower sunflower=new SunFlower(100,100);
-	Pea bullet = new Pea(300, 300);
+	Pea bullet = new Pea(0,0);
 	Zombies zombie;
 	Image small,background,pea,sun,text;
 	SpriteSheet S1,S2;
@@ -195,12 +195,6 @@ public class Play extends BasicGameState
 		shooter.attack();
 		controller.zomWalk();
 		controller.fall();
-		
-		/*if(controller.checkGame()==false) 
-		{
-			sbg.enterState(2);
-		}*/ 
-		//controller.gameStatus();
 		
 	}
 	

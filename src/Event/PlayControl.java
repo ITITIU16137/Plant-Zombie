@@ -23,46 +23,6 @@ public class PlayControl {
 	Sound Punch;
 	Sound ZomWalk;
 
-	//--------------------------------------BULLET---------------------------------------
-			/*public void shoot()                        
-			{
-				for(int i=0;i<bullets.size();i++)             //shoot all the bullets in the list
-				{
-					tempBullet=bullets.get(i);
-					
-					if(tempBullet.xPos>screen.WIDTH)       // remove bullets out of screen
-					{
-						removeBullet(tempBullet);
-					}
-					
-					if(phy.Collision(tempBullet, zombies))
-					{
-						removeBullet(tempBullet);
-					}
-					tempBullet.flying();
-				}
-			}
-			
-			public void renderBullet(Graphics g,Image png)              // draw bullets
-			{
-				
-				for(int i=0;i<bullets.size();i++)
-				{
-					tempBullet=bullets.get(i);
-					tempBullet.draw(g,png);
-				}
-			}*/
-			
-			public void addBullet(Bullet b)
-			{
-				bullets.add(b);
-			}
-			
-			public void removeBullet(Bullet b)
-			{
-				bullets.remove(b);
-			}
-			
 
 	//--------------------------------------ZOMBIE---------------------------------------
 	public void zomWalk() throws SlickException
@@ -73,8 +33,6 @@ public class PlayControl {
 			ZomWalk = new Sound("res/Play/zombie.wav");
 			tempZombie=zombies.get(i);
 			tempZombie.moving(); 
-			//ZomWalk.loop();
-			//if(tempZombie.xPos<0 || tempZombie.getHp()<=0)
 			if(tempZombie.xPos<165 || tempZombie.getHp()<=0)
 			{
 				removeZombie(tempZombie);
@@ -85,7 +43,7 @@ public class PlayControl {
 				tempZombie.setHp(tempZombie.getHp()-20);
 			}
 		}
-		//int c=0;
+
 	}
 	public void renderZombie(ArrayList<Image> png,double n) 
 	{
@@ -153,16 +111,7 @@ public class PlayControl {
 				removeSun(tempSun);
 			}
 	}
-	//--------------------------------------CheckGame--------------------------------------------------//
-	private int getIndexZom(double xPos) {
-		return zombies.indexOf(xPos);
-	}
 	
-	public boolean checkGame() {
-		if (getIndexZom(tempZombie.xPos) <= 200)
-			return false;
-		else return true; 
-	}
 }
 
 
