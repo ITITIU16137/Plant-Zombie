@@ -26,6 +26,12 @@ public class Peashooter extends Plants implements Characters{
 			tempBullet.render(g,png);
 		}
 	}
+
+	@Override
+	public void attack() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

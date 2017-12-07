@@ -12,9 +12,9 @@ import java.util.ArrayList;
 public class Play extends BasicGameState
 {	
 	PlayControl controller = new PlayControl();
-	Peashooter shooter=new Peashooter(200,200);
+	Peashooter shooter=new Peashooter(300,300);
 	SunFlower sunflower=new SunFlower(100,100);
-	Pea bullet = new Pea(200, 200);
+	Pea bullet = new Pea(300, 300);
 	Zombies zombie;
 	Image small,background,pea,sun,text;
 	SpriteSheet S1,S2;
@@ -165,7 +165,7 @@ public class Play extends BasicGameState
 		}
 		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press SPACE to shoot
 		{
-			shooter.add(new Pea(bullet.xPos+120,bullet.yPos+25));  // bullets fly from plant position	
+			bullet.add(new Pea(bullet.xPos+120,bullet.yPos+25));  // bullets fly from plant position	
 			pow.play();
 			System.out.println("SHOOTING");
 		} 

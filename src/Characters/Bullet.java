@@ -16,5 +16,5 @@ public abstract class Bullet extends GameObject{
 	public abstract void attack();
 	public abstract void render(Graphics g, Image png);
 	public abstract void add(Bullet b);
-	public abstract void remove(Bullet b)
+	public abstract void remove(Bullet b);
 }

@@ -11,7 +11,7 @@ import Event.Physic;
 import GUI.Main;
 import Interface.Characters;
 
-public staticclass Pea extends Bullet implements Characters{
+public class Pea extends Bullet implements Characters{
 	private ArrayList<Bullet> bullets=new ArrayList<>();
 	private ArrayList<Zombies> zombies=new ArrayList<>();
 	Physic phy =new Physic();
@@ -54,5 +54,7 @@ public staticclass Pea extends Bullet implements Characters{
 		bullets.add(b);
 	}
 	
-	
+	public void remove(Bullet b) {
+		bullets.remove(b);
+	}
 }
