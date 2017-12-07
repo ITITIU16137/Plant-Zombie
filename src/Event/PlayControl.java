@@ -13,7 +13,7 @@ public class PlayControl {
 	private ArrayList<Sun> sun=new ArrayList<>();
 	private Integer[] stopPos=new Integer[5];
 	Zombies tempZombie;
-	Peashooter shooter;
+	Plants shooter;
 	Bullet tempBullet;
 	Sun tempSun;
 	StateBasedGame sbg;
@@ -22,6 +22,7 @@ public class PlayControl {
 	Graphics g;
 	Sound Punch;
 	Sound ZomWalk;
+
 	private int check ;
 	private int delayTimeSun=0;
 	private int delaySun=getDelayTimeSun(80);
@@ -58,7 +59,7 @@ public class PlayControl {
 				for(int i=0;i<bullets.size();i++)
 				{
 					tempBullet=bullets.get(i);
-					tempBullet.draw(g,png);
+					tempBullet.render(g,png);
 				}
 			}
 
@@ -73,6 +74,7 @@ public class PlayControl {
 			}
 
 
+
 	//--------------------------------------ZOMBIE---------------------------------------
 	public void zomWalk() throws SlickException
 	{
@@ -81,9 +83,11 @@ public class PlayControl {
 			Punch = new Sound("res/Play/Punch.wav");
 			ZomWalk = new Sound("res/Play/zombie.wav");
 			tempZombie=zombies.get(i);
+
 			tempZombie.moving();
 			//ZomWalk.loop();
 			//if(tempZombie.xPos<0 || tempZombie.getHp()<=0)
+
 			if(tempZombie.xPos<165 || tempZombie.getHp()<=0)
 			{
 				removeZombie(tempZombie);
@@ -94,7 +98,7 @@ public class PlayControl {
 				tempZombie.setHp(tempZombie.getHp()-20);
 			}
 		}
-		//int c=0;
+
 	}
 	public void renderZombie(ArrayList<Image> png,double n)
 	{
@@ -161,14 +165,23 @@ public class PlayControl {
 }
 	/*
 	public void checkEat() {
+<<<<<<< HEAD
 		a=shooter.xPos-60;
 		b=shooter.xPos+60;
 		c=shooter.yPos-65;
 		d=shooter.yPos+65;
 		if (tempSun.yPos>=c && tempSun.yPos<=d && tempSun.xPos>=a && tempSun.xPos<=b )
+=======
+		double a=shooter.xPos-60;
+		double b=shooter.xPos+60;
+		double c=shooter.yPos-65;
+		double d=shooter.yPos+65;
+		if (tempSun.yPos>=c && tempSun.yPos<=d && tempSun.xPos>=a && tempSun.xPos<=b ) 
+>>>>>>> GUI
 			{
 				removeSun(tempSun);
 			}
 	}
+	
 }
 */
