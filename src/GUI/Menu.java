@@ -59,7 +59,7 @@ public class Menu extends BasicGameState {
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 
-		Image[] Background = new Image[102];
+		Image[] Background = new Image[102];  // BackGround //
 		String fileLocation = new String();
 		for (int i = 1; i < 102; i++) {
 			fileLocation = "res/background/back (" + i + ").png";

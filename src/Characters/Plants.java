@@ -18,8 +18,6 @@ public abstract class Plants extends GameObject{
 	public void setSpeed(int speed)           { this.speed = speed; }
 	public int getHp()                        { return hp; }
 	public void setHp(int hp)                 { this.hp = hp; }
-	//public int getDamage()                    { return damage; }
-	//public void setDamage(int damage)         { this.damage = damage; }
 	
 	//public abstract void attack();
 	public abstract void render(Graphics g, Image png);
