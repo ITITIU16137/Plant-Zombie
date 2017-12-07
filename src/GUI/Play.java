@@ -19,11 +19,18 @@ public class Play extends BasicGameState
 	Image small,background,pea,sun,text;
 	SpriteSheet S1,S2;
     Animation S11,S22;
+
+    private int delayTime = 0; // this is for
+	private int delay = (5000);
+	
     Sound pow;
     Music coming;
     
 	private Integer[] zomInitPos=new Integer[5];
 	private Integer[] sunInitPos=new Integer[9];
+
+	private Integer[] stopPos=new Integer[5];
+	
 	private ArrayList<Image> zombieImages=new ArrayList<>();
 	private double count=0;                                      //  this is
 	private double frequencyImage=0.002;                         //  for object speed
@@ -55,16 +62,21 @@ public class Play extends BasicGameState
 		zomInitPos[3]=420;
 		zomInitPos[4]=520;
 		
+		stopPos[0]=195;
+		stopPos[1]=295;
+		stopPos[2]=395;
+		stopPos[3]=495;
+		stopPos[4]=595;
 		
-		sunInitPos[0]=200;
-		sunInitPos[1]=276;
-		sunInitPos[2]=359;
-		sunInitPos[3]=447;
-		sunInitPos[4]=519;
-		sunInitPos[5]=607;
-		sunInitPos[6]=684;
-		sunInitPos[7]=764;
-		sunInitPos[8]=847;
+		sunInitPos[0]=204+27;
+		sunInitPos[1]=276+27;
+		sunInitPos[2]=364+27;
+		sunInitPos[3]=442+27;
+		sunInitPos[4]=520+27;
+		sunInitPos[5]=602+27;
+		sunInitPos[6]=686+27;
+		sunInitPos[7]=764+27;
+		sunInitPos[8]=851+27;
 		
 		
 		zombieImages.add(new Image("res/Zombie/male/walk1.png"));
@@ -171,7 +183,8 @@ public class Play extends BasicGameState
 		} 
 		if (input.isKeyDown(Input.KEY_A))
 		{
-			sbg.enterState(2);                                    //Gameover
+			sbg.enterState(2);   
+													//Gameover
 		}
 		
 		
@@ -187,16 +200,25 @@ public class Play extends BasicGameState
 		if(this.delayTimeSun==delaySun)                                        //to spawn sun                 
 		{                        							 
 			controller.addSun(new Sun(sunInitPos[(int)(Math.random()*9)],0));
+			
 			delaySun=getDelayTimeSun(5000);
 			this.delayTimeSun=0;
+			
 		}
-
+		
 		this.delayText+=delta;
 		shooter.attack();
 		controller.zomWalk();
 		controller.fall();
-		
 	}
+		
+		
+		/*if(controller.gameStatus()==false) 
+		{
+			sbg.enterState(3);
+		} */
+		//controller.gameStatus();
+
 	
 	public int getID()
 	{
