@@ -8,11 +8,11 @@ import org.newdawn.slick.state.*;
 import Bullet.Pea;
 
 import java.util.ArrayList;
-
+import org.lwjgl.input.Mouse;
 public class Play extends BasicGameState
 {	
 	PlayControl controller = new PlayControl();
-	Peashooter shooter=new Peashooter(200,200);
+	public static Peashooter shooter=new Peashooter(200,200);
 	SunFlower sunflower=new SunFlower(100,100);
 	Pea bullet = new Pea(0,0);
 	Zombies zombie;
@@ -20,11 +20,13 @@ public class Play extends BasicGameState
 	SpriteSheet S1,S2;
     Animation S11,S22;
 
-    private int delayTime = 0; // this is for
-	private int delay = (5000);
+//    private int delayTime = 0; // this is for
+//	private int delay = (5000);
 	
     Sound pow;
     Music coming;
+    
+    public static Peashooter getShooter() { return shooter;}
     
 	private Integer[] zomInitPos=new Integer[5];
 	private Integer[] sunInitPos=new Integer[9];
@@ -211,6 +213,7 @@ public class Play extends BasicGameState
 		bullet.attack();
 		controller.zomWalk();
 		controller.fall();
+		controller.onClickSun();
 	}
 		
 		

@@ -1,7 +1,6 @@
 package Event;
 import Characters.*;
 import GUI.*;
-import java.util.concurrent.ThreadLocalRandom;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 import java.util.ArrayList;
@@ -23,11 +22,6 @@ public class PlayControl {
 	Sound Punch;
 	Sound ZomWalk;
 
-	private int check ;
-	private int delayTimeSun=0;
-	private int delaySun=getDelayTimeSun(80);
-
-//	double a, b, c, d;
 	public int getDelayTimeSun(int maxTime)
 	{
 		return (int)(Math.random()*maxTime)+1;
@@ -159,29 +153,28 @@ public class PlayControl {
 	{
 		//tempSun.stop();
 		sun.remove(b);
-		/*
-		}*/
 	}
-}
-	/*
-	public void checkEat() {
-<<<<<<< HEAD
-		a=shooter.xPos-60;
-		b=shooter.xPos+60;
-		c=shooter.yPos-65;
-		d=shooter.yPos+65;
-		if (tempSun.yPos>=c && tempSun.yPos<=d && tempSun.xPos>=a && tempSun.xPos<=b )
-=======
-		double a=shooter.xPos-60;
-		double b=shooter.xPos+60;
-		double c=shooter.yPos-65;
-		double d=shooter.yPos+65;
-		if (tempSun.yPos>=c && tempSun.yPos<=d && tempSun.xPos>=a && tempSun.xPos<=b ) 
->>>>>>> GUI
-			{
-				removeSun(tempSun);
+	
+	public void delete() {
+		 removeSun(tempSun);
+	}
+	
+	public void onClickSun() {
+		//if (Mouse.getEventButton()==0)
+			for (int i=0; i<sun.size(); i++) {
+				if (checkSunMouse(sun.get(i)) == true ) 
+					sun.remove(i);
 			}
 	}
 	
+	public boolean checkSunMouse (Sun sun) {
+		double x = Play.getShooter().getxPos();
+		double y = Play.getShooter().getyPos();
+		
+		if (y >= sun.yPos && y <= sun.yPos + 166 && x <= sun.xPos + 166 && x >= sun.xPos) 
+			return true;
+		else 
+			return false;
+	}
 }
-*/
+	
