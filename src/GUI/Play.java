@@ -2,6 +2,8 @@ package GUI;
 import Characters.*;
 import Event.*;
 import Plants.*;
+import SunFlower.SunFlower2;
+
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
@@ -10,10 +12,12 @@ import Bullet.Pea;
 import java.util.ArrayList;
 
 public class Play extends BasicGameState
-{	
+{	 
+	float x,y;
 	PlayControl controller = new PlayControl();
 	Peashooter shooter=new Peashooter(200,200);
-	SunFlower sunflower=new SunFlower(100,100);
+//	SunFlower sunflower=new SunFlower(100,100);
+	SunFlower2 sunflower;
 	Pea bullet = new Pea(0,0);
 	Zombies zombie;
 	Image small,background,pea,sun,text;
@@ -30,6 +34,8 @@ public class Play extends BasicGameState
 	private Integer[] sunInitPos=new Integer[9];
 
 	private Integer[] stopPos=new Integer[5];
+	
+	
 	
 	private ArrayList<Image> zombieImages=new ArrayList<>();
 	private double count=0;                                      //  this is
@@ -95,7 +101,8 @@ public class Play extends BasicGameState
 		 sun = new Image("res/sun.png");
 		 text = new Image("res/text.png");
 		 
-		 S1 = new SpriteSheet("res/SunFlower.png", 74, 73);                  // Sunflower 
+		 S1 = new SpriteSheet("res/SunFlower.png", 74, 73);      // Sunflower 
+		 sunflower = new SunFlower2 (100,100,S1);
 	     S11 = new Animation(S1, 40);				                         // animation
 	     S11.setPingPong(true);						  
 	     
@@ -134,7 +141,8 @@ public class Play extends BasicGameState
 		g.drawImage(sun, 0, 0);                                                //
 		g.setColor(Color.black);                                               // Sun board
 		g.fillRoundRect(100, 30, 150, 50, 10 );                                //
-		
+		sunflower.appear(x,y);
+		g.drawAnimation(S11,250,250);
 		/*g.setColor(Color.red);                              //debug
 		for(int i=0;i<5;i++)
 		{
@@ -191,7 +199,8 @@ public class Play extends BasicGameState
 		this.delayTimeZom+=1;                                                                //system count 
 		if(this.delayTimeZom==delayZom)                                                      //from 0 to delay
 		{                        							                                 //to spawn zombies
-		//	controller.addZombie(new Zombies(950,zomInitPos[(int)(Math.random()*5)]));
+		
+			//controller.addZombie(new Zombies(950,zomInitPos[(int)(Math.random()*5)]));
 			delayZom=getDelayTimeZom(10000);
 			this.delayTimeZom=0;
 		}
@@ -210,6 +219,9 @@ public class Play extends BasicGameState
 		shooter.attack();
 		controller.zomWalk();
 		controller.fall();
+		
+		
+		
 	}
 		
 		

@@ -1,6 +1,6 @@
 package Characters;
 
-public class SunFlower extends GameObject{
+public abstract class SunFlower extends GameObject{
 	
 	public int speed =1;
 	int hp;
