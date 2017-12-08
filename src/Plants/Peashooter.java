@@ -7,7 +7,7 @@ import org.newdawn.slick.Image;
 import Characters.*;
 import Event.*;
 import GUI.Main;
-import Interface.*;
+
 public class Peashooter extends Plants implements Characters{
 	
 	private ArrayList<Bullet> bullets=new ArrayList<>();

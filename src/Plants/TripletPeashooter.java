@@ -8,7 +8,6 @@ import org.newdawn.slick.Image;
 import Characters.*;
 import Event.Physic;
 import GUI.Main;
-import Interface.Characters;
 
 public class TripletPeashooter extends Plants implements Characters{
 	private ArrayList<Bullet> bullets=new ArrayList<>();

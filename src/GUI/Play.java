@@ -177,7 +177,7 @@ public class Play extends BasicGameState
 		}
 		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press SPACE to shoot
 		{
-			bullet.add(new Pea(bullet.xPos+120,bullet.yPos+25));  // bullets fly from plant position	
+			bullet.add(new Pea(shooter.xPos+120,shooter.yPos+25));  // bullets fly from plant position	
 			
 			pow.play();
 			System.out.println("SHOOTING");
@@ -208,7 +208,7 @@ public class Play extends BasicGameState
 		}
 		
 		this.delayText+=delta;
-		shooter.attack();
+		bullet.attack();
 		controller.zomWalk();
 		controller.fall();
 	}

@@ -45,4 +45,8 @@ public abstract class Bullet extends GameObject{
 	public abstract void render(Graphics g, Image png);
 	public abstract void add(Bullet b);
 	public abstract void remove(Bullet b);
+	public void draw(Graphics g, Image png)                  // load image
+	{
+		g.drawImage(png,(int) this.xPos+30,(int)this.yPos+0);
+	}
 }

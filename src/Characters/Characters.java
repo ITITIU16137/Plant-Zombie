@@ -1,4 +1,4 @@
-package Interface;
+package Characters;
 
 public interface Characters {
 	void attack();
