@@ -1,7 +1,7 @@
 package Characters;
 
 
-//import org.newdawn.slick.Color;
+//import org.newdawn.slick.Color; 
 import org.newdawn.slick.*;
 public class Sun extends GameObject{
 
@@ -21,22 +21,6 @@ public class Sun extends GameObject{
 	{
 			return randomInt;
 	}
-
-	/*
-	 * 	 Add sun one by one
-	 */
-	public void falling(int k)
-	{
-		if (k == 1)
-		yPos+=speed;
-		else yPos -= 1 ;
-
-	}
-	public void stop() {
-
-		yPos-=speed;
-	}
-
 	
 	public void draw(Graphics g, Image png)                  // load image
 	{
