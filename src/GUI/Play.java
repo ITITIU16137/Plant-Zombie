@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import org.lwjgl.input.Mouse;
 public class Play extends BasicGameState
 {	
+	static TripletPeashooter shooter2 = new TripletPeashooter(200,300);
+	static Peashooter shooter=new Peashooter(200,200);
+	static SunFlower sunflower=new SunFlower(100,100);
 	PlayControl controller = new PlayControl();
-	TripletPeashooter shooter2 = new TripletPeashooter(200,300);
-	public static Peashooter shooter=new Peashooter(200,200);
-	SunFlower sunflower=new SunFlower(100,100);
 	Pea bullet = new Pea(0,0);
 	TriplePea bullet2 = new TriplePea(0,0);
 	Zombies zombie;
@@ -114,10 +114,7 @@ public class Play extends BasicGameState
 	{
 		g.drawImage(background, 0,0);                                         //draw background
 		g.drawAnimation(S22,(float)shooter.xPos+40,(float)shooter.yPos);      //draw peashooter
-		while(shooter2.xPos!=shooter.xPos && shooter2.yPos!=shooter2.yPos)
-		{
-			g.drawImage(triplet,(float) shooter2.xPos,(float) shooter.yPos);  //draw tripletshooter
-		}
+	    g.drawImage(triplet,(float) shooter2.xPos,(float) shooter.yPos);      //draw tripletshooter
 		g.drawAnimation(S11,(float)sunflower.xPos,(float) sunflower.yPos);    //draw sunflower
 		
 		if(delayText<durationText) 
@@ -191,8 +188,8 @@ public class Play extends BasicGameState
 		} 
 		
 		
-		//if(shooter2.xPos!=shooter.xPos && shooter.yPos!=shooter.xPos)
-		//{
+		if(shooter.yPos!=shooter.xPos)
+		{
 			if (input.isKeyDown(Input.KEY_D))
 			{
 				shooter2.xPos += shooter.speed;
@@ -220,13 +217,13 @@ public class Play extends BasicGameState
 			else if(input.isKeyPressed(Input.KEY_ENTER))
 			{
 				bullet2.add(new TriplePea(shooter2.xPos+120,shooter2.yPos+25));
-				System.out.print("TRIPLE PEA SHOOTING");
+				System.out.println("TRIPLE PEA SHOOTING");
 			}
 		
 		this.delayTimeZom+=1;                                                                //system count 
 		if(this.delayTimeZom==delayZom)                                                      //from 0 to delay
 		{                        							                                 //to spawn zombies
-		//	controller.addZombie(new Zombies(950,zomInitPos[(int)(Math.random()*5)]));
+			controller.addZombie(new Zombies(950,zomInitPos[(int)(Math.random()*5)]));
 			delayZom=getDelayTimeZom(10000);
 			this.delayTimeZom=0;
 		}
@@ -243,11 +240,12 @@ public class Play extends BasicGameState
 		
 		this.delayText+=delta;
 		bullet.attack();
+		bullet2.attack();
 		controller.zomWalk();
 		controller.fall();
 		controller.onClickSun();
 	}	
-		
+	}
 	public int getID()
 	{
         	return 1;	

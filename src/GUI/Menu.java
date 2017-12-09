@@ -108,13 +108,6 @@ public class Menu extends BasicGameState {
 		if ((xpos > 430 && xpos < 550) && (ypos > 380 && ypos < 510)) {
 			if ((input.isMouseButtonDown(0))) {
 				exit.draw(1, 1, 1, 0.5f);
-				sound.play();
-				music.stop();
-				if (!music.playing()) 
-				{
-					exitmusic.play();
-				}
-				
 				//gc.sleep(2000);           ///Delay 2s
 				System.exit(0);
 			}
