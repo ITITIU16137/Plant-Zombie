@@ -1,7 +1,7 @@
 package Characters;
 
 
-//import org.newdawn.slick.Color;
+//import org.newdawn.slick.Color; 
 import org.newdawn.slick.*;
 public class Sun extends GameObject{
 

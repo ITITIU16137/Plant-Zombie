@@ -171,8 +171,11 @@ public class PlayControl {
 		double x = Play.getShooter().getxPos();
 		double y = Play.getShooter().getyPos();
 		
-		if (y >= sun.yPos && y <= sun.yPos + 166 && x <= sun.xPos + 166 && x >= sun.xPos) 
-			return true;
+		//if y <= sun.yPos + 166 && x >= sun.xPos) 
+		//if (y >= sun.yPos   && x >= sun.xPos )
+	//if (y >= sun.yPos -11 && x >= sun.xPos +11 && x <= sun.xPos +5 && y <= sun.yPos - 5) 
+		if (y >= sun.yPos -30  && y <= sun.yPos + 117 && x <= sun.xPos + 116 && x >= sun.xPos -60) 
+		return true;
 		else 
 			return false;
 	}
