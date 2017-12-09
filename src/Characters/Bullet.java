@@ -3,7 +3,6 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
 public abstract class Bullet extends GameObject{
-	
 	public int dX=40,dY=40;                        //size of bullet
 	double speed=0.5;                           // speed of bullet
 	private int corner=0;
@@ -15,7 +14,7 @@ public abstract class Bullet extends GameObject{
 	{
 		xPos+=speed;                               //set speed for bullets while flying
 	}
-	public void flyingtripu()						//bullet go up
+	public void flyingtripUP()						//bullet go up
 	{
 		delayFlying+=1;
 		if(delayFlying<durationFlying) 
@@ -28,7 +27,7 @@ public abstract class Bullet extends GameObject{
 		}
 		delayFlying=0;
 	}
-	public void flyingtripd()						//bullet go down
+	public void flyingtripDOWN()						//bullet go down
 	{	
 		delayFlying+=1;
 		if(delayFlying<durationFlying) 
@@ -41,12 +40,13 @@ public abstract class Bullet extends GameObject{
 		}
 		delayFlying=0;
 	}
-	public abstract void attack();
-	public abstract void render(Graphics g, Image png);
-	public abstract void add(Bullet b);
-	public abstract void remove(Bullet b);
 	public void draw(Graphics g, Image png)                  // load image
 	{
 		g.drawImage(png,(int) this.xPos+30,(int)this.yPos+0);
 	}
+	public abstract void attack();
+	public abstract void render(Graphics g, Image png);
+	public abstract void add(Bullet b);
+	public abstract void remove(Bullet b);
+	
 }

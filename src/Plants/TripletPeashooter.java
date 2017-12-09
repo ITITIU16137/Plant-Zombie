@@ -11,24 +11,21 @@ import GUI.Main;
 
 public class TripletPeashooter extends Plants implements Characters{
 	private ArrayList<Bullet> bullets=new ArrayList<>();
-	private ArrayList<Zombies> zombies=new ArrayList<>();
-	Physic phy =new Physic();
-	Bullet tempBullet;
-	Main screen;
-	Graphics g;
-	Image png;
+	Bullet tempBullet2;
 	
-	public TripletPeashooter(int x, int y)   {super(x, y);}
-	
-	@Override
-	public void attack() {}                       
+	public TripletPeashooter(int x, int y)   {super(x, y);}                   
 	
 	@Override
 	public void render(Graphics g,Image png) {                // draw bullets
 		for(int i=0;i<bullets.size();i++)
 		{
-			tempBullet=bullets.get(i);
-			tempBullet.render(g,png);
+			tempBullet2=bullets.get(i);
+			tempBullet2.render(g,png);
 		}
 	}
+	
+	@Override
+	public void attack() {
+		
+	}    
 }

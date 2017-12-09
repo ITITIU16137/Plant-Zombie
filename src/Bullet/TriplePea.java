@@ -1,65 +1,64 @@
 package Bullet;
 
 import java.util.ArrayList;
-
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
-import Characters.Bullet;
-import Characters.Characters;
-import Characters.Zombies;
+import Characters.*;
 import Event.Physic;
 import GUI.Main;
 
-public class Pea extends Bullet implements Characters{
+public class TriplePea extends Bullet implements Characters {
 	private ArrayList<Bullet> bullets=new ArrayList<>();
 	private ArrayList<Zombies> zombies=new ArrayList<>();
 	Physic phy =new Physic();
-	Bullet tempBullet;
+	Bullet tempBullet2;
 	Main screen;
 	
-	public Pea(double d, double e) 
-	{
+	public TriplePea(double d, double e) {
 		super(d, e);
 	}
-	
+
 	@Override
 	public void attack() {
 		// TODO Auto-generated method stub
 		for(int i=0;i<bullets.size();i++)                     //shoot all the bullets in the list
 		{
-			tempBullet=bullets.get(i);
+			tempBullet2=bullets.get(i);
 			
-			if(tempBullet.xPos>screen.WIDTH)                  // remove bullets out of screen
+			if(tempBullet2.xPos>screen.WIDTH)                  // remove bullets out of screen
 			{
-				remove(tempBullet);
+				remove(tempBullet2);
 			}
 			
-			if(phy.Collision(tempBullet, zombies))
+			if(phy.Collision(tempBullet2, zombies))
 			{
-				remove(tempBullet);
+				remove(tempBullet2);
 			}
-			tempBullet.flying();
+			tempBullet2.flyingtripUP();
+			tempBullet2.flying();
+			tempBullet2.flyingtripDOWN();
 		}
 	}
 
 	@Override
-	public void render(Graphics g,Image png)              // draw bullets
-	{
-		
+	public void render(Graphics g, Image png) {
 		for(int i=0;i<bullets.size();i++)
 		{
-			tempBullet=bullets.get(i);
-			tempBullet.draw(g,png);
+			tempBullet2=bullets.get(i);
+			tempBullet2.draw(g,png);
 		}
 	}
 
 	@Override
-	public void add(Bullet b) {					             //add Bullets
+	public void add(Bullet b) {
 		bullets.add(b);
+		
 	}
-	
+
+	@Override
 	public void remove(Bullet b) {
 		bullets.remove(b);
 	}
+
 }
