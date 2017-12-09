@@ -174,7 +174,7 @@ public class PlayControl {
 		//if y <= sun.yPos + 166 && x >= sun.xPos) 
 		//if (y >= sun.yPos   && x >= sun.xPos )
 	//if (y >= sun.yPos -11 && x >= sun.xPos +11 && x <= sun.xPos +5 && y <= sun.yPos - 5) 
-		if (y >= sun.yPos -30  && y <= sun.yPos + 117 && x <= sun.xPos + 116 && x >= sun.xPos -60) 
+		if (y >= sun.yPos -30  && y <= sun.yPos + 77 && x <= sun.xPos + 56 && x >= sun.xPos -100) 
 		return true;
 		else 
 			return false;
