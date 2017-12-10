@@ -6,6 +6,10 @@ import org.newdawn.slick.state.StateBasedGame;
 import java.util.ArrayList;
 
 public class PlayControl {
+	
+	public LevelControl level=new LevelControl();
+	public int limitness=0;
+	
 	Physic phy =new Physic();
 	private ArrayList<Zombies> zombies=new ArrayList<>();
 	private ArrayList<Bullet> bullets=new ArrayList<>();
@@ -47,13 +51,15 @@ public class PlayControl {
 				}
 			}
 
-			public void renderBullet(Graphics g,Image png)              // draw bullets
+			public void renderBullet(Graphics g) throws SlickException              // draw bullets
 			{
-
+				
 				for(int i=0;i<bullets.size();i++)
 				{
 					tempBullet=bullets.get(i);
-					tempBullet.render(g,png);
+					//tempBullet.draw(g,png);
+					level.drawBullets(tempBullet);
+					//tempBullet.dr
 				}
 			}
 
@@ -178,6 +184,16 @@ public class PlayControl {
 		return true;
 		else 
 			return false;
+	}
+	
+	
+	public void checkToSwitchLevel()
+	{
+		if(limitness==level.setLimitness())
+		{
+			level.gameLevel++;
+			limitness=0;
+		}
 	}
 }
 	
