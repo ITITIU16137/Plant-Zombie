@@ -97,11 +97,14 @@ public class PlayControl {
 			if(tempZombie.xPos<165 || tempZombie.getHp()<=0)
 			{
 				removeZombie(tempZombie);
+				limitness++;
+				checkToSwitchLevel();
 				Punch.play();
 			}
 			if(phy.Collision(tempZombie, bullets))
 			{
-				tempZombie.setHp(tempZombie.getHp()-20);
+				//tempZombie.setHp(tempZombie.getHp()-20);
+				level.setHp(tempZombie);
 			}
 		}
 

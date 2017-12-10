@@ -28,6 +28,6 @@ public class FireBullet extends Bullet implements Characters{
 	
 	public void draw(Image png)                  // load image
 	{
-		png.draw((int)this.xPos, (int)this.yPos,png.getWidth()/10,png.getHeight()/10);
+		png.draw((int)this.xPos, (int)this.yPos,png.getWidth()*4,png.getHeight()*4);
 	}
 }

@@ -181,7 +181,15 @@ public class Play extends BasicGameState
 		}
 		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press SPACE to shoot
 		{
-			bullet.add(new Pea(shooter.xPos+120,shooter.yPos+25));  // bullets fly from plant position	
+			//bullet.add(new Pea(shooter.xPos+120,shooter.yPos+25));  // bullets fly from plant position	
+			if(controller.level.gameLevel==1)
+			{
+				controller.addBullet(new Pea(shooter.xPos+120,shooter.yPos+25));
+			}
+			else if(controller.level.gameLevel==2)
+			{
+				controller.addBullet(new FireBullet(shooter.xPos+120,shooter.yPos+25));
+			}
 			pow.play();
 			System.out.println("PEA SHOOTING");
 		} 
