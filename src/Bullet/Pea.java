@@ -18,6 +18,9 @@ public class Pea extends Bullet implements Characters{
 	Bullet tempBullet;
 	Main screen;
 	
+	public static int damage=20;
+	public static String pngName="res/Pea.png";
+	
 	public Pea(double d, double e) 
 	{
 		super(d, e);
@@ -47,11 +50,11 @@ public class Pea extends Bullet implements Characters{
 	public void render(Graphics g,Image png)              // draw bullets
 	{
 		
-		for(int i=0;i<bullets.size();i++)
+		/*for(int i=0;i<bullets.size();i++)
 		{
 			tempBullet=bullets.get(i);
 			tempBullet.draw(g,png);
-		}
+		}*/
 	}
 
 	@Override
@@ -61,5 +64,10 @@ public class Pea extends Bullet implements Characters{
 	
 	public void remove(Bullet b) {
 		bullets.remove(b);
+	}
+	
+	public void draw(Image png)                  // load image
+	{
+		png.draw((int)this.xPos+30,(int)this.yPos+0);
 	}
 }
