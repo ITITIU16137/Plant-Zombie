@@ -204,7 +204,7 @@ public class Play extends BasicGameState
 		{                        							 
 			controller.addSun(new Sun(sunInitPos[(int)(Math.random()*9)],0));
 			
-			delaySun=getDelayTimeSun(100);
+			delaySun=getDelayTimeSun(5000);
 			this.delayTimeSun=0;
 			
 		}
