@@ -17,6 +17,7 @@ public class Play extends BasicGameState
 	Pea bullet = new Pea(0,0);
 	TriplePea bullet2 = new TriplePea(0,0);
 	static Zombies zombieControl=new Zombies();
+	static Sun sunControll=new Sun();
 	Image background,pea,sun,text,triplet,triplePea;
 	SpriteSheet S1,S2;
     Animation S11,S22;
@@ -32,15 +33,15 @@ public class Play extends BasicGameState
 	private double count=0;                                      //  this is
 	private double frequencyImage=0.002;                         //  for object speed
 	
-	private int delayTimeSun=0;
-	private int delaySun=getDelayTimeSun(5000);
+	//private int delayTimeSun=0;
+	//private int delaySun=getDelayTimeSun(5000);
 	private int delayText=0;
 	private int durationText=3000;
 	
-	public int getDelayTimeSun(int maxTime)
+	/*public int getDelayTimeSun(int maxTime)
 	{
 		return (int)(Math.random()*maxTime)+1;
-	}
+	}*/
 	
 	public Play (int state){	
 	}
@@ -237,13 +238,13 @@ public class Play extends BasicGameState
 			zombieControl.delayTimeZom=0;
 		}
 		
-		this.delayTimeSun+=1;                                                                
-		if(this.delayTimeSun==delaySun)                                        //to spawn sun                 
+		sunControll.delayTimeSun+=1;                                                                
+		if(sunControll.delayTimeSun==sunControll.delaySun)                                        //to spawn sun                 
 		{                        							 
 			controller.addSun(new Sun(sunInitPos[(int)(Math.random()*9)],0));
 			
-			delaySun=getDelayTimeSun(5000);
-			this.delayTimeSun=0;
+			sunControll.delaySun=sunControll.getDelayTimeSun(sunControll.maxTime);
+			sunControll.delayTimeSun=0;
 			
 		}
 		

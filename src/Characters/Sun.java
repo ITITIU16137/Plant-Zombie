@@ -8,9 +8,17 @@ public class Sun extends GameObject{
 	protected int dX=400,dY=400;       //size of Sun
 	private int randomInt;
 	int speed = 1;      // speed of Sun :D
+	public int delayTimeSun=0;
+	public int delaySun=getDelayTimeSun(5000);
+	public int maxTime=5000;
 	/*
 	 * 	Constructor
 	 */
+	public Sun()
+	{
+		
+	}
+	
 	public Sun(int x,int y)
 	{
 		super(x,y);
@@ -37,6 +45,10 @@ public class Sun extends GameObject{
 		yPos-=speed;
 	}
 
+	public int getDelayTimeSun(int maxTime)
+	{
+		return (int)(Math.random()*maxTime)+1;
+	}
 	
 	public void draw(Graphics g, Image png)                  // load image
 	{
