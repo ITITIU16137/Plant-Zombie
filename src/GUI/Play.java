@@ -2,29 +2,24 @@ package GUI;
 import Characters.*;
 import Event.*;
 import Plants.*;
-import org.newdawn.slick.*;
-import org.newdawn.slick.state.*;
-
 import Bullet.Pea;
-
+import org.newdawn.slick.*;
+import org.newdawn.slick.openal.SoundStore;
+import org.newdawn.slick.state.*;
 import java.util.ArrayList;
-import org.lwjgl.input.Mouse;
+
 public class Play extends BasicGameState
 {	
 	PlayControl controller = new PlayControl();
-	public static Peashooter shooter=new Peashooter(200,200);
+	static Peashooter shooter=new Peashooter(200,200);
 	SunFlower sunflower=new SunFlower(100,100);
 	Pea bullet = new Pea(0,0);
 	Zombies zombie;
 	Image small,background,pea,sun,text;
 	SpriteSheet S1,S2;
     Animation S11,S22;
-
-//    private int delayTime = 0; // this is for
-//	private int delay = (5000);
-	
     Sound pow;
-    Music coming;
+    Music coming,music;
     
     public static Peashooter getShooter() { return shooter;}
     
@@ -108,6 +103,10 @@ public class Play extends BasicGameState
 	     //Sound-Music
 	     coming = new Music("res/Play/zombies_coming.ogg");
 	     pow = new Sound("res/Play/POW.wav");
+	     // Music background
+	  	 music = new Music("res/Play/Investigations.ogg");
+	  	 SoundStore.get().setMusicVolume(0.2f);
+	  	 music.loop();
 	}
 	
 	
@@ -148,7 +147,6 @@ public class Play extends BasicGameState
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
 		Input input = gc.getInput();
-		
 		if (input.isKeyDown(Input.KEY_RIGHT)) 								//Move RIGHT
 		{
 			shooter.xPos +=shooter.speed;
@@ -184,12 +182,6 @@ public class Play extends BasicGameState
 			pow.play();
 			System.out.println("SHOOTING");
 		} 
-		if (input.isKeyDown(Input.KEY_A))
-		{
-			sbg.enterState(2);   
-													//Gameover
-		}
-		
 		
 		this.delayTimeZom+=1;                                                                //system count 
 		if(this.delayTimeZom==delayZom)                                                      //from 0 to delay
@@ -203,10 +195,8 @@ public class Play extends BasicGameState
 		if(this.delayTimeSun==delaySun)                                        //to spawn sun                 
 		{                        							 
 			controller.addSun(new Sun(sunInitPos[(int)(Math.random()*9)],0));
-			
 			delaySun=getDelayTimeSun(5000);
 			this.delayTimeSun=0;
-			
 		}
 		
 		this.delayText+=delta;
@@ -215,14 +205,6 @@ public class Play extends BasicGameState
 		controller.fall();
 		controller.onClickSun();
 	}
-		
-		
-		/*if(controller.gameStatus()==false) 
-		{
-			sbg.enterState(3);
-		} */
-		//controller.gameStatus();
-
 	
 	public int getID()
 	{

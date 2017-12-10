@@ -21,7 +21,9 @@ public class TripletPeashooter extends Plants implements Characters{
 	public TripletPeashooter(int x, int y)   {super(x, y);}
 	
 	@Override
-	public void attack() {}                       
+	public void attack() {
+		
+	}                       
 	
 	@Override
 	public void render(Graphics g,Image png) {                // draw bullets
