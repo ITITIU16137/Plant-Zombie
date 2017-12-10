@@ -90,7 +90,7 @@ public class Play extends BasicGameState
 		zombieImages.add(new Image("res/Zombie/male/walk10.png"));
 				
 		 background = new Image("res/Night.png");
-		 pea = new Image("res/Pea.png");
+		 //pea = new Image("res/Pea.png");
 		 triplePea = new Image("res/fire_bullet.png");
 		 sun = new Image("res/sun.png");
 		 text = new Image("res/text.png");
@@ -123,7 +123,8 @@ public class Play extends BasicGameState
 				g.drawImage(text, 80, 300);                                   //draw text
 			}
 		
-		bullet.render(g,pea);                                                 //draw pea bullets
+		//bullet.render(g,pea);  
+		controller.renderBullet(g);                                 //draw pea bullets
 		bullet2.render(g,triplePea);										  //draw triplet bullets
 		controller.renderZombie(zombieImages, this.count);                    //draw zombies
 		controller.renderSun(g,sun);
@@ -216,7 +217,15 @@ public class Play extends BasicGameState
 			}
 			else if(input.isKeyPressed(Input.KEY_ENTER))
 			{
-				bullet2.add(new TriplePea(shooter2.xPos+120,shooter2.yPos+25));
+				//bullet2.add(new TriplePea(shooter2.xPos+120,shooter2.yPos+25));
+				if(controller.level.gameLevel==1)
+				{
+					controller.addBullet(new Pea(shooter.xPos+120,shooter.yPos+25));
+				}
+				else if(controller.level.gameLevel==2)
+				{
+					controller.addBullet(new FireBullet(shooter.xPos+120,shooter.yPos+25));
+				}
 				System.out.println("TRIPLE PEA SHOOTING");
 			}
 		
@@ -239,7 +248,8 @@ public class Play extends BasicGameState
 		}
 		
 		this.delayText+=delta;
-		bullet.attack();
+		//bullet.attack();
+		controller.shoot();
 		bullet2.attack();
 		controller.zomWalk();
 		controller.fall();
