@@ -11,10 +11,11 @@ import java.util.ArrayList;
 public class Play extends BasicGameState
 {	
 	static TripletPeashooter shooter2 = new TripletPeashooter(200,300);
-	static Peashooter shooter=new Peashooter(200,200);
+	//static Peashooter shooter=new Peashooter(200,200);
+	static Plants shooter=new Plants(200,200);
 	static SunFlower sunflower=new SunFlower(100,100);
 	PlayControl controller = new PlayControl();
-	Pea bullet = new Pea(0,0);
+	//Pea bullet = new Pea(0,0);
 	TriplePea bullet2 = new TriplePea(0,0);
 	static Zombies zombieControl=new Zombies();
 	static Sun sunControll=new Sun();
@@ -32,16 +33,9 @@ public class Play extends BasicGameState
 	private ArrayList<Image> zombieImages=new ArrayList<>();
 	private double count=0;                                      //  this is
 	private double frequencyImage=0.002;                         //  for object speed
-	
-	//private int delayTimeSun=0;
-	//private int delaySun=getDelayTimeSun(5000);
+
 	private int delayText=0;
 	private int durationText=3000;
-	
-	/*public int getDelayTimeSun(int maxTime)
-	{
-		return (int)(Math.random()*maxTime)+1;
-	}*/
 	
 	public Play (int state){	
 	}
@@ -148,31 +142,35 @@ public class Play extends BasicGameState
 		
 		if (input.isKeyDown(Input.KEY_RIGHT)) 								//Move RIGHT
 		{
-			shooter.xPos +=shooter.speed;
+			/*shooter.xPos +=shooter.speed;
 			//System.out.println("RIGHT");
 			if(shooter.xPos<850) shooter.xPos +=shooter.speed;
-			else shooter.xPos=850;
+			else shooter.xPos=850;*/
+			shooter.goRight();
 		}
 		else if (input.isKeyDown(Input.KEY_LEFT)) 						    //Move LEFT
 		{
-			shooter.xPos -=shooter.speed;
+			/*shooter.xPos -=shooter.speed;
 			//System.out.println("LEFT");
 			if(shooter.xPos>200) shooter.xPos -=shooter.speed;
-			else shooter.xPos=200;
+			else shooter.xPos=200;*/
+			shooter.goLeft();
 		}
 		else if (input.isKeyDown(Input.KEY_UP)) 							//Move UP
 		{
-			shooter.yPos -=shooter.speed;
+			/*shooter.yPos -=shooter.speed;
 			//System.out.println("UP");
 			if(shooter.yPos>200) shooter.yPos -=shooter.speed;
-			else shooter.yPos=200;
+			else shooter.yPos=200;*/
+			shooter.goUp();
 		}
 		else if (input.isKeyDown(Input.KEY_DOWN))                            //Move DOWN
 		{
-			shooter.yPos +=shooter.speed;
+			/*shooter.yPos +=shooter.speed;
 			//System.out.println("DOWN");
 			if(shooter.yPos<595) shooter.yPos +=shooter.speed;
-			else shooter.yPos=595;
+			else shooter.yPos=595;*/
+			shooter.goDown();
 		}
 		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press SPACE to shoot
 		{
