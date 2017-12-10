@@ -6,6 +6,14 @@ public class Zombies extends GameObject{
 	private int hp=100;
 	private int damage;
 	public double speed=-0.09;
+	public int delayTimeZom=0;
+	public int maxTime=3000;
+	public int delayZom=getDelayTimeZom(maxTime);//max 10s         // delay time to spawn zombies
+	
+	public Zombies()
+	{
+		
+	}
 	
 	public Zombies(int x,int y)
 	{
@@ -22,6 +30,11 @@ public class Zombies extends GameObject{
 	public void moving()
 	{
 		xPos+=speed;
+	}
+	
+	public int getDelayTimeZom(int maxTime)
+	{	
+		return (int)(Math.random()*maxTime)+1;
 	}
 	
 	public void draw( ArrayList<Image> zom,double i)

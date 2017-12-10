@@ -16,7 +16,7 @@ public class Play extends BasicGameState
 	PlayControl controller = new PlayControl();
 	Pea bullet = new Pea(0,0);
 	TriplePea bullet2 = new TriplePea(0,0);
-	Zombies zombie;
+	static Zombies zombieControl=new Zombies();
 	Image background,pea,sun,text,triplet,triplePea;
 	SpriteSheet S1,S2;
     Animation S11,S22;
@@ -31,18 +31,12 @@ public class Play extends BasicGameState
 	private ArrayList<Image> zombieImages=new ArrayList<>();
 	private double count=0;                                      //  this is
 	private double frequencyImage=0.002;                         //  for object speed
-	private int delayTimeZom=0;                                  // this is for
-	private int delayZom=getDelayTimeZom(10000);                 // delay time to spawn zombies(max 10s)
+	
 	private int delayTimeSun=0;
 	private int delaySun=getDelayTimeSun(5000);
 	private int delayText=0;
 	private int durationText=3000;
 	
-	
-	public int getDelayTimeZom(int maxTime)
-	{	
-		return (int)(Math.random()*maxTime)+1;
-	}
 	public int getDelayTimeSun(int maxTime)
 	{
 		return (int)(Math.random()*maxTime)+1;
@@ -235,12 +229,12 @@ public class Play extends BasicGameState
 				System.out.println("TRIPLE PEA SHOOTING");
 			}
 		
-		this.delayTimeZom+=1;                                                                //system count 
-		if(this.delayTimeZom==delayZom)                                                      //from 0 to delay
+		zombieControl.delayTimeZom+=1;                                                                //system count 
+		if(zombieControl.delayTimeZom==zombieControl.delayZom)                                                      //from 0 to delay
 		{                        							                                 //to spawn zombies
 			controller.addZombie(new Zombies(950,zomInitPos[(int)(Math.random()*5)]));
-			delayZom=getDelayTimeZom(10000);
-			this.delayTimeZom=0;
+			zombieControl.delayZom=zombieControl.getDelayTimeZom(zombieControl.maxTime);
+			zombieControl.delayTimeZom=0;
 		}
 		
 		this.delayTimeSun+=1;                                                                
