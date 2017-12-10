@@ -7,7 +7,7 @@ import Bullet.*;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import java.util.ArrayList;
-import org.lwjgl.input.Mouse;
+
 public class Play extends BasicGameState
 {	
 	static TripletPeashooter shooter2 = new TripletPeashooter(200,300);
@@ -23,8 +23,6 @@ public class Play extends BasicGameState
 	
     Sound pow;
     Music coming;
-    
-    public static Peashooter getShooter() { return shooter;}
     
 	private Integer[] zomInitPos=new Integer[5];
 	private Integer[] sunInitPos=new Integer[9];
@@ -242,7 +240,7 @@ public class Play extends BasicGameState
 		{                        							 
 			controller.addSun(new Sun(sunInitPos[(int)(Math.random()*9)],0));
 			
-			delaySun=getDelayTimeSun(100);
+			delaySun=getDelayTimeSun(5000);
 			this.delayTimeSun=0;
 			
 		}
@@ -253,9 +251,8 @@ public class Play extends BasicGameState
 		bullet2.attack();
 		controller.zomWalk();
 		controller.fall();
-		controller.onClickSun();
+		}
 	}	
-	}
 	public int getID()
 	{
         	return 1;	

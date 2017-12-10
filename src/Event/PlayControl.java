@@ -1,6 +1,7 @@
 package Event;
 import Characters.*;
 import GUI.*;
+import java.util.concurrent.ThreadLocalRandom;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 import java.util.ArrayList;
@@ -26,6 +27,11 @@ public class PlayControl {
 	Sound Punch;
 	Sound ZomWalk;
 
+	private int check ;
+	private int delayTimeSun=0;
+	private int delaySun=getDelayTimeSun(80);
+
+//	double a, b, c, d;
 	public int getDelayTimeSun(int maxTime)
 	{
 		return (int)(Math.random()*maxTime)+1;
@@ -159,33 +165,11 @@ public class PlayControl {
 	{
 		//tempSun.stop();
 		sun.remove(b);
+		/*
+		}*/
 	}
-	
-	public void delete() {
-		 removeSun(tempSun);
-	}
-	
-	public void onClickSun() {
-		//if (Mouse.getEventButton()==0)
-			for (int i=0; i<sun.size(); i++) {
-				if (checkSunMouse(sun.get(i)) == true ) 
-					sun.remove(i);
-			}
-	}
-	
-	public boolean checkSunMouse (Sun sun) {
-		double x = Play.getShooter().getxPos();
-		double y = Play.getShooter().getyPos();
-		
-		//if y <= sun.yPos + 166 && x >= sun.xPos) 
-		//if (y >= sun.yPos   && x >= sun.xPos )
-	//if (y >= sun.yPos -11 && x >= sun.xPos +11 && x <= sun.xPos +5 && y <= sun.yPos - 5) 
-		if (y >= sun.yPos -30  && y <= sun.yPos + 77 && x <= sun.xPos + 56 && x >= sun.xPos -100) 
-		return true;
-		else 
-			return false;
-	}
-	
+
+
 	
 	public void checkToSwitchLevel()
 	{

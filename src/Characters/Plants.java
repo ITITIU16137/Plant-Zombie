@@ -5,7 +5,7 @@ import org.newdawn.slick.Image;
 
 public abstract class Plants extends GameObject{
 	
-	public double speed = 1;
+	public double speed = 0.2;
 	protected int hp;
 	//protected int damage;
 	
