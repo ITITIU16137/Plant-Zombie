@@ -9,7 +9,7 @@ public class FireBullet extends Bullet implements Characters{
 	//public int dX=40,dY=40;       //size of bullet
 	double speed=0.5;       // speed of bullet                    
 	public static int damage=50;
-	public static String pngName="res/newBullet.png";
+	public static String pngName="res/Fire_Bullet.png";
 	
 	/*public FireBullet()
 	{
