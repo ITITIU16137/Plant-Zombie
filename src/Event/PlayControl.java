@@ -37,6 +37,12 @@ public class PlayControl {
 		return (int)(Math.random()*maxTime)+1;
 	}
 	//private int k=595;                                    // sun fall into random area
+	
+	//--------------------------------------PLANTS--------------------------------------
+	public void renderPlants(Plants p) throws SlickException
+	{
+		level.drawPlants(p);
+	}
 	//--------------------------------------BULLET---------------------------------------
 			public void shoot()
 			{

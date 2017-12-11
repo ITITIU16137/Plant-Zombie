@@ -10,11 +10,13 @@ import java.util.ArrayList;
 
 public class Play extends BasicGameState
 {	
-	static TripletPeashooter shooter2 = new TripletPeashooter(200,300);
+	//static TripletPeashooter shooter2 = new TripletPeashooter(200,300);
 	//static Peashooter shooter=new Peashooter(200,200);
-	static Plants shooter=new Plants(200,200);
+	//static Plants shooter=new Plants(200,200);
+	static ArrayList<Plants> shooter=new ArrayList<>();
+	
 	static SunFlower sunflower=new SunFlower(100,100);
-	PlayControl controller = new PlayControl();
+	static PlayControl controller = new PlayControl();
 	//Pea bullet = new Pea(0,0);
 	TriplePea bullet2 = new TriplePea(0,0);
 	static Zombies zombieControl=new Zombies();
@@ -42,6 +44,10 @@ public class Play extends BasicGameState
 	
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException
 	{
+		//Types of shooters in an array
+		shooter.add(new Peashooter(200,200));
+		shooter.add(new TripletPeashooter((int)shooter.get(0).xPos,(int)shooter.get(0).yPos));
+		
 		zomInitPos[0]=120;
 		zomInitPos[1]=220;
 		zomInitPos[2]=320;
@@ -100,9 +106,11 @@ public class Play extends BasicGameState
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		g.drawImage(background, 0,0);                                         //draw background
-		g.drawAnimation(S22,(float)shooter.xPos+40,(float)shooter.yPos);      //draw peashooter
-	    g.drawImage(triplet,(float) shooter2.xPos,(float) shooter.yPos);      //draw tripletshooter
-		g.drawAnimation(S11,(float)sunflower.xPos,(float) sunflower.yPos);    //draw sunflower
+		//g.drawAnimation(S22,(float)shooter.xPos+40,(float)shooter.yPos);      //draw peashooter
+		controller.renderPlants(shooter.get(controller.level.gameLevel-1));
+	    //g.drawImage(triplet,(float) shooter2.xPos,(float) shooter.get(controller.level.gameLevel-1).yPos);      //draw tripletshooter
+		
+	    g.drawAnimation(S11,(float)sunflower.xPos,(float) sunflower.yPos);    //draw sunflower
 		
 		if(delayText<durationText) 
 			{
@@ -120,9 +128,9 @@ public class Play extends BasicGameState
 		if(this.count>10){this.count=0;}
 		
 		g.setColor(Color.white); 
-		g.drawString("X:  "+shooter.xPos+" Y:  "+shooter.yPos,400,50);         // debug
+		g.drawString("X:  "+shooter.get(controller.level.gameLevel-1).xPos+" Y:  "+shooter.get(controller.level.gameLevel-1).yPos,400,50);         // debug
 		g.setColor(Color.white);
-		g.drawString("X2:  "+shooter2.xPos+"Y2:  "+shooter2.yPos, 400,100);    //debug
+		//g.drawString("X2:  "+shooter2.xPos+"Y2:  "+shooter2.yPos, 400,100);    //debug
 		
 		//g.drawImage(sun, 0, 0);                                                
 		g.setColor(Color.black);                                               // Sun board
@@ -146,7 +154,7 @@ public class Play extends BasicGameState
 			//System.out.println("RIGHT");
 			if(shooter.xPos<850) shooter.xPos +=shooter.speed;
 			else shooter.xPos=850;*/
-			shooter.goRight();
+			shooter.get(controller.level.gameLevel-1).goRight();
 		}
 		else if (input.isKeyDown(Input.KEY_LEFT)) 						    //Move LEFT
 		{
@@ -154,7 +162,7 @@ public class Play extends BasicGameState
 			//System.out.println("LEFT");
 			if(shooter.xPos>200) shooter.xPos -=shooter.speed;
 			else shooter.xPos=200;*/
-			shooter.goLeft();
+			shooter.get(controller.level.gameLevel-1).goLeft();
 		}
 		else if (input.isKeyDown(Input.KEY_UP)) 							//Move UP
 		{
@@ -162,7 +170,7 @@ public class Play extends BasicGameState
 			//System.out.println("UP");
 			if(shooter.yPos>200) shooter.yPos -=shooter.speed;
 			else shooter.yPos=200;*/
-			shooter.goUp();
+			shooter.get(controller.level.gameLevel-1).goUp();
 		}
 		else if (input.isKeyDown(Input.KEY_DOWN))                            //Move DOWN
 		{
@@ -170,36 +178,36 @@ public class Play extends BasicGameState
 			//System.out.println("DOWN");
 			if(shooter.yPos<595) shooter.yPos +=shooter.speed;
 			else shooter.yPos=595;*/
-			shooter.goDown();
+			shooter.get(controller.level.gameLevel-1).goDown();
 		}
 		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press SPACE to shoot
 		{
 			//bullet.add(new Pea(shooter.xPos+120,shooter.yPos+25));  // bullets fly from plant position	
 			if(controller.level.gameLevel==1)
 			{
-				controller.addBullet(new Pea(shooter.xPos+120,shooter.yPos+25));
+				controller.addBullet(new Pea(shooter.get(controller.level.gameLevel-1).xPos+120,shooter.get(controller.level.gameLevel-1).yPos+25));
 			}
 			else if(controller.level.gameLevel==2)
 			{
-				controller.addBullet(new FireBullet(shooter.xPos+120,shooter.yPos+25));
+				controller.addBullet(new FireBullet(shooter.get(controller.level.gameLevel-1).xPos+120,shooter.get(controller.level.gameLevel-1).yPos+25));
 			}
 			pow.play();
 			System.out.println("PEA SHOOTING");
 		} 
 		
 		
-		if(shooter.yPos!=shooter.xPos)
+		/*if(shooter.get(controller.level.gameLevel-1).yPos!=shooter.get(controller.level.gameLevel-1).xPos)
 		{
 			if (input.isKeyDown(Input.KEY_D))
 			{
-				shooter2.xPos += shooter.speed;
+				shooter2.xPos += shooter.get(controller.level.gameLevel-1).speed;
 				if(shooter2.xPos<850) shooter2.xPos += shooter2.speed;
 				else shooter2.xPos=850;
 			}
 			else if (input.isKeyDown(Input.KEY_A))
 			{
 				shooter2.xPos -=shooter2.speed;
-				if(shooter.xPos >200) shooter.xPos -=shooter2.speed;
+				if(shooter.get(controller.level.gameLevel-1).xPos >200) shooter.get(controller.level.gameLevel-1).xPos -=shooter2.speed;
 				else shooter2.xPos=200;
 			}
 			else if(input.isKeyDown(Input.KEY_W))
@@ -216,7 +224,7 @@ public class Play extends BasicGameState
 			}
 			else if(input.isKeyPressed(Input.KEY_ENTER))
 			{
-				//bullet2.add(new TriplePea(shooter2.xPos+120,shooter2.yPos+25));
+				bullet2.add(new TriplePea(shooter2.xPos+120,shooter2.yPos+25));
 				if(controller.level.gameLevel==1)
 				{
 					controller.addBullet(new Pea(shooter.xPos+120,shooter.yPos+25));
@@ -226,7 +234,7 @@ public class Play extends BasicGameState
 					controller.addBullet(new FireBullet(shooter.xPos+120,shooter.yPos+25));
 				}
 				System.out.println("TRIPLE PEA SHOOTING");
-			}
+			}*/
 		
 		zombieControl.delayTimeZom+=1;                                                                //system count 
 		if(zombieControl.delayTimeZom==zombieControl.delayZom)                                                      //from 0 to delay
@@ -252,8 +260,9 @@ public class Play extends BasicGameState
 		bullet2.attack();
 		controller.zomWalk();
 		controller.fall();
-		}
-	}	
+		
+	}
+	
 	public int getID()
 	{
         	return 1;	

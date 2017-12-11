@@ -1,6 +1,7 @@
 package Plants;
 import java.util.ArrayList;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
@@ -12,6 +13,8 @@ public class Peashooter extends Plants implements Characters{
 	
 	private ArrayList<Bullet> bullets=new ArrayList<>();
 	Bullet tempBullet;
+	
+	public static String pngName="res/PeaShooter.png";
 	
 	public Peashooter(int x, int y)   {super(x, y);}
 	
@@ -30,5 +33,8 @@ public class Peashooter extends Plants implements Characters{
 		
 	}
 	
-	
+	public void draw(Animation a)
+	{
+		a.draw((float)xPos+40,(float)yPos);
+	}
 }
