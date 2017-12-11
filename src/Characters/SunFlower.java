@@ -6,19 +6,12 @@ public class SunFlower extends GameObject{
 	int hp;
 	int damage;
 	Random ran = new Random();
-	/*
-	 * 	Constructor
-	 */
 	int x, y, xR, yR, a, b;
 	public SunFlower(int x,int y)
 	{
 		super(x,y);
-		this.x=x;
-		this.y=y;
 	}
-	/*
-	 * 	Get-Set method
-	 */
+
 	public int getSpeed() {
 		return speed;
 	}

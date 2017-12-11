@@ -123,7 +123,7 @@ public class Play extends BasicGameState
 		
 		//bullet.render(g,pea);  
 		controller.renderBullet(g);                                 //draw pea bullets
-		bullet2.render(g,triplePea);										  //draw triplet bullets
+		//bullet2.render(g,triplePea);										  //draw triplet bullets
 		controller.renderZombie(zombieImages, this.count);                    //draw zombies
 		controller.renderSun(g,sun);
 		
@@ -144,6 +144,9 @@ public class Play extends BasicGameState
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
 		Input input = gc.getInput();
+		/*
+		 *    Plant 1
+		 */
 		if (input.isKeyDown(Input.KEY_RIGHT)) 								//Move RIGHT
 		{
 			/*shooter.xPos +=shooter.speed;
@@ -231,16 +234,16 @@ public class Play extends BasicGameState
 				System.out.println("TRIPLE PEA SHOOTING");
 			}*/
 		
-		zombieControl.delayTimeZom+=1;                                                                //system count 
-		if(zombieControl.delayTimeZom==zombieControl.delayZom)                                                      //from 0 to delay
-		{                        							                                 //to spawn zombies
+		zombieControl.delayTimeZom+=1;                                                                      //system count 
+		if(zombieControl.delayTimeZom==zombieControl.delayZom)                                              //from 0 to delay
+		{                        							                                                //to spawn zombies
 			controller.addZombie(new Zombies(950,zomInitPos[(int)(Math.random()*5)]));
 			zombieControl.delayZom=zombieControl.getDelayTimeZom(zombieControl.maxTime);
 			zombieControl.delayTimeZom=0;
 		}
 		
 		sunControll.delayTimeSun+=1;                                                                
-		if(sunControll.delayTimeSun==sunControll.delaySun)                                        //to spawn sun                 
+		if(sunControll.delayTimeSun==sunControll.delaySun)                                                  //to spawn sun                 
 		{                        							 
 			controller.addSun(new Sun(sunInitPos[(int)(Math.random()*9)],0));
 			sunControll.delaySun=sunControll.getDelayTimeSun(sunControll.maxTime);
@@ -252,7 +255,7 @@ public class Play extends BasicGameState
 		this.delayText+=delta;
 		//bullet.attack();
 		controller.shoot();
-		bullet2.attack();
+		//bullet2.attack();
 		controller.zomWalk();
 		controller.fall();
 		controller.onClickSun();

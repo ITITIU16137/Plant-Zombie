@@ -1,23 +1,16 @@
 package Characters;
-
-
-//import org.newdawn.slick.Color;
 import org.newdawn.slick.*;
+
 public class Sun extends GameObject{
 
-	protected int dX=400,dY=400;       //size of Sun
+	protected int dX=400,dY=400;         //size of Sun
 	private int randomInt;
-	int speed = 1;      // speed of Sun :D
+	int speed = 1;                       // speed of Sun :D
 	public int delayTimeSun=0;
 	public int delaySun=getDelayTimeSun(5000);
 	public int maxTime=5000;
-	/*
-	 * 	Constructor
-	 */
-	public Sun()
-	{
-		
-	}
+	
+	public Sun() {}
 	
 	public Sun(int x,int y)
 	{

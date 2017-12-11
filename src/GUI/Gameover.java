@@ -23,12 +23,7 @@ public class Gameover extends BasicGameState {
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
-	//g.drawAnimation(goani, 512, 384);
 		g.drawImage(overwall, 150, 150);
-		/*g.setColor(Color.white);
-		g.drawString("PRESS 1 TO PLAY AGAIN", 50 , 50);
-		g.setColor(Color.white);
-		g.drawString("PRESS 2 TO EXIT", 100, 100);*/
 		sound.play();
 	}
 

@@ -10,10 +10,7 @@ public class Zombies extends GameObject{
 	public int maxTime=3000;
 	public int delayZom=getDelayTimeZom(maxTime);//max 10s         // delay time to spawn zombies
 	
-	public Zombies()
-	{
-		
-	}
+	public Zombies() {}
 	
 	public Zombies(int x,int y)
 	{
