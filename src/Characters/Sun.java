@@ -1,32 +1,27 @@
 package Characters;
 
 
-//import org.newdawn.slick.Color;
+//import org.newdawn.slick.Color; 
 import org.newdawn.slick.*;
 public class Sun extends GameObject{
-	
-	protected int dX=400,dY=400;       //size of Sun
-	double speed=0.08;       // speed of Sun :D
 
-	private int delaySun=0;
-	private int durationSun=5000;
+	protected int dX=400,dY=400;       //size of Sun
+	private int randomInt;
+	int speed = 1;      // speed of Sun :D
 	/*
-	 * 	Constructor 
+	 * 	Constructor
 	 */
 	public Sun(int x,int y)
 	{
 		super(x,y);
+		this.randomInt = (int)(Math.random()*1)+(int)(Math.random()*5);
 	}
-	/*
-	 * 	 Add sun one by one
-	 */
-	public void falling()
+
+	public int getRandomInt()
 	{
-		yPos+=speed;
+			return randomInt;
 	}
-	/*
-	 * 	
-	 */
+	
 	public void draw(Graphics g, Image png)                  // load image
 	{
 		g.drawImage(png,(int) this.xPos,(int)this.yPos);

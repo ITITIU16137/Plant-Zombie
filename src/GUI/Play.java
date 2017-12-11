@@ -1,42 +1,44 @@
 package GUI;
 import Characters.*;
 import Event.*;
-import CheckGame.*;
+import Plants.*;
+import Bullet.Pea;
 import org.newdawn.slick.*;
+import org.newdawn.slick.openal.SoundStore;
 import org.newdawn.slick.state.*;
-
 import java.util.ArrayList;
 
 public class Play extends BasicGameState
 {	
-	BulletShoot bullets = new BulletShoot();
 	PlayControl controller = new PlayControl();
-	Peashooter shooter=new Peashooter(200,200);
+	static Peashooter shooter=new Peashooter(200,200);
 	SunFlower sunflower=new SunFlower(100,100);
+	Pea bullet = new Pea(0,0);
 	Zombies zombie;
-	Image small,background,bullet,sun,text;
+	Image small,background,pea,sun,text;
 	SpriteSheet S1,S2;
     Animation S11,S22;
-   
     Sound pow;
-    Music coming;
+    Music coming,music;
     
-    private Animation a;
-	
+    public static Peashooter getShooter() { return shooter;}
+    
 	private Integer[] zomInitPos=new Integer[5];
 	private Integer[] sunInitPos=new Integer[9];
+
+	private Integer[] stopPos=new Integer[5];
 	
 	private ArrayList<Image> zombieImages=new ArrayList<>();
-	
-	private double count=0;                                 //  this is
-	private double frequencyImage=0.002;                    //  for object speed
-	
-	private int delayTimeZom=0;                                // this is for
-	private int delayZom=getDelayTimeZom(10000);//max 10s         // delay time to spawn zombies
+	private double count=0;                                      //  this is
+	private double frequencyImage=0.002;                         //  for object speed
+	private int delayTimeZom=0;                                  // this is for
+	private int delayZom=getDelayTimeZom(10000);                 // delay time to spawn zombies(max 10s)
 	private int delayTimeSun=0;
 	private int delaySun=getDelayTimeSun(5000);
 	private int delayText=0;
 	private int durationText=3000;
+	
+	
 	public int getDelayTimeZom(int maxTime)
 	{	
 		return (int)(Math.random()*maxTime)+1;
@@ -57,16 +59,21 @@ public class Play extends BasicGameState
 		zomInitPos[3]=420;
 		zomInitPos[4]=520;
 		
+		stopPos[0]=195;
+		stopPos[1]=295;
+		stopPos[2]=395;
+		stopPos[3]=495;
+		stopPos[4]=595;
 		
-		sunInitPos[0]=200;
-		sunInitPos[1]=276;
-		sunInitPos[2]=359;
-		sunInitPos[3]=447;
-		sunInitPos[4]=519;
-		sunInitPos[5]=607;
-		sunInitPos[6]=684;
-		sunInitPos[7]=764;
-		sunInitPos[8]=847;
+		sunInitPos[0]=204+27;
+		sunInitPos[1]=276+27;
+		sunInitPos[2]=364+27;
+		sunInitPos[3]=442+27;
+		sunInitPos[4]=520+27;
+		sunInitPos[5]=602+27;
+		sunInitPos[6]=686+27;
+		sunInitPos[7]=764+27;
+		sunInitPos[8]=851+27;
 		
 		
 		zombieImages.add(new Image("res/Zombie/male/walk1.png"));
@@ -81,106 +88,106 @@ public class Play extends BasicGameState
 		zombieImages.add(new Image("res/Zombie/male/walk10.png"));
 				
 		 background=new Image("res/Night.png");
-		 
-		 bullet=new Image("res/Pea.png");
-		 
+		 pea=new Image("res/Pea.png");
 		 sun = new Image("res/sun.png");
-		 
 		 text = new Image("res/text.png");
 		 
-		 S1 = new SpriteSheet("res/SunFlower.png", 74, 73);// Sunflower 
-	     S11 = new Animation(S1, 40);				  // animatioon
-	     S11.setPingPong(true);						  // 
+		 S1 = new SpriteSheet("res/SunFlower.png", 74, 73);                  // Sunflower 
+	     S11 = new Animation(S1, 40);				                         // animation
+	     S11.setPingPong(true);						  
 	     
-	     S2 = new SpriteSheet("res/PeaShooter.png", 125, 106);// Peashooter 
-	     S22 = new Animation(S2, 20);				  // animatioon
+	     S2 = new SpriteSheet("res/PeaShooter.png", 125, 106);               // Peashooter 
+	     S22 = new Animation(S2, 20);				                         // animation
 	     S22.setPingPong(true);		
 	      
-	     //Sound
+	     //Sound-Music
 	     coming = new Music("res/Play/zombies_coming.ogg");
 	     pow = new Sound("res/Play/POW.wav");
+	     // Music background
+	  	 music = new Music("res/Play/Investigations.ogg");
+	  	 SoundStore.get().setMusicVolume(0.2f);
+//	  	 music.loop();
 	}
 	
 	
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
-		g.drawImage(background, 0,0);                         //draw background
-		g.drawAnimation(S22,(float)shooter.xPos+40,(float)shooter.yPos); // draw peashooter
-		g.drawAnimation(S11,(float)sunflower.xPos,(float) sunflower.yPos); // draw sunflower
+		g.drawImage(background, 0,0);                                         //draw background
+		g.drawAnimation(S22,(float)shooter.xPos+40,(float)shooter.yPos);      //draw peashooter
+		g.drawAnimation(S11,(float)sunflower.xPos,(float) sunflower.yPos);    //draw sunflower
 		
 		if(delayText<durationText) 
 			{
-				coming.play();                                     //annoucement
-				g.drawImage(text, 80, 300);                        //draw text
+				coming.play();                                     			  //play Sound
+				g.drawImage(text, 80, 300);                                   //draw text
 			}
 		
-		controller.renderBullet(g,bullet);                         // draw bullets
-		controller.renderZombie(zombieImages, this.count);   //draw zombies
+		bullet.render(g,pea);                                             //draw bullets
+		controller.renderZombie(zombieImages, this.count);                    //draw zombies
 		controller.renderSun(g,sun);
 		
-		this.count+=this.frequencyImage ;                //  print multiple images to create animation
+		this.count+=this.frequencyImage ;                                     //print multiple images to create animation
 		if(this.count>10){this.count=0;}
 		
 		g.setColor(Color.white); 
-		g.drawString("X:  "+shooter.xPos+"Y:  "+shooter.yPos,400,100);          // debug
-		//Sun Board
-		g.drawImage(sun, 0, 0);
-		g.setColor(Color.black);
-		//g.setColor(100, 30, new Color(1, 1, 1, 0.5f));
-		g.fillRoundRect(100, 30, 150, 50, 10 );
+		g.drawString("X:  "+shooter.xPos+" Y:  "+shooter.yPos,400,100);         // debug
+		
+		g.drawImage(sun, 0, 0);                                                //
+	//	g.setColor(Color.cyan);													// Sun board
+		g.drawString("Score: " + controller.printscore(), 100, 30);
+//		g.fillRoundRect(100, 30, 150, 50, 10 );                                //
+		
 		/*g.setColor(Color.red);                              //debug
 		for(int i=0;i<5;i++)
 		{
 			g.fillOval(950, zomInitPos[i], 10, 10);
 		}*/
-		
 		//g.drawString(" "+this.count2+" "+delay, 500, 500);     //debug
-		
 	}
 	
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
 		Input input = gc.getInput();
-		
-		if (input.isKeyDown(Input.KEY_RIGHT)) 
+		if (input.isKeyDown(Input.KEY_RIGHT)) 								//Move RIGHT
 		{
 			shooter.xPos +=shooter.speed;
+			System.out.println("RIGHT");
 			if(shooter.xPos<850) shooter.xPos +=shooter.speed;
 			else shooter.xPos=850;
 		}
-		else if (input.isKeyDown(Input.KEY_LEFT)) 
+		else if (input.isKeyDown(Input.KEY_LEFT)) 						    //Move LEFT
 		{
 			shooter.xPos -=shooter.speed;
+			System.out.println("LEFT");
 			if(shooter.xPos>200) shooter.xPos -=shooter.speed;
 			else shooter.xPos=200;
 		}
-		else if (input.isKeyDown(Input.KEY_UP)) 
+		else if (input.isKeyDown(Input.KEY_UP)) 							//Move UP
 		{
 			shooter.yPos -=shooter.speed;
+			System.out.println("UP");
 			if(shooter.yPos>200) shooter.yPos -=shooter.speed;
 			else shooter.yPos=200;
 		}
-		else if (input.isKeyDown(Input.KEY_DOWN)) 
+		else if (input.isKeyDown(Input.KEY_DOWN))                            //Move DOWN
 		{
 			shooter.yPos +=shooter.speed;
+			System.out.println("DOWN");
 			if(shooter.yPos<595) shooter.yPos +=shooter.speed;
 			else shooter.yPos=595;
 		}
-		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press space to shoot
+		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press SPACE to shoot
 		{
-			controller.addBullet(new Bullet(shooter.xPos+120,shooter.yPos+25));     // bullets fly from plant position	
+			bullet.add(new Pea(shooter.xPos+120,shooter.yPos+25));  // bullets fly from plant position	
+			
 			pow.play();
-		}
-		if (input.isKeyDown(Input.KEY_A))
-		{
-			sbg.enterState(2);                                    //Gameover
-		}
-		
+			System.out.println("SHOOTING");
+		} 
 		
 		this.delayTimeZom+=1;                                                                //system count 
 		if(this.delayTimeZom==delayZom)                                                      //from 0 to delay
 		{                        							                                 //to spawn zombies
-			controller.addZombie(new Zombies(950,zomInitPos[(int)(Math.random()*5)]));
+		//	controller.addZombie(new Zombies(950,zomInitPos[(int)(Math.random()*5)]));
 			delayZom=getDelayTimeZom(10000);
 			this.delayTimeZom=0;
 		}
@@ -192,17 +199,12 @@ public class Play extends BasicGameState
 			delaySun=getDelayTimeSun(5000);
 			this.delayTimeSun=0;
 		}
-
+		
 		this.delayText+=delta;
-		controller.shoot();
+		bullet.attack();
 		controller.zomWalk();
 		controller.fall();
-		/*if(controller.gameStatus()==false) 
-		{
-			sbg.enterState(3);
-		} */
-		//controller.gameStatus();
-		
+		controller.onClickSun();
 	}
 	
 	public int getID()
