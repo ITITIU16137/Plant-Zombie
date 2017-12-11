@@ -4,9 +4,9 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import org.newdawn.slick.openal.SoundStore;
 
-public class Menu extends BasicGameState implements MusicListener{
+public class Menu extends BasicGameState{
 	private Sound sound;
-	private Music music,music2;
+	private Music music;
 	private Image start, exit, logo;
 	private int delayTime = 0; // this is for
 	private int delay = (80);
@@ -20,8 +20,6 @@ public class Menu extends BasicGameState implements MusicListener{
 		//Background Music
 		music = new Music("res/Menu/Level1.ogg");
 		SoundStore.get().setCurrentMusicVolume(0.5f);
-		music2 = new Music("res/Play/Investigations.ogg");
-	  	SoundStore.get().setMusicVolume(0.2f);
 		music.loop();
 		// Image button
 		start = new Image("res/Menu/Start.png");
@@ -71,7 +69,6 @@ public class Menu extends BasicGameState implements MusicListener{
 
 			if (input.isMouseButtonDown(0)) {
 				gc.setTargetFrameRate(999);
-				music.stop();
 				sound.play();
 				sbg.enterState(1);
 				
@@ -90,19 +87,5 @@ public class Menu extends BasicGameState implements MusicListener{
 	/// Return menu
 	public int getID() {
 		return 0;
-	}
-
-	@Override
-	public void musicEnded(Music music) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void musicSwapped(Music m, Music n) {
-		// TODO Auto-generated method stub
-		if(!m.playing())
-		{
-			n.loop();
-		}
 	}
 }

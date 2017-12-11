@@ -106,7 +106,7 @@ public class Play extends BasicGameState
 	     // Music background
 	  	 music = new Music("res/Play/Investigations.ogg");
 	  	 SoundStore.get().setMusicVolume(0.2f);
-	  	 music.loop();
+//	  	 music.loop();
 	}
 	
 	
