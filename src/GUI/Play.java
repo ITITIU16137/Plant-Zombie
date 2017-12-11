@@ -109,8 +109,8 @@ public class Play extends BasicGameState
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		g.drawImage(background, 0,0);                                         //draw background
-		//g.drawAnimation(S22,(float)shooter.xPos+40,(float)shooter.yPos);      //draw peashooter
-		controller.renderPlants(shooter.get(controller.level.gameLevel-1));
+		g.drawAnimation(S22,(float)shooter.get(controller.level.gameLevel-1).xPos+40,(float)shooter.get(controller.level.gameLevel-1).yPos);      //draw peashooter
+		//controller.renderPlants(shooter.get(controller.level.gameLevel-1));
 	    //g.drawImage(triplet,(float) shooter2.xPos,(float) shooter.get(controller.level.gameLevel-1).yPos);      //draw tripletshooter
 		
 	    g.drawAnimation(S11,(float)sunflower.xPos,(float) sunflower.yPos);    //draw sunflower
