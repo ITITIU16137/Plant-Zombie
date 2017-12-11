@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Play extends BasicGameState
 {	 
 	float x,y;
+	ArrayList<SunFlower2> sunflow = new ArrayList<>();
 	PlayControl controller = new PlayControl();
 	Peashooter shooter=new Peashooter(200,200);
 //	SunFlower sunflower=new SunFlower(100,100);
@@ -21,8 +22,8 @@ public class Play extends BasicGameState
 	Pea bullet = new Pea(0,0);
 	Zombies zombie;
 	Image small,background,pea,sun,text;
-	SpriteSheet S1,S2;
-    Animation S11,S22;
+	SpriteSheet S1,S2,S3;
+    Animation S11,S22,S33;
 
     private int delayTime = 0; // this is for
 	private int delay = (5000);
@@ -113,6 +114,7 @@ public class Play extends BasicGameState
 	     //Sound-Music
 	     coming = new Music("res/Play/zombies_coming.ogg");
 	     pow = new Sound("res/Play/POW.wav");
+	     
 	}
 	
 	
@@ -141,14 +143,17 @@ public class Play extends BasicGameState
 		g.drawImage(sun, 0, 0);                                                //
 		g.setColor(Color.black);                                               // Sun board
 		g.fillRoundRect(100, 30, 150, 50, 10 );                                //
-		sunflower.appear(x,y);
-		g.drawAnimation(S11,250,250);
+		for (int i=0;i<sunflow.size();i++) {
+			sunflow.get(i).appear();
+		}
+		
 		/*g.setColor(Color.red);                              //debug
 		for(int i=0;i<5;i++)
 		{
 			g.fillOval(950, zomInitPos[i], 10, 10);
 		}*/
 		//g.drawString(" "+this.count2+" "+delay, 500, 500);     //debug
+		
 	}
 	
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -221,6 +226,8 @@ public class Play extends BasicGameState
 		controller.fall();
 		
 		
+		sunflow.add(new SunFlower2(100,100,S1));
+	//	System.out.println(x+y);
 		
 	}
 		
