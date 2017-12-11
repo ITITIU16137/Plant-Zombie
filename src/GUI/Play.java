@@ -40,7 +40,7 @@ public class Play extends BasicGameState
 	public Play (int state){	
 	}
 	
-	public static Peashooter getShooter() { return shooter2;}
+	public static Plants getShooter() { return shooter.get(controller.level.gameLevel-1);}
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException
 	{
 		//Types of shooters in an array
