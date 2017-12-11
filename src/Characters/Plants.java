@@ -5,9 +5,8 @@ import org.newdawn.slick.Image;
 
 public  class Plants extends GameObject{
 	
-	public double speed = 0.2;
-	protected int hp;
-	//protected int damage;
+	public float speed = (float) 0.6;
+	private int hp;
 	
 	public Plants(int x,int y) 
 	{
@@ -49,6 +48,8 @@ public  class Plants extends GameObject{
 	{
 		
 	}
+
+
 	
 	
 	

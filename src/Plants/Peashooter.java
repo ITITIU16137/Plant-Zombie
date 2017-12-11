@@ -1,15 +1,11 @@
 package Plants;
 import java.util.ArrayList;
-
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-
 import Characters.*;
-import Event.*;
-import GUI.Main;
 
-public class Peashooter extends Plants implements Characters{
+public class Peashooter extends Plants{
 	
 	private ArrayList<Bullet> bullets=new ArrayList<>();
 	Bullet tempBullet;
@@ -25,12 +21,6 @@ public class Peashooter extends Plants implements Characters{
 			tempBullet=bullets.get(i);
 			tempBullet.render(g,png);
 		}
-	}
-
-	@Override
-	public void attack() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	public void draw(Animation a)

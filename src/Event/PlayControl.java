@@ -10,7 +10,7 @@ public class PlayControl {
 	
 	public LevelControl level=new LevelControl();
 	public int limitness=0;
-	
+
 	Physic phy =new Physic();
 	private ArrayList<Zombies> zombies=new ArrayList<>();
 	private ArrayList<Bullet> bullets=new ArrayList<>();
@@ -26,6 +26,7 @@ public class PlayControl {
 	Graphics g;
 	Sound Punch;
 	Sound ZomWalk;
+	int score_sun;
 
 	private int check ;
 	private int delayTimeSun=0;
@@ -36,7 +37,6 @@ public class PlayControl {
 	{
 		return (int)(Math.random()*maxTime)+1;
 	}
-	//private int k=595;                                    // sun fall into random area
 	
 	//--------------------------------------PLANTS--------------------------------------
 	public void renderPlants(Plants p) throws SlickException
@@ -178,8 +178,6 @@ public class PlayControl {
 		}*/
 	}
 
-
-	
 	public void checkToSwitchLevel()
 	{
 		if(limitness==level.setLimitness())
@@ -187,6 +185,37 @@ public class PlayControl {
 			level.gameLevel++;
 			limitness=0;
 		}
+	}
+	public void delete() {
+		 removeSun(tempSun);
+	}
+	
+	public void onClickSun() {
+		//if (Mouse.getEventButton()==0)
+			for (int i=0; i<sun.size(); i++) {
+				if (checkSunMouse(sun.get(i)) == true ) {
+					sun.remove(i);
+					score_sun+=1;
+				}
+			}
+			
+	}
+	public int printscore () {
+		return score_sun*50;
+	}
+	
+	public boolean checkSunMouse (Sun sun) {
+		double x = Play.getShooter().getxPos();
+		double y = Play.getShooter().getyPos();
+		
+		//if y <= sun.yPos + 166 && x >= sun.xPos) 
+		//if (y >= sun.yPos   && x >= sun.xPos )
+	//if (y >= sun.yPos -11 && x >= sun.xPos +11 && x <= sun.xPos +5 && y <= sun.yPos - 5) 
+		if (y >= sun.yPos -30  && y <= sun.yPos + 77 && x <= sun.xPos + 56 && x >= sun.xPos -100) 
+		return true;
+		else 
+			return false;
+          
 	}
 }
 	

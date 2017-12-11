@@ -5,28 +5,26 @@ import Plants.*;
 import Bullet.*;
 
 import org.newdawn.slick.*;
+import org.newdawn.slick.openal.SoundStore;
 import org.newdawn.slick.state.*;
 import java.util.ArrayList;
 
 public class Play extends BasicGameState
 {	
-	//static TripletPeashooter shooter2 = new TripletPeashooter(200,300);
-	//static Peashooter shooter=new Peashooter(200,200);
-	//static Plants shooter=new Plants(200,200);
 	static ArrayList<Plants> shooter=new ArrayList<>();
-	
+	static Peashooter shooter2 = new Peashooter(200,200);
 	static SunFlower sunflower=new SunFlower(100,100);
 	static PlayControl controller = new PlayControl();
-	//Pea bullet = new Pea(0,0);
 	TriplePea bullet2 = new TriplePea(0,0);
 	static Zombies zombieControl=new Zombies();
 	static Sun sunControll=new Sun();
-	Image background,pea,sun,text,triplet,triplePea;
+	Image triplet,triplePea;
+	Image small,background,pea,sun,text;
 	SpriteSheet S1,S2;
     Animation S11,S22;
 	
     Sound pow;
-    Music coming;
+    Music coming,music;
     
 	private Integer[] zomInitPos=new Integer[5];
 	private Integer[] sunInitPos=new Integer[9];
@@ -42,6 +40,7 @@ public class Play extends BasicGameState
 	public Play (int state){	
 	}
 	
+	public static Peashooter getShooter() { return shooter2;}
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException
 	{
 		//Types of shooters in an array
@@ -100,6 +99,10 @@ public class Play extends BasicGameState
 	     //Sound-Music
 	     coming = new Music("res/Play/zombies_coming.ogg");
 	     pow = new Sound("res/Play/POW.wav");
+	     // Music background
+	  	 music = new Music("res/Play/Investigations.ogg");
+	  	 SoundStore.get().setMusicVolume(0.2f);
+//	  	 music.loop();
 	}
 	
 	
@@ -131,23 +134,16 @@ public class Play extends BasicGameState
 		g.drawString("X:  "+shooter.get(controller.level.gameLevel-1).xPos+" Y:  "+shooter.get(controller.level.gameLevel-1).yPos,400,50);         // debug
 		g.setColor(Color.white);
 		//g.drawString("X2:  "+shooter2.xPos+"Y2:  "+shooter2.yPos, 400,100);    //debug
-		
-		//g.drawImage(sun, 0, 0);                                                
-		g.setColor(Color.black);                                               // Sun board
-		g.fillRoundRect(100, 30, 150, 50, 10 );                                
-		
-		/*g.setColor(Color.red);                              //debug
-		for(int i=0;i<5;i++)
-		{
-			g.fillOval(950, zomInitPos[i], 10, 10);
-		}*/
-		//g.drawString(" "+this.count2+" "+delay, 500, 500);     //debug
+
+		g.drawImage(sun, 0, 0);                                                //
+	//	g.setColor(Color.cyan);													// Sun board
+		g.drawString("Score: " + controller.printscore(), 100, 30);
+//		g.fillRoundRect(100, 30, 150, 50, 10 );                                //
 	}
 	
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
 		Input input = gc.getInput();
-		
 		if (input.isKeyDown(Input.KEY_RIGHT)) 								//Move RIGHT
 		{
 			/*shooter.xPos +=shooter.speed;
@@ -194,7 +190,6 @@ public class Play extends BasicGameState
 			pow.play();
 			System.out.println("PEA SHOOTING");
 		} 
-		
 		
 		/*if(shooter.get(controller.level.gameLevel-1).yPos!=shooter.get(controller.level.gameLevel-1).xPos)
 		{
@@ -248,10 +243,10 @@ public class Play extends BasicGameState
 		if(sunControll.delayTimeSun==sunControll.delaySun)                                        //to spawn sun                 
 		{                        							 
 			controller.addSun(new Sun(sunInitPos[(int)(Math.random()*9)],0));
-			
 			sunControll.delaySun=sunControll.getDelayTimeSun(sunControll.maxTime);
 			sunControll.delayTimeSun=0;
-			
+			//delaySun=getDelayTimeSun(5000);
+			//this.delayTimeSun=0;
 		}
 		
 		this.delayText+=delta;
@@ -260,7 +255,8 @@ public class Play extends BasicGameState
 		bullet2.attack();
 		controller.zomWalk();
 		controller.fall();
-		
+		controller.onClickSun();
+
 	}
 	
 	public int getID()
