@@ -2,7 +2,6 @@ package GUI;
 import Characters.*;
 import Event.*;
 import Plants.*;
-import SunFlower.SunFlower2;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -14,11 +13,11 @@ import java.util.ArrayList;
 public class Play extends BasicGameState
 {	 
 	float x,y;
-	ArrayList<SunFlower2> sunflow = new ArrayList<>();
+	ArrayList<SunFlower> sunflow = new ArrayList<>();
 	PlayControl controller = new PlayControl();
 	Peashooter shooter=new Peashooter(200,200);
 //	SunFlower sunflower=new SunFlower(100,100);
-	SunFlower2 sunflower;
+	SunFlower sunflower;
 	Pea bullet = new Pea(0,0);
 	Zombies zombie;
 	Image small,background,pea,sun,text;
@@ -103,7 +102,7 @@ public class Play extends BasicGameState
 		 text = new Image("res/text.png");
 		 
 		 S1 = new SpriteSheet("res/SunFlower.png", 74, 73);      // Sunflower 
-		 sunflower = new SunFlower2 (100,100,S1);
+		 sunflower = new SunFlower(100,100,S1);
 	     S11 = new Animation(S1, 40);				                         // animation
 	     S11.setPingPong(true);						  
 	     
@@ -226,7 +225,7 @@ public class Play extends BasicGameState
 		controller.fall();
 		
 		
-		sunflow.add(new SunFlower2(100,100,S1));
+		sunflow.add(new SunFlower(100,100,S1));
 	//	System.out.println(x+y);
 		
 	}
