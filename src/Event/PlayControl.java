@@ -21,6 +21,7 @@ public class PlayControl {
 	Graphics g;
 	Sound Punch;
 	Sound ZomWalk;
+	int score_sun;
 
 	public int getDelayTimeSun(int maxTime)
 	{
@@ -162,9 +163,15 @@ public class PlayControl {
 	public void onClickSun() {
 		//if (Mouse.getEventButton()==0)
 			for (int i=0; i<sun.size(); i++) {
-				if (checkSunMouse(sun.get(i)) == true ) 
+				if (checkSunMouse(sun.get(i)) == true ) {
 					sun.remove(i);
+					score_sun+=1;
+				}
 			}
+			
+	}
+	public int printscore () {
+		return score_sun*50;
 	}
 	
 	public boolean checkSunMouse (Sun sun) {

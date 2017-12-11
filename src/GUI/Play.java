@@ -133,8 +133,9 @@ public class Play extends BasicGameState
 		g.drawString("X:  "+shooter.xPos+" Y:  "+shooter.yPos,400,100);         // debug
 		
 		g.drawImage(sun, 0, 0);                                                //
-		g.setColor(Color.black);                                               // Sun board
-		g.fillRoundRect(100, 30, 150, 50, 10 );                                //
+	//	g.setColor(Color.cyan);													// Sun board
+		g.drawString("Score: " + controller.printscore(), 100, 30);
+//		g.fillRoundRect(100, 30, 150, 50, 10 );                                //
 		
 		/*g.setColor(Color.red);                              //debug
 		for(int i=0;i<5;i++)
