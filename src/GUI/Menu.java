@@ -19,7 +19,7 @@ public class Menu extends BasicGameState{
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		//Background Music
 		music = new Music("res/Menu/Level1.ogg");
-		SoundStore.get().setCurrentMusicVolume(0.9f);
+//		SoundStore.get().setCurrentMusicVolume(0.9f);
 		music.loop();
 		// Image button
 		start = new Image("res/Menu/Start.png");

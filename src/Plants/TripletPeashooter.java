@@ -1,17 +1,13 @@
 package Plants;
-import java.util.ArrayList;
+
 import org.newdawn.slick.Animation;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import Characters.*;
-import Event.Physic;
-import GUI.Main;
 
 public class TripletPeashooter extends Plants{
-	private ArrayList<Bullet> bullets=new ArrayList<>();
-	Bullet tempBullet2;
+
 	public static String pngName="res/TripletShooter.png";
 	public static Image png;
 	public TripletPeashooter(int x, int y) throws SlickException 

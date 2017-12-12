@@ -1,10 +1,7 @@
 package Bullet;
 
-import java.util.ArrayList;
 import org.newdawn.slick.Image;
 import Characters.*;
-import Event.Physic;
-import GUI.Main;
 
 public class Pea extends Bullet{
 

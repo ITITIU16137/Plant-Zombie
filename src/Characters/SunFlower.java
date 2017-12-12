@@ -1,9 +1,7 @@
 package Characters;
+
 import java.util.*;
-
-
 import org.newdawn.slick.*;
-
 
 public class SunFlower extends GameObject{
 	
