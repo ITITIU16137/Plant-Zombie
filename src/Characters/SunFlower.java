@@ -1,5 +1,10 @@
 package Characters;
 import java.util.*;
+
+
+import org.newdawn.slick.*;
+
+
 public class SunFlower extends GameObject{
 	
 	public int speed =1;
@@ -7,11 +12,25 @@ public class SunFlower extends GameObject{
 	int damage;
 	Random ran = new Random();
 	int x, y, xR, yR, a, b;
-	public SunFlower(int x,int y)
+	public static String pngName="res/SunFlower.png";
+	public static Animation png;
+	
+	public SunFlower(int x,int y) throws SlickException
 	{
 		super(x,y);
+		init();
 	}
 
+	public void init()throws SlickException
+	{
+		png=new Animation(new SpriteSheet(pngName,74,73),40);
+	}
+	
+	public void draw()
+	{
+		png.draw((float)xPos,(float)yPos);
+	}
+	
 	public int getSpeed() {
 		return speed;
 	}

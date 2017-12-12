@@ -43,6 +43,13 @@ public class PlayControl {
 	{
 		level.drawPlants(p);
 	}
+	
+	//--------------------------------------Sun Flowers-----------------------------------
+	public void renderSunFlowers(SunFlower s)
+	{
+		s.draw();
+	}
+	
 	//--------------------------------------BULLET---------------------------------------
 			public void shoot()
 			{

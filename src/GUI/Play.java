@@ -12,13 +12,12 @@ import java.util.ArrayList;
 public class Play extends BasicGameState
 {	
 	static ArrayList<Plants> shooter=new ArrayList<>();
-	//static Peashooter shooter2 = new Peashooter(200,200);
-	static SunFlower sunflower=new SunFlower(100,100);
+	static SunFlower sunflower;
 	static PlayControl controller = new PlayControl();
 	static Zombies zombieControl=new Zombies();
 	static Sun sunControll=new Sun();
-	Image triplet,triplePea;
-	Image small,background,pea,sun,text;
+	//Image triplet,triplePea;
+	Image background,pea,text;
 	SpriteSheet S1;
     Animation S11;
 	
@@ -49,6 +48,8 @@ public class Play extends BasicGameState
 		//Types of shooters in an array
 		shooter.add(new Peashooter(200,200));
 		shooter.add(new TripletPeashooter((int)shooter.get(0).xPos,(int)shooter.get(0).yPos));
+		
+		sunflower=new SunFlower(100,100);
 		
 		zomInitPos[0]=120;
 		zomInitPos[1]=220;
@@ -86,14 +87,9 @@ public class Play extends BasicGameState
 				
 		 background = new Image("res/Night.png");
 		 //pea = new Image("res/Pea.png");
-		 triplePea = new Image("res/fire_bullet.png");
-		 sun = new Image("res/sun.png");
-		 text = new Image("res/text.png");
-		 triplet = new Image("res/TripletShooter.png");
 		 
-		 S1 = new SpriteSheet("res/SunFlower.png", 74, 73);                  // Sunflower 
-	     S11 = new Animation(S1, 40);				                         // animation
-	     S11.setPingPong(true);						  		
+		 text = new Image("res/text.png");
+		 					  		
 	     //Sound-Music
 	     coming = new Music("res/Play/zombies_coming.ogg");
 	     pow = new Sound("res/Play/POW.wav");
@@ -111,7 +107,8 @@ public class Play extends BasicGameState
 		controller.renderPlants(shooter.get(controller.level.gameLevel-1));
 	    //g.drawImage(triplet,(float) shooter2.xPos,(float) shooter.get(controller.level.gameLevel-1).yPos);      //draw tripletshooter
 		
-	    g.drawAnimation(S11,(float)sunflower.xPos,(float) sunflower.yPos);    //draw sunflower
+	    //g.drawAnimation(S11,(float)sunflower.xPos,(float) sunflower.yPos);    //draw sunflower
+		controller.renderSunFlowers(sunflower);
 		
 		if(delayText<durationText) 
 		{
@@ -132,7 +129,7 @@ public class Play extends BasicGameState
 		g.setColor(Color.white);
 		//g.drawString("X2:  "+shooter2.xPos+"Y2:  "+shooter2.yPos, 400,100);    //debug
 
-		g.drawImage(sun, 0, 0);                                                //
+		//g.drawImage(sun, 0, 0);                                                //
 	//	g.setColor(Color.cyan);													// Sun board
 		g.drawString("Score: " + controller.printscore(), 100, 30);                                //
 	}
