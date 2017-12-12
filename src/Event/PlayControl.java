@@ -171,7 +171,7 @@ public class PlayControl {
 			
 	}
 	public int printscore () {
-		return score_sun*50; 				//  multiple times score
+		return score_sun*10; 				//  multiple times score
 	}
 	
 	public boolean checkSunMouse (Sun sun) {

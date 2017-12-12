@@ -14,7 +14,7 @@ import org.newdawn.slick.util.ResourceLoader;
  *		THIS CLASS IS CREATED FOR SET FONT BUT MY COMPUTER DOESN'T WORK. I DON'T KNOW WHY ? HOW ABOUT YOUR COMPUTERS ???
  */
 public class Text {
-	private static String fontDir = "res/Font/impact.ttf";                        
+	private static String fontDir = "res/Font/SEASRN__.ttf";                        
 	private static boolean antiAlias = true;
 	private InputStream inputStream = null;
 	private Font awtFont = new Font("Times New Roman", Font.BOLD, 24);

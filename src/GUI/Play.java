@@ -117,7 +117,7 @@ public class Play extends BasicGameState
 	  	 SoundStore.get().setMusicVolume(0.2f);
 //	  	 music.loop();
 	  	 
-	  	 ScoreBoardText = new Text (35.0f);
+	  	 ScoreBoardText = new Text (30.0f);
 	}
 	
 	
@@ -144,10 +144,10 @@ public class Play extends BasicGameState
 		g.drawString("X:  "+Mouse.getX()+" Y:  "+Mouse.getY(),400,100);         // debug
 		
 		g.drawImage(sun, 0, 0);    //
-		//g.fillRoundRect(100, 30, 150, 50, 10 );
-	//	g.setColor(Color.black);													// Sun board
-		//g.setFont( new Font ("serif",Font.BOLD,14));
-		ScoreBoardText.render(140, 45, "Score: " + controller.printscore());// print out score board
+//		g.fillRoundRect(100, 30, 150, 50, 10 );
+//		g.setColor(Color.transparent);													// Sun board
+		
+		ScoreBoardText.render(140, 45, "Score: " + controller.printscore(),Color.white);// print out score board
 	                                //
 		
 		/*g.setColor(Color.red);                              //debug
