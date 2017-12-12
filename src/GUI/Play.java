@@ -16,11 +16,7 @@ public class Play extends BasicGameState
 	static PlayControl controller = new PlayControl();
 	static Zombies zombieControl=new Zombies();
 	static Sun sunControll=new Sun();
-	//Image triplet,triplePea;
 	Image background,pea,text;
-	SpriteSheet S1;
-    Animation S11;
-	
     Sound pow;
     Music coming,music;
     
@@ -29,6 +25,7 @@ public class Play extends BasicGameState
 	private Integer[] stopPos=new Integer[5];
 	
 	private ArrayList<Image> zombieImages=new ArrayList<>();
+	
 	private double count=0;                                      //  this is
 	private double frequencyImage=0.002;                         //  for object speed
 
@@ -208,9 +205,8 @@ public class Play extends BasicGameState
 		}
 		
 		this.delayText+=delta;
-		//bullet.attack();
+		
 		controller.shoot();
-		//bullet2.attack();
 		controller.zomWalk();
 		controller.fall();
 		controller.onClickSun();
