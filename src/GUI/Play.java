@@ -26,7 +26,7 @@ public class Play extends BasicGameState
     Animation S11,S22;
     Sound pow;
     Music coming,music;
-  private static  Image SunBoardRec;
+    Image SunBoardRec;
     Sun SUN;
     
     public static Peashooter getShooter() { return shooter;}
@@ -120,7 +120,7 @@ public class Play extends BasicGameState
 //	  	 music.loop();
 	  	 
 	  	 ScoreBoardText = new Text (30.0f);
-	  	SunBoardRec = new Image ("res/sunboard_ilu.jpg");
+	  	SunBoardRec = new Image ("res/sunboard_ilu.png");
 	}
 	
 	
@@ -150,8 +150,9 @@ public class Play extends BasicGameState
 //		g.fillRoundRect(100, 30, 150, 50, 10 );
 //		g.setColor(Color.transparent);													// Sun board
 		
-		SUN.draw(SunBoardRec);
-		g.drawImage(SunBoardRec,140,35);
+		//SUN.draw(SunBoardRec);
+		//g.drawImage(SunBoardRec,140,35);
+		SunBoardRec.draw(140,35,SunBoardRec.getWidth()/3,SunBoardRec.getHeight()/3);
 		ScoreBoardText.render(140, 45, "Score: " + controller.printscore(),Color.white);// print out score board
 	          
 		
