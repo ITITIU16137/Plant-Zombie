@@ -1,12 +1,19 @@
 package GUI;
 import Characters.*;
+
 import Event.*;
 import Plants.*;
 import Bullet.Pea;
+
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.openal.SoundStore;
 import org.newdawn.slick.state.*;
-import java.util.ArrayList;
+import java.util.*;
+import GUI.Text;
+//import org.newdawn.slick.Font;
+//import java.awt.FontFormatException;
+
 
 public class Play extends BasicGameState
 {	
@@ -23,10 +30,13 @@ public class Play extends BasicGameState
     
     public static Peashooter getShooter() { return shooter;}
     
+    
 	private Integer[] zomInitPos=new Integer[5];
 	private Integer[] sunInitPos=new Integer[9];
 
 	private Integer[] stopPos=new Integer[5];
+	
+	private static Text ScoreBoardText = new Text (35.0f);
 	
 	private ArrayList<Image> zombieImages=new ArrayList<>();
 	private double count=0;                                      //  this is
@@ -130,12 +140,14 @@ public class Play extends BasicGameState
 		if(this.count>10){this.count=0;}
 		
 		g.setColor(Color.white); 
-		g.drawString("X:  "+shooter.xPos+" Y:  "+shooter.yPos,400,100);         // debug
+		g.drawString("X:  "+Mouse.getX()+" Y:  "+Mouse.getY(),400,100);         // debug
 		
-		g.drawImage(sun, 0, 0);                                                //
-	//	g.setColor(Color.cyan);													// Sun board
-		g.drawString("Score: " + controller.printscore(), 100, 30);
-//		g.fillRoundRect(100, 30, 150, 50, 10 );                                //
+		g.drawImage(sun, 0, 0);    //
+		g.fillRoundRect(100, 30, 150, 50, 10 );
+	//	g.setColor(Color.black);													// Sun board
+		//g.setFont( new Font ("serif",Font.BOLD,14));
+		ScoreBoardText.render(140, 45, "Score: " + controller.printscore());// print out score board
+	                                //
 		
 		/*g.setColor(Color.red);                              //debug
 		for(int i=0;i<5;i++)

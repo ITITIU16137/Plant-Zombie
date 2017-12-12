@@ -165,13 +165,13 @@ public class PlayControl {
 			for (int i=0; i<sun.size(); i++) {
 				if (checkSunMouse(sun.get(i)) == true ) {
 					sun.remove(i);
-					score_sun+=1;
+					score_sun+=1;								// increase score_sun every time sun is removed
 				}
 			}
 			
 	}
 	public int printscore () {
-		return score_sun*50;
+		return score_sun*50; 				//  multiple times score
 	}
 	
 	public boolean checkSunMouse (Sun sun) {
