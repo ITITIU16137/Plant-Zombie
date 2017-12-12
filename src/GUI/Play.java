@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Play extends BasicGameState
 {	
 	static ArrayList<Plants> shooter=new ArrayList<>();
-	static Peashooter shooter2 = new Peashooter(200,200);
+	//static Peashooter shooter2 = new Peashooter(200,200);
 	static SunFlower sunflower=new SunFlower(100,100);
 	static PlayControl controller = new PlayControl();
 	TriplePea bullet2 = new TriplePea(0,0);
@@ -112,7 +112,7 @@ public class Play extends BasicGameState
 	{
 		g.drawImage(background, 0,0);                                         //draw background
 		//g.drawAnimation(S22,(float)shooter.get(controller.level.gameLevel-1).xPos+40,(float)shooter.get(controller.level.gameLevel-1).yPos);      //draw peashooter
-		controller.renderPlants(shooter.get(controller.level.gameLevel-1),S22);
+		controller.renderPlants(shooter.get(controller.level.gameLevel-1));
 	    //g.drawImage(triplet,(float) shooter2.xPos,(float) shooter.get(controller.level.gameLevel-1).yPos);      //draw tripletshooter
 		
 	    g.drawAnimation(S11,(float)sunflower.xPos,(float) sunflower.yPos);    //draw sunflower

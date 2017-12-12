@@ -21,19 +21,20 @@ public class LevelControl {
 		return 5;
 	}
 	
-	public void drawPlants(Plants p,Animation a) throws SlickException
+	public void drawPlants(Plants p) throws SlickException
 	{
 		if(gameLevel==1)
 		{
 			
 			//((Peashooter)p).draw(new Animation(new SpriteSheet(Peashooter.pngName,125,106),20));
-			((Peashooter)p).draw(a);
+			((Peashooter)p).draw();
 			//((Agentshooter)p).draw(new Image(Agentshooter.pngName));
 		}
 		if(gameLevel==2)
 		{
 			//((Agentshooter)p).draw(new Animation(new SpriteSheet(Agentshooter.pngName, 125, 106),20));
-			((TripletPeashooter)p).draw(new Image(TripletPeashooter.pngName));
+			//((TripletPeashooter)p).draw(new Image(TripletPeashooter.pngName));
+			((TripletPeashooter)p).draw();
 		}
 	}
 	
