@@ -155,13 +155,13 @@ public class PlayControl {
 			
 	}
 
-	public void renderSun(Graphics g,Image png)              // draw bullets
+	public void renderSun()              // draw bullets
 	{
 
 		for(int i=0;i<sun.size();i++)
 		{
 			tempSun=sun.get(i);
-			tempSun.draw(g,png);
+			tempSun.draw();
 		}
 	}
 

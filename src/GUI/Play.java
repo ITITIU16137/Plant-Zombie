@@ -122,7 +122,7 @@ public class Play extends BasicGameState
 		 
 		controller.renderBullet(g);                                 //draw pea bullets										  //draw triplet bullets
 		controller.renderZombie(zombieImages, this.count);                    //draw zombies
-		controller.renderSun(g,sun);
+		controller.renderSun();
 		
 		this.count+=this.frequencyImage ;                                     //print multiple images to create animation
 		if(this.count>10){this.count=0;}

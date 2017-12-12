@@ -9,15 +9,23 @@ public class Sun extends GameObject{
 	public int delayTimeSun=0;
 	public int delaySun=getDelayTimeSun(5000);
 	public int maxTime=5000;
+	public static String pngName="res/sun.png";
+	public static Image png;
 	
 	public Sun() {}
 	
-	public Sun(int x,int y)
+	public Sun(int x,int y) throws SlickException
 	{
 		super(x,y);
-		this.randomInt = (int)(Math.random()*1)+(int)(Math.random()*5);
+		init();
 	}
 
+	public void init() throws SlickException
+	{
+		this.randomInt = (int)(Math.random()*1)+(int)(Math.random()*5);
+		png=new Image(pngName);
+	}
+	
 	public int getRandomInt()
 	{
 			return randomInt;
@@ -43,8 +51,8 @@ public class Sun extends GameObject{
 		return (int)(Math.random()*maxTime)+1;
 	}
 	
-	public void draw(Graphics g, Image png)                  // load image
+	public void draw()                  // load image
 	{
-		g.drawImage(png,(int) this.xPos,(int)this.yPos);
+		png.draw((int) this.xPos,(int)this.yPos);
 	}
 }
