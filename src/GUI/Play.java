@@ -11,8 +11,7 @@ import org.newdawn.slick.openal.SoundStore;
 import org.newdawn.slick.state.*;
 import java.util.*;
 import GUI.Text;
-//import org.newdawn.slick.Font;
-//import java.awt.FontFormatException;
+
 
 
 public class Play extends BasicGameState
@@ -145,7 +144,7 @@ public class Play extends BasicGameState
 		g.drawString("X:  "+Mouse.getX()+" Y:  "+Mouse.getY(),400,100);         // debug
 		
 		g.drawImage(sun, 0, 0);    //
-		g.fillRoundRect(100, 30, 150, 50, 10 );
+		//g.fillRoundRect(100, 30, 150, 50, 10 );
 	//	g.setColor(Color.black);													// Sun board
 		//g.setFont( new Font ("serif",Font.BOLD,14));
 		ScoreBoardText.render(140, 45, "Score: " + controller.printscore());// print out score board
