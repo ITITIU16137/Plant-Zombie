@@ -92,10 +92,12 @@ public class Play extends BasicGameState
 	     S11 = new Animation(S1, 40);				                         // animation
 	     S11.setPingPong(true);						  
 	     
-	     S2 = new SpriteSheet("res/PeaShooter.png", 125, 106);               // Peashooter 
-	     S22 = new Animation(S2, 20);				                         // animation
-	     S22.setPingPong(true);		
-	      
+	     //S2 = new SpriteSheet("res/PeaShooter.png", 125, 106);               // Peashooter 
+	     //S22 = new Animation(S2, 20);				                         // animation
+	     //S22.setPingPong(true);		
+	     S22=new Animation(new SpriteSheet(Peashooter.pngName,125,106),20); 
+	     
+	     
 	     //Sound-Music
 	     coming = new Music("res/Play/zombies_coming.ogg");
 	     pow = new Sound("res/Play/POW.wav");
@@ -109,8 +111,8 @@ public class Play extends BasicGameState
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		g.drawImage(background, 0,0);                                         //draw background
-		g.drawAnimation(S22,(float)shooter.get(controller.level.gameLevel-1).xPos+40,(float)shooter.get(controller.level.gameLevel-1).yPos);      //draw peashooter
-		//controller.renderPlants(shooter.get(controller.level.gameLevel-1));
+		//g.drawAnimation(S22,(float)shooter.get(controller.level.gameLevel-1).xPos+40,(float)shooter.get(controller.level.gameLevel-1).yPos);      //draw peashooter
+		controller.renderPlants(shooter.get(controller.level.gameLevel-1),S22);
 	    //g.drawImage(triplet,(float) shooter2.xPos,(float) shooter.get(controller.level.gameLevel-1).yPos);      //draw tripletshooter
 		
 	    g.drawAnimation(S11,(float)sunflower.xPos,(float) sunflower.yPos);    //draw sunflower

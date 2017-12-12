@@ -39,9 +39,9 @@ public class PlayControl {
 	}
 	
 	//--------------------------------------PLANTS--------------------------------------
-	public void renderPlants(Plants p) throws SlickException
+	public void renderPlants(Plants p,Animation a) throws SlickException
 	{
-		level.drawPlants(p);
+		level.drawPlants(p,a);
 	}
 	//--------------------------------------BULLET---------------------------------------
 			public void shoot()
