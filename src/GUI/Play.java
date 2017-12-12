@@ -15,13 +15,12 @@ public class Play extends BasicGameState
 	//static Peashooter shooter2 = new Peashooter(200,200);
 	static SunFlower sunflower=new SunFlower(100,100);
 	static PlayControl controller = new PlayControl();
-	TriplePea bullet2 = new TriplePea(0,0);
 	static Zombies zombieControl=new Zombies();
 	static Sun sunControll=new Sun();
 	Image triplet,triplePea;
 	Image small,background,pea,sun,text;
-	SpriteSheet S1,S2;
-    Animation S11,S22;
+	SpriteSheet S1;
+    Animation S11;
 	
     Sound pow;
     Music coming,music;
@@ -40,7 +39,11 @@ public class Play extends BasicGameState
 	public Play (int state){	
 	}
 	
-	public static Plants getShooter() { return shooter.get(controller.level.gameLevel-1);}
+	public static Plants getShooter()
+	{ 
+		return shooter.get(controller.level.gameLevel-1);
+	}
+	
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException
 	{
 		//Types of shooters in an array
@@ -90,14 +93,7 @@ public class Play extends BasicGameState
 		 
 		 S1 = new SpriteSheet("res/SunFlower.png", 74, 73);                  // Sunflower 
 	     S11 = new Animation(S1, 40);				                         // animation
-	     S11.setPingPong(true);						  
-	     
-	     //S2 = new SpriteSheet("res/PeaShooter.png", 125, 106);               // Peashooter 
-	     //S22 = new Animation(S2, 20);				                         // animation
-	     //S22.setPingPong(true);		
-	     S22=new Animation(new SpriteSheet(Peashooter.pngName,125,106),20); 
-	     
-	     
+	     S11.setPingPong(true);						  		
 	     //Sound-Music
 	     coming = new Music("res/Play/zombies_coming.ogg");
 	     pow = new Sound("res/Play/POW.wav");
@@ -118,14 +114,13 @@ public class Play extends BasicGameState
 	    g.drawAnimation(S11,(float)sunflower.xPos,(float) sunflower.yPos);    //draw sunflower
 		
 		if(delayText<durationText) 
-			{
-				coming.play();                                     			  //play sound for text
-				g.drawImage(text, 80, 300);                                   //draw text
-			}
+		{
+			coming.play();                                     			  //play sound for text
+			g.drawImage(text, 80, 300);                                   //draw text
+		}
 		
-		//bullet.render(g,pea);  
-		controller.renderBullet(g);                                 //draw pea bullets
-		//bullet2.render(g,triplePea);										  //draw triplet bullets
+		 
+		controller.renderBullet(g);                                 //draw pea bullets										  //draw triplet bullets
 		controller.renderZombie(zombieImages, this.count);                    //draw zombies
 		controller.renderSun(g,sun);
 		
@@ -139,8 +134,7 @@ public class Play extends BasicGameState
 
 		g.drawImage(sun, 0, 0);                                                //
 	//	g.setColor(Color.cyan);													// Sun board
-		g.drawString("Score: " + controller.printscore(), 100, 30);
-//		g.fillRoundRect(100, 30, 150, 50, 10 );                                //
+		g.drawString("Score: " + controller.printscore(), 100, 30);                                //
 	}
 	
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -196,45 +190,7 @@ public class Play extends BasicGameState
 			System.out.println("PEA SHOOTING");
 		} 
 		
-		/*if(shooter.get(controller.level.gameLevel-1).yPos!=shooter.get(controller.level.gameLevel-1).xPos)
-		{
-			if (input.isKeyDown(Input.KEY_D))
-			{
-				shooter2.xPos += shooter.get(controller.level.gameLevel-1).speed;
-				if(shooter2.xPos<850) shooter2.xPos += shooter2.speed;
-				else shooter2.xPos=850;
-			}
-			else if (input.isKeyDown(Input.KEY_A))
-			{
-				shooter2.xPos -=shooter2.speed;
-				if(shooter.get(controller.level.gameLevel-1).xPos >200) shooter.get(controller.level.gameLevel-1).xPos -=shooter2.speed;
-				else shooter2.xPos=200;
-			}
-			else if(input.isKeyDown(Input.KEY_W))
-			{
-				shooter2.yPos +=shooter2.speed;
-				if(shooter2.yPos>200) shooter2.yPos -= shooter2.speed;
-				else shooter2.yPos=200;
-			}
-			else if(input.isKeyDown(Input.KEY_S))
-			{
-				shooter2.yPos -=shooter2.speed;
-				if(shooter2.yPos>595) shooter2.yPos += shooter2.speed;
-				else shooter2.yPos=595;
-			}
-			else if(input.isKeyPressed(Input.KEY_ENTER))
-			{
-				bullet2.add(new TriplePea(shooter2.xPos+120,shooter2.yPos+25));
-				if(controller.level.gameLevel==1)
-				{
-					controller.addBullet(new Pea(shooter.xPos+120,shooter.yPos+25));
-				}
-				else if(controller.level.gameLevel==2)
-				{
-					controller.addBullet(new FireBullet(shooter.xPos+120,shooter.yPos+25));
-				}
-				System.out.println("TRIPLE PEA SHOOTING");
-			}*/
+		
 		
 		zombieControl.delayTimeZom+=1;                                                                      //system count 
 		if(zombieControl.delayTimeZom==zombieControl.delayZom)                                              //from 0 to delay
