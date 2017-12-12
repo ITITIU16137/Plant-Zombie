@@ -20,6 +20,7 @@ public class Menu extends BasicGameState{
 		//Background Music
 		music = new Music("res/Menu/Level1.ogg");
 		SoundStore.get().setCurrentMusicVolume(0.5f);
+
 		music.loop();
 		// Image button
 		start = new Image("res/Menu/Start.png");

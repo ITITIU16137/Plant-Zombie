@@ -36,7 +36,7 @@ public class Play extends BasicGameState
 
 	private Integer[] stopPos=new Integer[5];
 	
-	private static Text ScoreBoardText = new Text (35.0f);
+	private static Text ScoreBoardText;
 	
 	private ArrayList<Image> zombieImages=new ArrayList<>();
 	private double count=0;                                      //  this is
@@ -117,6 +117,8 @@ public class Play extends BasicGameState
 	  	 music = new Music("res/Play/Investigations.ogg");
 	  	 SoundStore.get().setMusicVolume(0.2f);
 //	  	 music.loop();
+	  	 
+	  	 ScoreBoardText = new Text (35.0f);
 	}
 	
 	
