@@ -11,6 +11,7 @@ import org.newdawn.slick.openal.SoundStore;
 import org.newdawn.slick.state.*;
 import java.util.*;
 import GUI.Text;
+import Characters.Sun;
 
 
 
@@ -20,12 +21,13 @@ public class Play extends BasicGameState
 	static Peashooter shooter=new Peashooter(200,200);
 	SunFlower sunflower=new SunFlower(100,100);
 	Pea bullet = new Pea(0,0);
-	Zombies zombie;
 	Image small,background,pea,sun,text;
 	SpriteSheet S1,S2;
     Animation S11,S22;
     Sound pow;
     Music coming,music;
+  private static  Image SunBoardRec;
+    Sun SUN;
     
     public static Peashooter getShooter() { return shooter;}
     
@@ -118,6 +120,7 @@ public class Play extends BasicGameState
 //	  	 music.loop();
 	  	 
 	  	 ScoreBoardText = new Text (30.0f);
+	  	SunBoardRec = new Image ("res/sunboard_ilu.jpg");
 	}
 	
 	
@@ -147,8 +150,10 @@ public class Play extends BasicGameState
 //		g.fillRoundRect(100, 30, 150, 50, 10 );
 //		g.setColor(Color.transparent);													// Sun board
 		
+		SUN.draw(SunBoardRec);
+		g.drawImage(SunBoardRec,140,35);
 		ScoreBoardText.render(140, 45, "Score: " + controller.printscore(),Color.white);// print out score board
-	                                //
+	          
 		
 		/*g.setColor(Color.red);                              //debug
 		for(int i=0;i<5;i++)

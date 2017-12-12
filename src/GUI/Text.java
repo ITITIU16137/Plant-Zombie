@@ -10,8 +10,7 @@ import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.util.ResourceLoader;
 /**
  * 
- * @author Lee
- *		THIS CLASS IS CREATED FOR SET FONT BUT MY COMPUTER DOESN'T WORK. I DON'T KNOW WHY ? HOW ABOUT YOUR COMPUTERS ???
+ * 
  */
 public class Text {
 	private static String fontDir = "res/Font/SEASRN__.ttf";                        

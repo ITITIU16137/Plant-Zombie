@@ -7,7 +7,9 @@ public class Sun extends GameObject{
 
 	protected int dX=400,dY=400;       //size of Sun
 	private int randomInt;
-	int speed = 1;      // speed of Sun :D
+	int speed = 1;  // speed of Sun :D
+	
+	
 	/*
 	 * 	Constructor
 	 */
@@ -25,5 +27,9 @@ public class Sun extends GameObject{
 	public void draw(Graphics g, Image png)                  // load image
 	{
 		g.drawImage(png,(int) this.xPos,(int)this.yPos);
+	}
+
+	public void draw (Image img) {										//resize image
+		 img.draw((int)this.xPos, (int)this.yPos,  img.getWidth()/3, img.getHeight()/3);   
 	}
 }
