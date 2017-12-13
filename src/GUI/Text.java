@@ -10,7 +10,7 @@ import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.util.ResourceLoader;
 
 public class Text {
-	private static String fontDir = "res/Fonts/SEASRN__.ttf";
+	private static String fontDir = "res/Fonts/impact.ttf";
 	private static boolean antiAlias = true;
 	private InputStream inputStream = null;
 	private Font awtFont = new Font("Times New Roman", Font.BOLD, 24);

@@ -5,6 +5,7 @@ import Plants.*;
 import Bullet.*;
 import GUI.Text;
 
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.openal.SoundStore;
 import org.newdawn.slick.state.*;
@@ -20,6 +21,8 @@ public class Play extends BasicGameState
 	Image background,pea,text;
     Sound pow;
     Music coming,music;
+    Image SunBoard;
+    
     
 	private Integer[] zomInitPos=new Integer[5];
 	private Integer[] sunInitPos=new Integer[9];
@@ -49,7 +52,7 @@ public class Play extends BasicGameState
 		shooter.add(new Peashooter(200,200));
 		shooter.add(new TripletPeashooter((int)shooter.get(0).xPos,(int)shooter.get(0).yPos));
 		
-		sunflower=new SunFlower(100,100);
+		sunflower=new SunFlower(150,150);
 		
 		zomInitPos[0]=120;
 		zomInitPos[1]=220;
@@ -97,7 +100,8 @@ public class Play extends BasicGameState
 	  	 music = new Music("res/Play/Investigations.ogg");
 	  	 SoundStore.get().setMusicVolume(0.2f);
 //	  	 music.loop();
-	  	 ScoreBoardText = new Text (35.0f); 
+	  	 ScoreBoardText = new Text (17.0f); 
+	  	 SunBoard = new Image ("res/sunboard_ilu.png");
 	}
 	
 	
@@ -126,13 +130,13 @@ public class Play extends BasicGameState
 		if(this.count>10){this.count=0;}
 		
 		g.setColor(Color.white); 
-		g.drawString("X:  "+shooter.get(controller.level.gameLevel-1).xPos+" Y:  "+shooter.get(controller.level.gameLevel-1).yPos,400,50);         // debug
+		//g.drawString("X:  "+shooter.get(controller.level.gameLevel-1).xPos+" Y:  "+shooter.get(controller.level.gameLevel-1).yPos,400,50);         // debug
+		g.drawString("X: "+Mouse.getX()+ " Y: " + Mouse.getY(),400,50);
 		g.setColor(Color.white);
 		//g.drawString("X2:  "+shooter2.xPos+"Y2:  "+shooter2.yPos, 400,100);    //debug
 
-		//g.drawImage(sun, 0, 0);                                                //
-	//	g.setColor(Color.cyan);													// Sun board
-		ScoreBoardText.render(145, 35, "Score : " +controller.printscore(),Color.red);                //
+		SunBoard.draw(2,35,SunBoard.getWidth()/5,SunBoard.getHeight()/5);						//SunBoard
+		ScoreBoardText.render(35,162, "Score : " +controller.printscore(),Color.red);               
 	}
 	
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
