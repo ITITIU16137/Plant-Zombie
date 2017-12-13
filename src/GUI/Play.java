@@ -3,6 +3,7 @@ import Characters.*;
 import Event.*;
 import Plants.*;
 import Bullet.*;
+import GUI.Text;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.openal.SoundStore;
@@ -25,6 +26,8 @@ public class Play extends BasicGameState
 	private Integer[] stopPos=new Integer[5];
 	
 	private ArrayList<Image> zombieImages=new ArrayList<>();
+	
+	private static Text ScoreBoardText;
 	
 	private double count=0;                                      //  this is
 	private double frequencyImage=0.002;                         //  for object speed
@@ -94,6 +97,7 @@ public class Play extends BasicGameState
 	  	 music = new Music("res/Play/Investigations.ogg");
 	  	 SoundStore.get().setMusicVolume(0.2f);
 //	  	 music.loop();
+	  	 ScoreBoardText = new Text (35.0f); 
 	}
 	
 	
@@ -128,7 +132,7 @@ public class Play extends BasicGameState
 
 		//g.drawImage(sun, 0, 0);                                                //
 	//	g.setColor(Color.cyan);													// Sun board
-		g.drawString("Score: " + controller.printscore(), 100, 30);                                //
+		ScoreBoardText.render(145, 35, "Score : " +controller.printscore(),Color.red);                //
 	}
 	
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
