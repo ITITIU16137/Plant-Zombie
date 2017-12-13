@@ -14,6 +14,9 @@ import java.util.ArrayList;
 
 public class Play extends BasicGameState
 {	
+	Animation ani;
+	Image pausebutton,playbutton;
+	int xposition,yposition;
 	static ArrayList<Plants> shooter = new ArrayList<>();
 	static PlayControl controller  =  new PlayControl();
     
@@ -25,6 +28,7 @@ public class Play extends BasicGameState
 	private Integer[] zomInitPos=new Integer[5];
 	private Integer[] sunInitPos=new Integer[9];
 	private Integer[] stopPos=new Integer[5];
+	private Main size;
 	
 	private static Image background,text,sunboard;
     private static Sound pow;
@@ -90,6 +94,8 @@ public class Play extends BasicGameState
 	    //Sound-Music
 	    coming = new Music("res/Play/zombies_coming.ogg");
 	    pow = new Sound("res/Play/POW.wav");
+	    pausebutton = new Image ("res/pause button.png"); 
+	    playbutton = new Image ("res/playbutton.png");
 //	    // Music background
 //	  	music = new Music("res/Play/Investigations.ogg");
 //	  	SoundStore.get().setMusicVolume(0.2f);
@@ -123,16 +129,18 @@ public class Play extends BasicGameState
 		g.setColor(Color.white); 
 
 //      g.drawString("X:  "+shooter.get(controller.level.gameLevel-1).xPos+" Y:  "+shooter.get(controller.level.gameLevel-1).yPos,400,50);         // debug
-		g.drawString("X: "+Mouse.getX()+ " Y: " + Mouse.getY(),400,50);
+		g.drawString("X: "+Mouse.getX()+ " Y: " + Mouse.getY(),400,50); 
 		g.setColor(Color.white);
 //      g.drawString("X2:  "+shooter2.xPos+"Y2:  "+shooter2.yPos, 400,100);    //debug
 //		SunBoard.draw(2,35,SunBoard.getWidth()/5,SunBoard.getHeight()/5);						//SunBoard
 //		ScoreBoardText.render(35,162, "Score : " +controller.printscore(),Color.red);               
 
-		g.drawString("X:  "+shooter.get(controller.level.gameLevel-1).xPos+" Y:  "+shooter.get(controller.level.gameLevel-1).yPos,400,50);         // debug
+	//	g.drawString("X:  "+shooter.get(controller.level.gameLevel-1).xPos+" Y:  "+shooter.get(controller.level.gameLevel-1).yPos,400,50);         // debug
 
 	    //// Sun board ////  
 		addSunBoard(sunboard,ScoreBoardText);
+		drawpausebutton(pausebutton);
+		drawplaybutton(playbutton);
 	}
 	
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -140,6 +148,8 @@ public class Play extends BasicGameState
 		/*
 		 *    PEASHOOTER CONTROLLER
 		 */
+		if (gc.isPaused() == false ) {
+			
 		Input input = gc.getInput();
 		if (input.isKeyDown(Input.KEY_RIGHT)) 								//Move RIGHT
 		{
@@ -183,6 +193,8 @@ public class Play extends BasicGameState
 			System.out.println("PEASHOOTER SHOOTING");
 		} 
 		
+		
+		
 		zombieControl.delayTimeZom+=1;                                                                      //system count 
 		if(zombieControl.delayTimeZom==zombieControl.delayZom)                                              //from 0 to delay
 		{                        							                                                //to spawn zombies
@@ -212,13 +224,37 @@ public class Play extends BasicGameState
 			    controller.renderZombie(zombieImages, this.count);
 			    controller.checkGame(sbg,controller.getZombies().get(i).xPos);
 			}
+		}
+		Input input = gc.getInput();
+		xposition = Mouse.getX();
+		yposition = Mouse.getY();		
+		if ((xposition > 930 && xposition < 980) && (yposition >677 && yposition < 750 ) ) {
+			if (input.isMouseButtonDown(0)) {
+				gc.setPaused(true);
+			}
+			
+		}
+		
+		
+		if ((xposition > 863 && xposition < 900) && (yposition >690 && yposition < 736 ) ) {
+			if (input.isMouseButtonDown(0)) {
+			gc.setPaused(false);
+			}
+		}
 	}
 	
 	private void addSunBoard(Image png,Text text) throws SlickException {
 		png.draw(2,35,png.getWidth()/5,png.getHeight()/5);
-		text.render(35, 162,""+controller.printscore(),Color.black);    
+		text.render(35, 165,""+controller.printscore(),Color.black);    
 	}
 	
+	private void drawpausebutton (Image png ) {
+		png.draw(950,35,png.getWidth()/10,png.getHeight()/10);
+	}
+	
+	private void drawplaybutton (Image png) {
+		png.draw(860,25,png.getWidth()/22,png.getHeight()/22);
+	}
 	public int getID()
 	{
         	return 1;	
