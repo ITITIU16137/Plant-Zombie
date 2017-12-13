@@ -16,6 +16,10 @@ public class LevelControl {
 		{
 			return 10;
 		}
+		else if(gameLevel==3)
+		{
+			return 20;
+		}
 		return 5;
 	}
 	
@@ -34,6 +38,10 @@ public class LevelControl {
 			//((TripletPeashooter)p).draw(new Image(TripletPeashooter.pngName));
 			((TripletPeashooter)p).draw();
 		}
+		if(gameLevel==3)
+		{
+			((AgentPeashooter)p).draw();
+		}
 	}
 	
 	public void setHp(Zombies zombie)
@@ -47,6 +55,10 @@ public class LevelControl {
 		{
 			zombie.setHp(zombie.getHp()-FireBullet.damage);
 		}
+		else if(gameLevel==3)
+		{
+			zombie.setHp(zombie.getHp()-RocketBullet.damage);
+		}
 	}
 	
 	public void drawBullets(Bullet b) throws SlickException
@@ -58,6 +70,10 @@ public class LevelControl {
 		if(gameLevel==2)
 		{
 			((FireBullet)b).draw(new Image(FireBullet.pngName));
+		}
+		if(gameLevel==3)
+		{
+			((RocketBullet)b).draw(new Image(RocketBullet.pngName));
 		}
 	}
 }
