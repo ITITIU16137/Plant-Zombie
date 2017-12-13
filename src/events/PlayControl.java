@@ -1,11 +1,9 @@
 package events;
 import GUI.*;
-import Characters.*;
+import characters.*;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
-
-import Characters.Sun;
 
 import java.util.ArrayList;
 

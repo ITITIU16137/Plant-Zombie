@@ -4,8 +4,7 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-//import Characters.Plants;
-import Characters.*;
+import characters.*;
 
 public class TripletPeashooter extends Plants{
 

@@ -1,5 +1,5 @@
 package GUI;
-import Characters.*;
+import characters.*;
 import events.*;
 import plant.*;
 import tool.*;
@@ -8,7 +8,7 @@ import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
-import Bullet.*;
+import bullet.*;
 
 import java.util.ArrayList;
 
@@ -16,18 +16,12 @@ public class Play extends BasicGameState
 {	
 	static ArrayList<Plants> shooter = new ArrayList<>();
 	static PlayControl controller  =  new PlayControl();
-
-//	Image background,pea,text;
- 
-   Image SunBoard;
-//    
     
 	private Zombies zombieControl=new Zombies();
 	private ArrayList<Image> zombieImages=new ArrayList<>();
 	private Sun sunControll=new Sun();
 	private SunFlower sunflower;
 	
-//>>>>>>> 689af4d8691c232951dda2d4e6cf01a72d135770
 	private Integer[] zomInitPos=new Integer[5];
 	private Integer[] sunInitPos=new Integer[9];
 	private Integer[] stopPos=new Integer[5];
@@ -92,21 +86,15 @@ public class Play extends BasicGameState
 		background = new Image("res/Night.png");
 		text = new Image("res/text.png");
 		sunboard = new Image("res/sunboard.png");
-		 					  		
-//<<<<<<< HEAD
-//	     //Sound-Music
-//	     coming = new Music("res/Play/zombies_coming.ogg");
-//	     pow = new Sound("res/Play/POW.wav");
-//	     // Music background
-//	  	 music = new Music("res/Play/Investigations.ogg");
-//	  	 SoundStore.get().setMusicVolume(0.2f);
-////	  	 music.loop();
-	  	 ScoreBoardText = new Text (17.0f); 
-	  	 SunBoard = new Image ("res/sunboard_ilu.png");
-//=======
-//	    coming = new Music("res/Play/zombies_coming.ogg");
-//	    pow = new Sound("res/Play/POW.wav");
-//	    
+		ScoreBoardText = new Text (17.0f); 				  		
+	    //Sound-Music
+	    coming = new Music("res/Play/zombies_coming.ogg");
+	    pow = new Sound("res/Play/POW.wav");
+//	    // Music background
+//	  	music = new Music("res/Play/Investigations.ogg");
+//	  	SoundStore.get().setMusicVolume(0.2f);
+// 	    music.loop();
+	  	
 	}
 	
 	
@@ -134,11 +122,10 @@ public class Play extends BasicGameState
 		
 		g.setColor(Color.white); 
 
-		//g.drawString("X:  "+shooter.get(controller.level.gameLevel-1).xPos+" Y:  "+shooter.get(controller.level.gameLevel-1).yPos,400,50);         // debug
+//      g.drawString("X:  "+shooter.get(controller.level.gameLevel-1).xPos+" Y:  "+shooter.get(controller.level.gameLevel-1).yPos,400,50);         // debug
 		g.drawString("X: "+Mouse.getX()+ " Y: " + Mouse.getY(),400,50);
 		g.setColor(Color.white);
-		//g.drawString("X2:  "+shooter2.xPos+"Y2:  "+shooter2.yPos, 400,100);    //debug
-//
+//      g.drawString("X2:  "+shooter2.xPos+"Y2:  "+shooter2.yPos, 400,100);    //debug
 //		SunBoard.draw(2,35,SunBoard.getWidth()/5,SunBoard.getHeight()/5);						//SunBoard
 //		ScoreBoardText.render(35,162, "Score : " +controller.printscore(),Color.red);               
 

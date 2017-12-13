@@ -1,4 +1,4 @@
-package Characters;
+package characters;
 import java.awt.Rectangle;
 
 public class GameObject {
