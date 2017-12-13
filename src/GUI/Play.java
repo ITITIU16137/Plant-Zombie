@@ -145,7 +145,9 @@ public class Play extends BasicGameState
 		for (int i=0;i<sunflow.size();i++) {
 			sunflow.get(i).appear();
 		}
-		
+//		for (int i=0;i<sunflow.size();i++) {
+//			sunflow.get(i).set();
+//		}
 		/*g.setColor(Color.red);                              //debug
 		for(int i=0;i<5;i++)
 		{
@@ -223,7 +225,7 @@ public class Play extends BasicGameState
 		shooter.attack();
 		controller.zomWalk();
 		controller.fall();
-		
+//		sunflower.set();
 		
 		sunflow.add(new SunFlower(100,100,S1));
 	//	System.out.println(x+y);
