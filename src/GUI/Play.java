@@ -190,12 +190,21 @@ public class Play extends BasicGameState
 		controller.zomWalk();
 		controller.fall();
 		controller.onClickSun();
+		for(int i=0;i<controller.getZombies().size();i++)
+			{
+				if(controller.getZombies().get(i) == null) continue;
+				controller.zomWalk();
+			    controller.clearscore();
+			    controller.renderZombie(zombieImages, this.count);
+			    controller.checkGame(sbg,controller.getZombies().get(i).xPos);
+			}
 	}
 	
 	private void addSunBoard(Image png,Text text) throws SlickException {
 		png.draw(-5,-10,png.getWidth()/5,png.getHeight()/5);
 		text.render(25, 105,""+controller.printscore(),Color.black);    
 	}
+	
 	public int getID()
 	{
         	return 1;	

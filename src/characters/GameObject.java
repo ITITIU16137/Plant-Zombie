@@ -1,6 +1,6 @@
 package characters;
 import java.awt.Rectangle;
-//import org.newdawn.slick.*;
+
 public class GameObject {
 	public double xPos,yPos;
 

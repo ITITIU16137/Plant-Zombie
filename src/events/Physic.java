@@ -1,7 +1,7 @@
 package events;
-import java.util.ArrayList;
 
 import characters.*;
+import java.util.ArrayList;
 
 public class Physic 
 {	

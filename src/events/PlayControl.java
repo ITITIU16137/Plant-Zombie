@@ -2,7 +2,6 @@ package events;
 import GUI.*;
 import characters.*;
 
-import java.util.concurrent.ThreadLocalRandom;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 import java.util.ArrayList;
@@ -13,10 +12,10 @@ public class PlayControl {
 	public int limitness=0;
 
 	Physic phy =new Physic();
-	private ArrayList<Zombies> zombies=new ArrayList<>();
-	private ArrayList<Bullet> bullets=new ArrayList<>();
-	private ArrayList<Sun> sun=new ArrayList<>();
-	private Integer[] stopPos=new Integer[5];
+	private static ArrayList<Zombies> zombies = new ArrayList<>();
+	private static ArrayList<Bullet> bullets = new ArrayList<>();
+	private static  ArrayList<Sun> sun = new ArrayList<>();
+	private Integer[] stopPos = new Integer[5];
 	Zombies tempZombie;
 	Plants shooter;
 	Bullet tempBullet;
@@ -27,7 +26,7 @@ public class PlayControl {
 	Graphics g;
 	Sound Punch;
 	Sound ZomWalk;
-	int score_sun;
+	int scoresun;
 
 //	private int check ;
 //	private int delayTimeSun=0;
@@ -107,7 +106,8 @@ public class PlayControl {
 			//ZomWalk.loop();
 			//if(tempZombie.xPos<0 || tempZombie.getHp()<=0)
 
-			if(tempZombie.xPos<165 || tempZombie.getHp()<=0)
+			//if(tempZombie.xPos<165 || tempZombie.getHp()<=0)
+			if(tempZombie.getHp()<=0)
 			{
 				removeZombie(tempZombie);
 				limitness++;
@@ -198,12 +198,16 @@ public class PlayControl {
 			for (int i=0; i<sun.size(); i++) {
 				if (checkSunMouse(sun.get(i)) == true ) {
 					sun.remove(i);
-					score_sun+=1;
+					scoresun+=1;
 				}
 			}
 	}
 	public int printscore () {
-		return score_sun*50;
+		return scoresun*50;
+	}
+	
+	public int clearscore() {
+		return scoresun*0;
 	}
 	
 	public boolean checkSunMouse (Sun sun) {
@@ -214,6 +218,27 @@ public class PlayControl {
 		else 
 		return false;
           
+	}
+	
+	///////////////Check Game to GameOver ////////////////////
+	public void checkGame(StateBasedGame sbg,double x) {
+			if(x<165)
+			{
+				zombies.clear();
+				bullets.clear();
+				sun.clear();
+				sbg.getState(2);
+				sbg.enterState(2);
+			}
+		
+	}
+
+	public ArrayList<Zombies> getZombies() {
+		return zombies;
+	}
+
+	public void setZombies(ArrayList<Zombies> zombies) {
+		PlayControl.zombies = zombies;
 	}
 }
 	
