@@ -212,9 +212,6 @@ public class Play extends BasicGameState
 		for(int i=0;i<controller.getZombies().size();i++)
 			{
 				if(controller.getZombies().get(i) == null) continue;
-				controller.zomWalk();
-			    controller.clearscore();
-			    controller.renderZombie(zombieImages, this.count);
 			    controller.checkGame(sbg,controller.getZombies().get(i).xPos);
 			}
 	}

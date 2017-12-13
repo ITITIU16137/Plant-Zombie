@@ -23,7 +23,7 @@ public class Gameover extends BasicGameState {
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
 		g.drawImage(overwall, 0, 0);
 		sound.play();
-		text.render(200,800, "PRESS ENTER TO REPLAY"+"\n"+"PRESS ESC TO EXIT", Color.white);
+//		text.render(200,600, "PRESS ENTER TO REPLAY"+"\n"+"PRESS ESC TO EXIT", Color.white);
 		
 	}
 

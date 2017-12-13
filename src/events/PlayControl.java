@@ -228,6 +228,7 @@ public class PlayControl {
 				zombies.clear();
 				bullets.clear();
 				sun.clear();
+				clearscore();
 				sbg.getState(2);
 				sbg.enterState(2);
 			}
