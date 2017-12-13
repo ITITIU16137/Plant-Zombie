@@ -46,6 +46,7 @@ public class Play extends BasicGameState
 		////  Types of shooters in an array  ////
 		shooter.add(new Peashooter(200,200));
 		shooter.add(new TripletPeashooter((int)shooter.get(0).xPos,(int)shooter.get(0).yPos));
+		shooter.add(new AgentPeashooter(200,200));
 		
 		sunflower=new SunFlower(150,150);
 		
@@ -178,6 +179,10 @@ public class Play extends BasicGameState
 			else if(controller.level.gameLevel==2)
 			{
 				controller.addBullet(new FireBullet(shooter.get(controller.level.gameLevel-1).xPos+120,shooter.get(controller.level.gameLevel-1).yPos+25));
+			}
+			else if(controller.level.gameLevel==3)
+			{
+				controller.addBullet(new RocketBullet(shooter.get(controller.level.gameLevel-1).xPos+120,shooter.get(controller.level.gameLevel-1).yPos+25));
 			}
 			pow.play();
 			System.out.println("PEASHOOTER SHOOTING");
