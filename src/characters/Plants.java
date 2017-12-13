@@ -1,4 +1,4 @@
-package Characters;
+package characters;
 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;

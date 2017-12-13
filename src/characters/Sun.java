@@ -1,4 +1,4 @@
-package Characters;
+package characters;
 import org.newdawn.slick.*;
 
 public class Sun extends GameObject{

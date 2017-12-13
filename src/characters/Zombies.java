@@ -1,4 +1,4 @@
-package Characters;
+package characters;
 import org.newdawn.slick.*;
 import java.util.ArrayList;
 

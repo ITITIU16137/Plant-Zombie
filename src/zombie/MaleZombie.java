@@ -1,6 +1,6 @@
-package Zombies;
+package zombie;
 
-import Characters.Zombies;
+import characters.Zombies;
 public class MaleZombie extends Zombies{
 
 	public MaleZombie(int x, int y) {

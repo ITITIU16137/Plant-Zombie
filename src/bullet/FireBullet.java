@@ -1,8 +1,8 @@
-package Bullet;
+package bullet;
 
 import org.newdawn.slick.Image;
 
-import Characters.*;
+import characters.*;
 
 public class FireBullet extends Bullet{
                

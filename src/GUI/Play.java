@@ -1,51 +1,47 @@
 package GUI;
-import Characters.*;
-import Event.*;
-import Plants.*;
-import Bullet.*;
-import GUI.Text;
+import characters.*;
+import events.*;
+import plant.*;
+import tool.*;
 
 import org.newdawn.slick.*;
-import org.newdawn.slick.openal.SoundStore;
 import org.newdawn.slick.state.*;
+
+import bullet.*;
+
 import java.util.ArrayList;
 
 public class Play extends BasicGameState
 {	
 	static ArrayList<Plants> shooter=new ArrayList<>();
-	static SunFlower sunflower;
 	static PlayControl controller = new PlayControl();
-	static Zombies zombieControl=new Zombies();
-	static Sun sunControll=new Sun();
-	Image background,pea,text;
-    Sound pow;
-    Music coming,music;
-    
+	private Zombies zombieControl=new Zombies();
+	private ArrayList<Image> zombieImages=new ArrayList<>();
+	private Sun sunControll=new Sun();
+	private SunFlower sunflower;
+	
 	private Integer[] zomInitPos=new Integer[5];
 	private Integer[] sunInitPos=new Integer[9];
 	private Integer[] stopPos=new Integer[5];
 	
-	private ArrayList<Image> zombieImages=new ArrayList<>();
-	
-	private static Text ScoreBoardText;
-	
+	private static Image background,text,sunboard;
+    private static Sound pow;
+    private static Music coming;
+    private static Text SunboardText;
+    
 	private double count=0;                                      //  this is
 	private double frequencyImage=0.002;                         //  for object speed
-
-	private int delayText=0;
-	private int durationText=3000;
+	private int delayText=0;									 //  this is
+	private int durationText=3000;                               //  for delay text 
 	
-	public Play (int state){	
-	}
+	public Play (int state) {}
 	
-	public static Plants getShooter()
-	{ 
-		return shooter.get(controller.level.gameLevel-1);
-	}
+	public static Plants getShooter() {return shooter.get(controller.level.gameLevel-1);}
 	
+	///  Initialization  ///
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException
 	{
-		//Types of shooters in an array
+		////  Types of shooters in an array  ////
 		shooter.add(new Peashooter(200,200));
 		shooter.add(new TripletPeashooter((int)shooter.get(0).xPos,(int)shooter.get(0).yPos));
 		
@@ -85,30 +81,24 @@ public class Play extends BasicGameState
 		zombieImages.add(new Image("res/Zombie/male/walk9.png"));
 		zombieImages.add(new Image("res/Zombie/male/walk10.png"));
 				
-		 background = new Image("res/Night.png");
-		 //pea = new Image("res/Pea.png");
-		 
-		 text = new Image("res/text.png");
+		background = new Image("res/Night.png");
+		text = new Image("res/text.png");
+		sunboard = new Image("res/sunboard.png");
 		 					  		
-	     //Sound-Music
-	     coming = new Music("res/Play/zombies_coming.ogg");
-	     pow = new Sound("res/Play/POW.wav");
-	     // Music background
-	  	 music = new Music("res/Play/Investigations.ogg");
-	  	 SoundStore.get().setMusicVolume(0.2f);
-//	  	 music.loop();
-	  	 ScoreBoardText = new Text (35.0f); 
+	    coming = new Music("res/Play/zombies_coming.ogg");
+	    pow = new Sound("res/Play/POW.wav");
+	    
+	  	SunboardText = new Text (35.0f); 
 	}
 	
 	
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		g.drawImage(background, 0,0);                                         //draw background
-		//g.drawAnimation(S22,(float)shooter.get(controller.level.gameLevel-1).xPos+40,(float)shooter.get(controller.level.gameLevel-1).yPos);      //draw peashooter
+//		g.drawAnimation(S22,(float)shooter.get(controller.level.gameLevel-1).xPos+40,(float)shooter.get(controller.level.gameLevel-1).yPos);      //draw peashooter
 		controller.renderPlants(shooter.get(controller.level.gameLevel-1));
-	    //g.drawImage(triplet,(float) shooter2.xPos,(float) shooter.get(controller.level.gameLevel-1).yPos);      //draw tripletshooter
-		
-	    //g.drawAnimation(S11,(float)sunflower.xPos,(float) sunflower.yPos);    //draw sunflower
+//	    g.drawImage(triplet,(float) shooter2.xPos,(float) shooter.get(controller.level.gameLevel-1).yPos);      //draw tripletshooter
+//	    g.drawAnimation(S11,(float)sunflower.xPos,(float) sunflower.yPos);    //draw sunflower
 		controller.renderSunFlowers(sunflower);
 		
 		if(delayText<durationText) 
@@ -116,7 +106,6 @@ public class Play extends BasicGameState
 			coming.play();                                     			  //play sound for text
 			g.drawImage(text, 80, 300);                                   //draw text
 		}
-		
 		 
 		controller.renderBullet(g);                                 //draw pea bullets										  //draw triplet bullets
 		controller.renderZombie(zombieImages, this.count);                    //draw zombies
@@ -127,24 +116,20 @@ public class Play extends BasicGameState
 		
 		g.setColor(Color.white); 
 		g.drawString("X:  "+shooter.get(controller.level.gameLevel-1).xPos+" Y:  "+shooter.get(controller.level.gameLevel-1).yPos,400,50);         // debug
-		g.setColor(Color.white);
-		//g.drawString("X2:  "+shooter2.xPos+"Y2:  "+shooter2.yPos, 400,100);    //debug
 
-		//g.drawImage(sun, 0, 0);                                                //
-	//	g.setColor(Color.cyan);													// Sun board
-		ScoreBoardText.render(145, 35, "Score : " +controller.printscore(),Color.red);                //
+	    //// Sun board ////  
+		addSunBoard(sunboard,SunboardText);
 	}
 	
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
-		Input input = gc.getInput();
 		/*
-		 *    Plant 1
+		 *    PEASHOOTER CONTROLLER
 		 */
+		Input input = gc.getInput();
 		if (input.isKeyDown(Input.KEY_RIGHT)) 								//Move RIGHT
 		{
 			/*shooter.xPos +=shooter.speed;
-			//System.out.println("RIGHT");
 			if(shooter.xPos<850) shooter.xPos +=shooter.speed;
 			else shooter.xPos=850;*/
 			shooter.get(controller.level.gameLevel-1).goRight();
@@ -152,7 +137,6 @@ public class Play extends BasicGameState
 		else if (input.isKeyDown(Input.KEY_LEFT)) 						    //Move LEFT
 		{
 			/*shooter.xPos -=shooter.speed;
-			//System.out.println("LEFT");
 			if(shooter.xPos>200) shooter.xPos -=shooter.speed;
 			else shooter.xPos=200;*/
 			shooter.get(controller.level.gameLevel-1).goLeft();
@@ -160,7 +144,6 @@ public class Play extends BasicGameState
 		else if (input.isKeyDown(Input.KEY_UP)) 							//Move UP
 		{
 			/*shooter.yPos -=shooter.speed;
-			//System.out.println("UP");
 			if(shooter.yPos>200) shooter.yPos -=shooter.speed;
 			else shooter.yPos=200;*/
 			shooter.get(controller.level.gameLevel-1).goUp();
@@ -168,14 +151,12 @@ public class Play extends BasicGameState
 		else if (input.isKeyDown(Input.KEY_DOWN))                            //Move DOWN
 		{
 			/*shooter.yPos +=shooter.speed;
-			//System.out.println("DOWN");
 			if(shooter.yPos<595) shooter.yPos +=shooter.speed;
 			else shooter.yPos=595;*/
 			shooter.get(controller.level.gameLevel-1).goDown();
 		}
 		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press SPACE to shoot
 		{
-			//bullet.add(new Pea(shooter.xPos+120,shooter.yPos+25));  // bullets fly from plant position	
 			if(controller.level.gameLevel==1)
 			{
 				controller.addBullet(new Pea(shooter.get(controller.level.gameLevel-1).xPos+120,shooter.get(controller.level.gameLevel-1).yPos+25));
@@ -185,10 +166,8 @@ public class Play extends BasicGameState
 				controller.addBullet(new FireBullet(shooter.get(controller.level.gameLevel-1).xPos+120,shooter.get(controller.level.gameLevel-1).yPos+25));
 			}
 			pow.play();
-			System.out.println("PEA SHOOTING");
+			System.out.println("PEASHOOTER SHOOTING");
 		} 
-		
-		
 		
 		zombieControl.delayTimeZom+=1;                                                                      //system count 
 		if(zombieControl.delayTimeZom==zombieControl.delayZom)                                              //from 0 to delay
@@ -204,19 +183,19 @@ public class Play extends BasicGameState
 			controller.addSun(new Sun(sunInitPos[(int)(Math.random()*9)],0));
 			sunControll.delaySun=sunControll.getDelayTimeSun(sunControll.maxTime);
 			sunControll.delayTimeSun=0;
-			//delaySun=getDelayTimeSun(5000);
-			//this.delayTimeSun=0;
 		}
 		
 		this.delayText+=delta;
-		
 		controller.shoot();
 		controller.zomWalk();
 		controller.fall();
 		controller.onClickSun();
-
 	}
 	
+	private void addSunBoard(Image png,Text text) throws SlickException {
+		png.draw(-5,-10,png.getWidth()/5,png.getHeight()/5);
+		text.render(25, 105,""+controller.printscore(),Color.black);    
+	}
 	public int getID()
 	{
         	return 1;	

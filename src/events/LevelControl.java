@@ -1,15 +1,15 @@
-package Event;
+package events;
 
 import org.newdawn.slick.*;
 
-import Bullet.*;
-import Characters.*;
-import Plants.*;
+import bullet.*;
+import characters.*;
+import plant.*;
 
 public class LevelControl {
 	
-	//Zombies zombie;
-	//Bullet bullet;
+	//zombie zombie;
+	//bullet bullet;
 	public int gameLevel=1;
 	
 	public int setLimitness()

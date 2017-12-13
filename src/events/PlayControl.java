@@ -1,6 +1,7 @@
-package Event;
-import Characters.*;
+package events;
 import GUI.*;
+import characters.*;
+
 import java.util.concurrent.ThreadLocalRandom;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
