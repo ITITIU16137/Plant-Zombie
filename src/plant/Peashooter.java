@@ -1,9 +1,10 @@
-package Plants;
+package plant;
 import java.util.ArrayList;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
+//import Characters.Plants;
 import Characters.*;
 
 public class Peashooter extends Plants{

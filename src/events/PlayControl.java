@@ -1,9 +1,13 @@
-package Event;
-import Characters.*;
+package events;
 import GUI.*;
+import Characters.*;
+
 import java.util.concurrent.ThreadLocalRandom;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
+
+import Characters.Sun;
+
 import java.util.ArrayList;
 
 public class PlayControl {

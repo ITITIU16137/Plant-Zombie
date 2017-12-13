@@ -1,6 +1,7 @@
 package Bullet;
 
 import org.newdawn.slick.Image;
+
 import Characters.*;
 
 public class Pea extends Bullet{

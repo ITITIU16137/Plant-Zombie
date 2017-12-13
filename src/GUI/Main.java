@@ -3,7 +3,7 @@ package GUI;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 public class Main extends StateBasedGame {
-	public static final String gamename = "Plants vs Zombies";
+	public static final String gamename = "plant vs zombie";
 	public static final int menu = 0;
 	public static final int play = 1;
 	public static final int gameover = 2;

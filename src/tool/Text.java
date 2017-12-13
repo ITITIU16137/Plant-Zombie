@@ -1,4 +1,4 @@
-package GUI;
+package tool;
 
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -13,7 +13,7 @@ public class Text {
 	private static String fontDir = "res/Fonts/impact.ttf";
 	private static boolean antiAlias = true;
 	private InputStream inputStream = null;
-	private Font awtFont = new Font("Times New Roman", Font.BOLD, 24);
+	private Font awtFont = new Font("Times New Roman", Font.BOLD, 15);
 	private TrueTypeFont font = new TrueTypeFont(awtFont, antiAlias);
 	
 	public Text(Float size) {

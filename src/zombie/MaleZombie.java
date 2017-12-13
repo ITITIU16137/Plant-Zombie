@@ -1,4 +1,4 @@
-package Zombies;
+package zombie;
 
 import Characters.Zombies;
 public class MaleZombie extends Zombies{
