@@ -136,7 +136,7 @@ public class Play extends BasicGameState
 		bullet.render(g,pea);                                             //draw bullets
 		controller.renderZombie(zombieImages, this.count);                    //draw zombies
 		controller.renderSun(g,sun);
-		
+		controller.renderSunFrowFlower(g, sun);
 		this.count+=this.frequencyImage ;                                     //print multiple images to create animation
 		if(this.count>10){this.count=0;}
 		
@@ -215,30 +215,30 @@ public class Play extends BasicGameState
 			this.delayTimeZom=0;
 		}
 		
-//		this.delayTimeSun+=1;                                                                
-//		if(this.delayTimeSun==delaySun)                                        //to spawn sun                 
-//		{                        							 
-//			controller.addSun(new Sun(sunInitPos[(int)(Math.random()*9)],0));
-//			
-//			delaySun=getDelayTimeSun(5000);
-//			this.delayTimeSun=0;
-//			
-//		}
+		this.delayTimeSun+=1;                                                                
+		if(this.delayTimeSun==delaySun)                                        //to spawn sun                 
+		{                        							 
+			controller.addSun(new Sun(sunInitPos[(int)(Math.random()*9)],0));
+			
+			delaySun=getDelayTimeSun(5000);
+			this.delayTimeSun=0;
+			
+		}
 		this.delaySunFlower+=1;                                                                
-		if(this.delaySunFlower==durationSunFlower)                                        //to spawn sun                 
-		{
+		if(this.delaySunFlower==durationSunFlower)                                        //to spawn sun from sunflower
+		{                        							 
 			xsun=ran.nextInt(650)+201;
 			ysun=ran.nextInt(395)+201;
+			controller.addSun(new Sun(100,100));
 			controller.set(xsun, ysun);
-			controller.addSun(new Sun(xsun, ysun));
-			this.delaySunFlower=0;		
+			delaySun=getDelayTimeSun(5000);
+			this.delayTimeSun=0;
+			
 		}
 		this.delayText+=delta;
 		shooter.attack();
 		controller.zomWalk();
 		controller.fall();
-
-//		controller.addSunFromFlower(new Sun(100,100));
 		sunflow.add(new SunFlower(100,100,S1));
 	//	System.out.println(x+y);
 		

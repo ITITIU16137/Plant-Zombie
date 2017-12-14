@@ -170,13 +170,13 @@ public class PlayControl {
 			a=(ysun-yflow)/(xsun-xflow);
 			b=yflow-a*xflow;
 			System.out.println("Line  "+a+ "   " +b);
+
 			for(int i=0;i<sun.size();i++)
 			{
 				tempSun=sun.get(i);
 
 				if(tempSun.xPos<=xsun)
 					tempSun.xPos += 1;
-					tempSun.yPos = a*tempSun.xPos+b;
 				}
 	}
 	public void renderSunFrowFlower(Graphics g,Image png) {
