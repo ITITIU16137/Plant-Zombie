@@ -18,7 +18,7 @@ public class LevelControl {
 		}
 		else if(gameLevel==3)
 		{
-			return 15*50;
+			return 30*50;
 		}
 		return 5*50;
 	}

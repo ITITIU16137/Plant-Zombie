@@ -131,7 +131,7 @@ public class Play extends BasicGameState
 //		ScoreBoardText.render(35,162, "Score : " +controller.printscore(),Color.red);               
 
 		g.drawString("X:  "+shooter.get(controller.level.gameLevel-1).xPos+" Y:  "+shooter.get(controller.level.gameLevel-1).yPos,400,50);         // debug
-		g.drawString(controller.level.gameLevel+"", 400, 400);
+		
 	    //// Sun board ////  
 		addSunBoard(sunboard,ScoreBoardText);
 	}
@@ -184,6 +184,7 @@ public class Play extends BasicGameState
 			{
 				controller.addBullet(new RocketBullet(shooter.get(controller.level.gameLevel-1).xPos+120,shooter.get(controller.level.gameLevel-1).yPos+25));
 			}
+			
 			pow.play();
 			System.out.println("PEASHOOTER SHOOTING");
 		} 

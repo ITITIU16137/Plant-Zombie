@@ -184,7 +184,7 @@ public class PlayControl {
 
 	public void checkToSwitchLevel()
 	{
-		if(scoreSun*50==level.setScoreLimitness())
+		if(scoreSun*50>=level.setScoreLimitness() && bullets.size()==0)
 		{
 			clearScore();
 			level.gameLevel++;
