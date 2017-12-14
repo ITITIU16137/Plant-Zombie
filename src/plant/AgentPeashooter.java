@@ -21,6 +21,6 @@ public class AgentPeashooter extends Plants{
 	
 	public void draw()
 	{
-		png.draw((float)xPos+40,(float)yPos);
+		png.draw((float)xPos+40,(float)yPos,png.getWidth()/6,png.getHeight()/6);
 	}
 }
