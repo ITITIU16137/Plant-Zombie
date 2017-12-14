@@ -3,11 +3,12 @@ package GUI;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
+import tool.Text;
+
 public class Gameover extends BasicGameState {
-	Music music;
-	Sound sound;
-	Animation goani = new Animation();
-	private GameContainer gc;
+
+	private static Sound sound;
+	private static Text text;
 	public Gameover(int state){
 	}
 	
@@ -15,8 +16,6 @@ public class Gameover extends BasicGameState {
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException{
 		
-//		goani.addFrame(new Image ("res/gameover/0.png"), 300);   //animation of gameover 
-//		goani.addFrame(new Image("res/gameover/0.5.png"), 300);
 		sound = new Sound ("res/gameover/Losing Game.wav");
 		overwall = new Image ("res/gameover/gameOver.jpg");
 	}
@@ -24,7 +23,8 @@ public class Gameover extends BasicGameState {
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
 		g.drawImage(overwall, 0, 0);
 		sound.play();
-		g.drawString("PRESS ENTER TO REPLAY", 300, 750);
+//		text.render(200,600, "PRESS ENTER TO REPLAY"+"\n"+"PRESS ESC TO EXIT", Color.white);
+		
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException{

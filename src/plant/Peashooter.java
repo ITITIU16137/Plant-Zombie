@@ -12,7 +12,7 @@ public class Peashooter extends Plants{
 	private ArrayList<Bullet> bullets=new ArrayList<>();
 	Bullet tempBullet;
 	
-	public static String pngName="res/PeaShooter.png";
+	public static String pngName="res/Zombies.png";
 	public static Animation png;
 	
 	public Peashooter(int x, int y) throws SlickException 
@@ -23,7 +23,7 @@ public class Peashooter extends Plants{
 	
 	public void init() throws SlickException
 	{
-		png=new Animation(new SpriteSheet(pngName,125,106),20);
+		png=new Animation(new SpriteSheet(pngName,143,172),20);
 	}
 	
 	public void draw()
