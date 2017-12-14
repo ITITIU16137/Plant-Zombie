@@ -1,8 +1,8 @@
 package characters;
-import org.newdawn.slick.Graphics;
+
 import org.newdawn.slick.Image;
 
-public class Bullet extends GameObject{
+public abstract class Bullet extends GameObject{
 	public int dX=40,dY=40;                        //size of bullet
 	double speed=0.5;                           // speed of bullet
 	private int delayFlying=0;
@@ -38,8 +38,5 @@ public class Bullet extends GameObject{
 		}
 		delayFlying=0;
 	}
-	public void draw(Graphics g, Image png)                  // load image
-	{
-		g.drawImage(png,(int) this.xPos+30,(int)this.yPos+0);
-	}
+	public abstract void draw(Image png); 
 }

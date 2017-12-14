@@ -10,9 +10,8 @@ import java.util.ArrayList;
 public class PlayControl {
 	
 	public LevelControl level=new LevelControl();
-	public int limitness=0;
-
-	Physic phy =new Physic();
+	public int limitness = 0;
+	Physic phy = new Physic();
 	private static ArrayList<Zombies> zombies = new ArrayList<>();
 	private static ArrayList<Bullet> bullets = new ArrayList<>();
 	private static  ArrayList<Sun> sun = new ArrayList<>();
@@ -29,26 +28,12 @@ public class PlayControl {
 	Sound ZomWalk;
 	int scoresun;
 
-//	private int check ;
-//	private int delayTimeSun=0;
-//	private int delaySun=getDelayTimeSun(80);
-
-	public int getDelayTimeSun(int maxTime)
-	{
-		return (int)(Math.random()*maxTime)+1;
-	}
-	
 	//--------------------------------------PLANTS--------------------------------------
-	public void renderPlants(Plants p) throws SlickException
-	{
-		level.drawPlants(p);
-	}
+	public void renderPlants(Plants p) throws SlickException      {level.drawPlants(p);}
 	
-	//--------------------------------------Sun Flowers-----------------------------------
-	public void renderSunFlowers(SunFlower s)
-	{
-		s.draw();
-	}
+	//--------------------------------------Sun Flowers---------------------------------
+	public int getDelayTimeSun(int maxTime)     {return (int)(Math.random()*maxTime)+1;}
+	public void renderSunFlowers(SunFlower s)   {s.draw();}
 	
 	//--------------------------------------BULLET---------------------------------------
 			public void shoot()
@@ -57,7 +42,7 @@ public class PlayControl {
 				{
 					tempBullet=bullets.get(i);
 
-					if(tempBullet.xPos>screen.WIDTH)       // remove bullets out of screen
+					if(tempBullet.xPos>screen.WIDTH)          // remove bullets out of screen
 					{
 						removeBullet(tempBullet);
 					}
@@ -70,29 +55,18 @@ public class PlayControl {
 				}
 			}
 
-			public void renderBullet(Graphics g) throws SlickException              // draw bullets
+			public void renderBullet(Graphics g) throws SlickException    // draw bullets
 			{
 				
 				for(int i=0;i<bullets.size();i++)
 				{
 					tempBullet=bullets.get(i);
-					//tempBullet.draw(g,png);
 					level.drawBullets(tempBullet);
-					//tempBullet.dr
 				}
 			}
 
-			public void addBullet(Bullet b)
-			{
-				bullets.add(b);
-			}
-
-			public void removeBullet(Bullet b)
-			{
-				bullets.remove(b);
-			}
-
-
+			public void addBullet(Bullet b)     {bullets.add(b);}
+			public void removeBullet(Bullet b)  {bullets.remove(b);}
 
 	//--------------------------------------ZOMBIE---------------------------------------
 	public void zomWalk() throws SlickException
@@ -102,12 +76,7 @@ public class PlayControl {
 			Punch = new Sound("res/Play/Punch.wav");
 			ZomWalk = new Sound("res/Play/zombie.wav");
 			tempZombie=zombies.get(i);
-
 			tempZombie.moving();
-			//ZomWalk.loop();
-			//if(tempZombie.xPos<0 || tempZombie.getHp()<=0)
-
-			//if(tempZombie.xPos<165 || tempZombie.getHp()<=0)
 			if(tempZombie.getHp()<=0)
 			{
 				removeZombie(tempZombie);
@@ -117,7 +86,6 @@ public class PlayControl {
 			}
 			if(phy.Collision(tempZombie, bullets))
 			{
-				//tempZombie.setHp(tempZombie.getHp()-20);
 				level.setHp(tempZombie);
 			}
 		}
@@ -125,23 +93,14 @@ public class PlayControl {
 	}
 	public void renderZombie(ArrayList<Image> png,double n)
 	{
-
 		for(int i=0;i<zombies.size();i++)
 		{
 			tempZombie=zombies.get(i);
 			tempZombie.draw(png,n);
 		}
 	}
-
-	public void addZombie(Zombies z)
-	{
-		zombies.add(z);
-	}
-
-	public void removeZombie(Zombies z)
-	{
-		zombies.remove(z);
-	}
+	public void addZombie(Zombies z)      {zombies.add(z);}
+	public void removeZombie(Zombies z)   {zombies.remove(z);}
 
 	//--------------------------------------SUN---------------------------------------
 
@@ -151,8 +110,6 @@ public class PlayControl {
 		stopPos[2]=395;
 		stopPos[3]=495;
 		stopPos[4]=595;
-
-
 		for(int i=0;i<sun.size();i++)             //shoot all the bullets in the list
 		{
 			tempSun=sun.get(i);
@@ -160,29 +117,17 @@ public class PlayControl {
 			if(tempSun.yPos <= stopPos[tempSun.getRandomInt()])
 				tempSun.yPos += 1;
 			}			
-			
 	}
-
-	public void renderSun()              // draw bullets
+	public void renderSun()              // draw suns
 	{
-
 		for(int i=0;i<sun.size();i++)
 		{
 			tempSun=sun.get(i);
 			tempSun.draw();
 		}
 	}
-
-	public void addSun(Sun b)
-	{
-		sun.add(b);
-	}
-
-	public void removeSun(Sun b)
-	{
-		sun.remove(b);
-	}
-
+	public void addSun(Sun b)        {sun.add(b);}
+	public void removeSun(Sun b)     {sun.remove(b);}
 	public void checkToSwitchLevel()
 	{
 		if(limitness==level.setLimitness())
@@ -191,9 +136,7 @@ public class PlayControl {
 			limitness=0;
 		}
 	}
-	public void delete() {
-		 removeSun(tempSun);
-	}
+	public void delete()             {removeSun(tempSun);}
 	
 	public void onClickSun() {
 			for (int i=0; i<sun.size(); i++) {
@@ -203,14 +146,8 @@ public class PlayControl {
 				}
 			}
 	}
-	public int printscore () {
-		return scoresun*50;
-	}
-	
-	public int clearscore() {
-		return scoresun*0;
-	}
-	
+	public int printscore ()       {return scoresun*50;}
+	public int clearscore()        {return scoresun*0;}
 	public boolean checkSunMouse (Sun sun) {
 		double x = Play.getShooter().getxPos();
 		double y = Play.getShooter().getyPos();
@@ -218,7 +155,6 @@ public class PlayControl {
 		return true;
 		else 
 		return false;
-          
 	}
 	
 	///////////////Check Game to GameOver ////////////////////
@@ -232,15 +168,8 @@ public class PlayControl {
 				sbg.getState(2);
 				sbg.enterState(2);
 			}
-		
 	}
-
-	public ArrayList<Zombies> getZombies() {
-		return zombies;
-	}
-
-	public void setZombies(ArrayList<Zombies> zombies) {
-		PlayControl.zombies = zombies;
-	}
+	public ArrayList<Zombies> getZombies() {return zombies;}
+	public void setZombies(ArrayList<Zombies> zombies) {PlayControl.zombies = zombies;}
 }
 	

@@ -1,5 +1,4 @@
 package characters;
-
 import java.util.*;
 import org.newdawn.slick.*;
 
@@ -19,36 +18,9 @@ public class SunFlower extends GameObject{
 		init();
 	}
 
-	public void init()throws SlickException
-	{
-		png=new Animation(new SpriteSheet(pngName,74,73),40);
-	}
+	public void init()throws SlickException   {png=new Animation(new SpriteSheet(pngName,74,73),40);}
 	
-	public void draw()
-	{
-		png.draw((float)xPos,(float)yPos);
-	}
-	
-	public int getSpeed() {
-		return speed;
-	}
-
-	public void setSpeed(int speed) {
-		this.speed = speed;
-	}
-
-	public int getHp() {
-		return hp;
-	}
-
-	public void setHp(int hp) {
-		this.hp = hp;
-	}
-	
-	public int getx()          {return x;}
-	public void setx(double xPos) {this.x = x;}
-	public int gety()          {return y;}
-	public void sety(double yPos) {this.y = y;}
+	public void draw()                        {png.draw((float)xPos,(float)yPos);}
 	
 	public void appear() {
 		xR=ran.nextInt(651)+201;

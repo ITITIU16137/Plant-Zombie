@@ -13,6 +13,7 @@ public class RocketBullet extends Bullet{
 		super(d,e);
 	}
 
+	@Override
 	public void draw(Image png)                  // load image
 	{
 		png.draw((int)this.xPos, (int)this.yPos,png.getWidth()/5,png.getHeight()/5);

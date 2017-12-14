@@ -14,6 +14,7 @@ public class Pea extends Bullet{
 		super(d, e);
 	}
 	
+	@Override
 	public void draw(Image png)                  // load image
 	{
 		png.draw((int)this.xPos+30,(int)this.yPos+0);

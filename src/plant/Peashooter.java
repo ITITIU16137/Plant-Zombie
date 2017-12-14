@@ -21,11 +21,13 @@ public class Peashooter extends Plants{
 		init();
 	}
 	
+	@Override
 	public void init() throws SlickException
 	{
 		png=new Animation(new SpriteSheet(pngName,125,106),20);
 	}
 	
+	@Override
 	public void draw()
 	{
 		png.draw((float)xPos+40,(float)yPos);

@@ -14,11 +14,13 @@ public class AgentPeashooter extends Plants{
 		init();
 	}
 	
+	@Override
 	public void init() throws SlickException
 	{
 		png=new Image(pngName); 
 	}
 	
+	@Override
 	public void draw()
 	{
 		png.draw((float)xPos+40,(float)yPos);

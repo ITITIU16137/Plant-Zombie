@@ -90,12 +90,7 @@ public class Play extends BasicGameState
 		ScoreBoardText = new Text (17.0f); 				  		
 	    //Sound-Music
 	    coming = new Music("res/Play/zombies_coming.ogg");
-	    pow = new Sound("res/Play/POW.wav");
-//	    // Music background
-//	  	music = new Music("res/Play/Investigations.ogg");
-//	  	SoundStore.get().setMusicVolume(0.2f);
-// 	    music.loop();
-	  	
+	    pow = new Sound("res/Play/POW.wav");  	
 	}
 	
 	

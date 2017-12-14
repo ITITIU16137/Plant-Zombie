@@ -14,8 +14,10 @@ public class FireBullet extends Bullet{
 		super(d,e);
 	}
 
-	public void draw(Image png)                  // load image
-	{
+	@Override
+	public void draw(Image png) {
 		png.draw((int)this.xPos, (int)this.yPos,png.getWidth()*4,png.getHeight()*4);
 	}
+
+
 }
