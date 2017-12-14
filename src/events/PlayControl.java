@@ -23,7 +23,6 @@ public class PlayControl {
 	public Sound ZomWalk;
 	private int scoreSun;
 	public int limitness = 0;
-	public int zomcount = 0;
 
 	//--------------------------------------PLANTS--------------------------------------
 	public void renderPlants(Plants p) throws SlickException      {level.drawPlants(p);}
@@ -77,7 +76,6 @@ public class PlayControl {
 			if(tempZombie.getHp()<=0)
 			{
 				removeZombie(tempZombie);
-				zomcount++;
 				Punch.play();
 			}
 			if(phy.Collision(tempZombie, bullets))
@@ -144,7 +142,7 @@ public class PlayControl {
 			}
 	}
 	public int printscore ()       {return scoreSun*50;}
-	public int clearscore()        {return scoreSun*0;}
+	public void clearScore()        {scoreSun = 0;}
 	public boolean checkSunMouse (Sun sun) {
 		double x = Play.getShooter().getxPos();
 		double y = Play.getShooter().getyPos();
@@ -161,14 +159,13 @@ public class PlayControl {
 				zombies.clear();
 				bullets.clear();
 				sun.clear();
-			//	clearScore();
+				clearScore();
 				sbg.getState(2);
 				sbg.enterState(2);
+				level.gameLevel=1;
 			}
 	}
 	
-	private int clearScore()   {return printscore()*0;}
-	public int printZom()    {return zomcount;}
 	public ArrayList<Zombies> getZombies() {return zombies;}
-	public void setZombies(ArrayList<Zombies> zombies) {PlayControl.zombies = zombies;}
+//	public void setZombies(ArrayList<Zombies> zombies) {PlayControl.zombies = zombies;}
 }

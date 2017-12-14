@@ -27,7 +27,7 @@ public class Gameover extends BasicGameState {
 //		text.render(200,600, "PRESS ENTER TO REPLAY"+"\n"+"PRESS ESC TO EXIT", Color.white);
 		g.setColor(Color.white);
 		g.drawString("PRESS ENTER TO REPLAY", 450, 500);
-		g.drawString("SCORE: "+	controller.printZom(), 500, 600);
+//		g.drawString("SCORE: "+	controller.printZom(), 500, 600);
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException{

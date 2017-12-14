@@ -42,14 +42,14 @@ public class Play extends BasicGameState
 
 	public static Plants getShooter() {return shooter.get(controller.level.gameLevel-1);}
 
-	///  Initialization  ///
 	public void init(GameContainer gc, StateBasedGame sbg ) throws SlickException
 	{
 		////  Types of shooters in an array  ////
-		shooter.add(new Peashooter(200,200));
+		shooter.add(new Peashooter(200, 200));
 		shooter.add(new TripletPeashooter((int)shooter.get(0).xPos,(int)shooter.get(0).yPos));
-		shooter.add(new AgentPeashooter(200,200));
-		sunflower=new SunFlower(150,200);
+		shooter.add(new AgentPeashooter(200, 200));
+		
+		sunflower=new SunFlower(150, 200);
 
 		zomInitPos[0]=120;
 		zomInitPos[1]=220;
@@ -90,10 +90,7 @@ public class Play extends BasicGameState
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		g.drawImage(background, 0,0);                                         //draw background
-//		g.drawAnimation(S22,(float)shooter.get(controller.level.gameLevel-1).xPos+40,(float)shooter.get(controller.level.gameLevel-1).yPos);      //draw peashooter
 		controller.renderPlants(shooter.get(controller.level.gameLevel-1));
-//	    g.drawImage(triplet,(float) shooter2.xPos,(float) shooter.get(controller.level.gameLevel-1).yPos);      //draw tripletshooter
-//	    g.drawAnimation(S11,(float)sunflower.xPos,(float) sunflower.yPos);    //draw sunflower
 		controller.renderSunFlowers(sunflower);
 
 		if(delayText<durationText)
@@ -103,21 +100,12 @@ public class Play extends BasicGameState
 		}
 
 		controller.renderBullet(g);                                 //draw pea bullets										  //draw triplet bullets
-		//controller.renderZombie(zombieImages, this.count);                    //draw zombies
 		controller.renderZombie();
 		controller.renderSun();
 
-		
-
-		g.setColor(Color.white);
-
-//      g.drawString("X:  "+shooter.get(controller.level.gameLevel-1).xPos+" Y:  "+shooter.get(controller.level.gameLevel-1).yPos,400,50);         // debug
-		g.drawString("X: "+Mouse.getX()+ " Y: " + Mouse.getY(),400,50);
-		g.setColor(Color.white);
-//	    g.drawString("X:  "+shooter.get(controller.level.gameLevel-1).xPos+" Y:  "+shooter.get(controller.level.gameLevel-1).yPos,400,50);         // debug
-
 	    //// Sun board ////
 		addSunBoard(sunboard,ScoreBoardText);
+		//// Pause Game Button  ////
 		drawpausebutton(pausebutton);
 		drawplaybutton(playbutton);
 		if (gc.isPaused()==true ) {
@@ -135,30 +123,18 @@ public class Play extends BasicGameState
 		Input input = gc.getInput();
 		if (input.isKeyDown(Input.KEY_RIGHT)) 								//Move RIGHT
 		{
-			/*shooter.xPos +=shooter.speed;
-			if(shooter.xPos<850) shooter.xPos +=shooter.speed;
-			else shooter.xPos=850;*/
 			shooter.get(controller.level.gameLevel-1).goRight();
 		}
 		else if (input.isKeyDown(Input.KEY_LEFT)) 						    //Move LEFT
 		{
-			/*shooter.xPos -=shooter.speed;
-			if(shooter.xPos>200) shooter.xPos -=shooter.speed;
-			else shooter.xPos=200;*/
 			shooter.get(controller.level.gameLevel-1).goLeft();
 		}
 		else if (input.isKeyDown(Input.KEY_UP)) 							//Move UP
 		{
-			/*shooter.yPos -=shooter.speed;
-			if(shooter.yPos>200) shooter.yPos -=shooter.speed;
-			else shooter.yPos=200;*/
 			shooter.get(controller.level.gameLevel-1).goUp();
 		}
 		else if (input.isKeyDown(Input.KEY_DOWN))                            //Move DOWN
 		{
-			/*shooter.yPos +=shooter.speed;
-			if(shooter.yPos<595) shooter.yPos +=shooter.speed;
-			else shooter.yPos=595;*/
 			shooter.get(controller.level.gameLevel-1).goDown();
 		}
 		else if(input.isKeyPressed(Input.KEY_SPACE))                         // press SPACE to shoot
@@ -210,9 +186,6 @@ public class Play extends BasicGameState
 		for(int i=0;i<controller.getZombies().size();i++)
 			{
 				if(controller.getZombies().get(i) == null) continue;
-				//controller.zomWalk();
-			    //controller.clearscore();
-			    //controller.renderZombie();
 			    controller.checkGame(sbg,controller.getZombies().get(i).xPos);
 			}
 		}
