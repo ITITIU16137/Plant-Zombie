@@ -9,7 +9,7 @@ import org.newdawn.slick.state.*;
 import Bullet.Pea;
 
 import java.util.ArrayList;
-
+import java.util.*;
 public class Play extends BasicGameState
 {	 
 	float x,y;
@@ -23,6 +23,10 @@ public class Play extends BasicGameState
 	Image small,background,pea,sun,text;
 	SpriteSheet S1,S2,S3;
     Animation S11,S22,S33;
+    
+	int xsun, ysun, delaySunFlower=0, durationSunFlower=5000, xflow=100, yflow=100;
+	double a, b;
+	Random ran = new Random();
 
     private int delayTime = 0; // this is for
 	private int delay = (5000);
@@ -142,9 +146,9 @@ public class Play extends BasicGameState
 		g.drawImage(sun, 0, 0);                                                //
 		g.setColor(Color.black);                                               // Sun board
 		g.fillRoundRect(100, 30, 150, 50, 10 );                                //
-		for (int i=0;i<sunflow.size();i++) {
-			sunflow.get(i).appear();
-		}
+//		for (int i=0;i<sunflow.size();i++) {
+//			sunflow.get(i).appear();
+//		}
 //		for (int i=0;i<sunflow.size();i++) {
 //			sunflow.get(i).set();
 //		}
@@ -211,22 +215,30 @@ public class Play extends BasicGameState
 			this.delayTimeZom=0;
 		}
 		
-		this.delayTimeSun+=1;                                                                
-		if(this.delayTimeSun==delaySun)                                        //to spawn sun                 
-		{                        							 
-			controller.addSun(new Sun(sunInitPos[(int)(Math.random()*9)],0));
-			
-			delaySun=getDelayTimeSun(5000);
-			this.delayTimeSun=0;
-			
+//		this.delayTimeSun+=1;                                                                
+//		if(this.delayTimeSun==delaySun)                                        //to spawn sun                 
+//		{                        							 
+//			controller.addSun(new Sun(sunInitPos[(int)(Math.random()*9)],0));
+//			
+//			delaySun=getDelayTimeSun(5000);
+//			this.delayTimeSun=0;
+//			
+//		}
+		this.delaySunFlower+=1;                                                                
+		if(this.delaySunFlower==durationSunFlower)                                        //to spawn sun                 
+		{
+			xsun=ran.nextInt(650)+201;
+			ysun=ran.nextInt(395)+201;
+			controller.set(xsun, ysun);
+			controller.addSun(new Sun(xsun, ysun));
+			this.delaySunFlower=0;		
 		}
-		
 		this.delayText+=delta;
 		shooter.attack();
 		controller.zomWalk();
 		controller.fall();
-//		sunflower.set();
-		
+
+//		controller.addSunFromFlower(new Sun(100,100));
 		sunflow.add(new SunFlower(100,100,S1));
 	//	System.out.println(x+y);
 		

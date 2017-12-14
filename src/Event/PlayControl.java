@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 import java.util.ArrayList;
-
+import java.util.*;
 public class PlayControl {
 	Physic phy =new Physic();
 	private ArrayList<Zombies> zombies=new ArrayList<>();
@@ -22,7 +22,9 @@ public class PlayControl {
 	Graphics g;
 	Sound Punch;
 	Sound ZomWalk;
-
+	private int xsun, ysun, delay=0, duration=5000, xflow=100, yflow=100, x, y;
+	private double a, b;
+//	Random ran = new Random();
 	private int check ;
 	private int delayTimeSun=0;
 	private int delaySun=getDelayTimeSun(80);
@@ -130,7 +132,7 @@ public class PlayControl {
 		stopPos[4]=595;
 
 
-		for(int i=0;i<sun.size();i++)             //shoot all the bullets in the list
+		for(int i=0;i<sun.size();i++)
 		{
 			tempSun=sun.get(i);
 
@@ -140,7 +142,7 @@ public class PlayControl {
 			
 	}
 
-	public void renderSun(Graphics g,Image png)              // draw bullets
+	public void renderSun(Graphics g,Image png)
 	{
 
 		for(int i=0;i<sun.size();i++)
@@ -161,6 +163,37 @@ public class PlayControl {
 		sun.remove(b);
 		/*
 		}*/
+	}
+	//-------------------------------SUN FROM SUNFLOWER------------------------------------
+	public void set(int xsun, int ysun) throws SlickException {
+			System.out.println("Sun   "+xsun+ "   " +ysun);
+			a=(ysun-yflow)/(xsun-xflow);
+			b=yflow-a*xflow;
+			System.out.println("Line  "+a+ "   " +b);
+			for(int i=0;i<sun.size();i++)
+			{
+				tempSun=sun.get(i);
+
+				if(tempSun.xPos<=xsun)
+					tempSun.xPos += 1;
+					tempSun.yPos = a*tempSun.xPos+b;
+				}
+	}
+	public void renderSunFrowFlower(Graphics g,Image png) {
+		for(int i=0;i<sun.size();i++)
+		{
+			tempSun=sun.get(i);
+			tempSun.draw(g,png);
+		}
+	}
+	public void addSunFromFlower(Sun b)
+	{
+		sun.add(b);
+	}
+
+	public void removeSunFromFlower(Sun b)
+	{
+		sun.remove(b);
 	}
 }
 	/*

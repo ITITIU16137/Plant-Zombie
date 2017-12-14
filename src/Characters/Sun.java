@@ -5,6 +5,7 @@ package Characters;
 import org.newdawn.slick.*;
 public class Sun extends GameObject{
 
+	
 	protected int dX=400,dY=400;       //size of Sun
 	private int randomInt;
 	int speed = 1;      // speed of Sun :D
