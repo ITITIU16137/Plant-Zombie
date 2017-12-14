@@ -186,8 +186,8 @@ public class PlayControl {
 	{
 		if(scoreSun*50==level.setScoreLimitness())
 		{
-			level.gameLevel++;
 			clearScore();
+			level.gameLevel++;
 		}
 	}
 	public void delete() {

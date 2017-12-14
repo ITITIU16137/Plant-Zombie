@@ -18,9 +18,9 @@ public class LevelControl {
 		}
 		else if(gameLevel==3)
 		{
-			return 10*50;
+			return 15*50;
 		}
-		return 1*50;
+		return 5*50;
 	}
 	
 	public void drawPlants(Plants p) throws SlickException
