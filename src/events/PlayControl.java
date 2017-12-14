@@ -4,29 +4,26 @@ import characters.*;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
-
 import java.util.ArrayList;
 
 public class PlayControl {
 
 	public LevelControl level=new LevelControl();
-	public int limitness = 0;
-	Physic phy = new Physic();
+	private Physic phy = new Physic();
 	private static ArrayList<Zombies> zombies = new ArrayList<>();
 	private static ArrayList<Bullet> bullets = new ArrayList<>();
 	private static  ArrayList<Sun> sun = new ArrayList<>();
 	private Integer[] stopPos = new Integer[5];
-	Zombies tempZombie;
-	Plants shooter;
-	Bullet tempBullet;
-	Sun tempSun;
-	StateBasedGame sbg;
-	GameContainer gc;
-	Main screen;
-	Graphics g;
-	Sound Punch;
-	Sound ZomWalk;
-	int scoresun;
+	private Zombies tempZombie;
+	private Bullet tempBullet;
+	private Sun tempSun;
+	private Main screen;
+	public Graphics g;
+	private Sound Punch;
+	public Sound ZomWalk;
+	private int scoresun;
+	public int limitness = 0;
+	public int zomcount = 0;
 
 	//--------------------------------------PLANTS--------------------------------------
 	public void renderPlants(Plants p) throws SlickException      {level.drawPlants(p);}
@@ -80,7 +77,7 @@ public class PlayControl {
 			if(tempZombie.getHp()<=0)
 			{
 				removeZombie(tempZombie);
-				//checkToSwitchLevel();
+				zomcount++;
 				Punch.play();
 			}
 			if(phy.Collision(tempZombie, bullets))
@@ -168,10 +165,9 @@ public class PlayControl {
 				sbg.enterState(2);
 			}
 	}
-	public int clearScore()
-	{
-		return printscore()*0;
-	}
+	
+	private int clearScore()   {return printscore()*0;}
+	public int printZom()    {return zomcount;}
 	public ArrayList<Zombies> getZombies() {return zombies;}
 	public void setZombies(ArrayList<Zombies> zombies) {PlayControl.zombies = zombies;}
 }
