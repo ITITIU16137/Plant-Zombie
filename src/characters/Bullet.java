@@ -3,8 +3,8 @@ package characters;
 import org.newdawn.slick.Image;
 
 public abstract class Bullet extends GameObject{
-	public int dX=40,dY=40;                        //size of bullet
-	double speed=0.5;                           // speed of bullet
+//	public int dX=40,dY=40;                        //size of bullet
+	public double speed=0.5;                           // speed of bullet
 	private int delayFlying=0;
 	private int durationFlying=1000;
 	public Bullet(double d,double e)  {super(d,e);}

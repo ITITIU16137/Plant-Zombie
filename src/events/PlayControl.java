@@ -26,7 +26,7 @@ public class PlayControl {
 	Graphics g;
 	Sound Punch;
 	Sound ZomWalk;
-	int scoreSun;
+	int scoresun;
 
 	//--------------------------------------PLANTS--------------------------------------
 	public void renderPlants(Plants p) throws SlickException      {level.drawPlants(p);}
@@ -129,7 +129,7 @@ public class PlayControl {
 	public void removeSun(Sun b)     {sun.remove(b);}
 	public void checkToSwitchLevel()
 	{
-		if(scoreSun*50>=level.setScoreLimitness() && bullets.size()==0)// temporary bug fixing
+		if(scoresun*50>=level.setScoreLimitness() && bullets.size()==0)// temporary bug fixing
 		{
 			clearScore();
 			level.gameLevel++;
@@ -141,7 +141,7 @@ public class PlayControl {
 			for (int i=0; i<sun.size(); i++) {
 				if (checkSunMouse(sun.get(i)) == true ) {
 					sun.remove(i);
-					scoreSun+=1;
+					scoresun+=1;
 				}
 			}
 	}
@@ -167,6 +167,10 @@ public class PlayControl {
 				sbg.getState(2);
 				sbg.enterState(2);
 			}
+	}
+	public int clearScore()
+	{
+		return printscore()*0;
 	}
 	public ArrayList<Zombies> getZombies() {return zombies;}
 	public void setZombies(ArrayList<Zombies> zombies) {PlayControl.zombies = zombies;}

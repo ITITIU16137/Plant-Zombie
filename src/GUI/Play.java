@@ -14,9 +14,6 @@ import java.util.ArrayList;
 
 public class Play extends BasicGameState
 {
-	Animation ani;
-	Image pausebutton,playbutton;
-	int xposition,yposition;
 	static ArrayList<Plants> shooter = new ArrayList<>();
 	static PlayControl controller  =  new PlayControl();
 
@@ -28,9 +25,9 @@ public class Play extends BasicGameState
 	private Integer[] zomInitPos=new Integer[5];
 	private Integer[] sunInitPos=new Integer[9];
 	private Integer[] stopPos=new Integer[5];
-	private Main size;
 
 	private static Image background,text,sunboard;
+	private static Image pausebutton,playbutton;
     private static Sound pow;
     private static Music coming;
     private static Text ScoreBoardText;
@@ -39,6 +36,7 @@ public class Play extends BasicGameState
 	private double frequencyImage=0.002;                         //  for object speed
 	private int delayText=0;									 //  this is
 	private int durationText=3000;                               //  for delay text
+	private int xposition,yposition;
 
 	public Play (int state) {}
 
@@ -51,7 +49,7 @@ public class Play extends BasicGameState
 		shooter.add(new Peashooter(200,200));
 		shooter.add(new TripletPeashooter((int)shooter.get(0).xPos,(int)shooter.get(0).yPos));
 
-		sunflower=new SunFlower(150,150);
+		sunflower=new SunFlower(150,200);
 
 		zomInitPos[0]=120;
 		zomInitPos[1]=220;
@@ -92,7 +90,8 @@ public class Play extends BasicGameState
 		sunboard = new Image("res/sunboard.png");
 		ScoreBoardText = new Text (17.0f);
 	    //Sound-Music
-	    coming = new Music("res/Play/zombies_coming.ogg")	}
+	    coming = new Music("res/Play/zombies_coming.ogg");
+	    		}
 
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
@@ -121,11 +120,7 @@ public class Play extends BasicGameState
 //      g.drawString("X:  "+shooter.get(controller.level.gameLevel-1).xPos+" Y:  "+shooter.get(controller.level.gameLevel-1).yPos,400,50);         // debug
 		g.drawString("X: "+Mouse.getX()+ " Y: " + Mouse.getY(),400,50);
 		g.setColor(Color.white);
-//      g.drawString("X2:  "+shooter2.xPos+"Y2:  "+shooter2.yPos, 400,100);    //debug
-//		SunBoard.draw(2,35,SunBoard.getWidth()/5,SunBoard.getHeight()/5);						//SunBoard
-//		ScoreBoardText.render(35,162, "Score : " +controller.printscore(),Color.red);
-
-	//	g.drawString("X:  "+shooter.get(controller.level.gameLevel-1).xPos+" Y:  "+shooter.get(controller.level.gameLevel-1).yPos,400,50);         // debug
+//	    g.drawString("X:  "+shooter.get(controller.level.gameLevel-1).xPos+" Y:  "+shooter.get(controller.level.gameLevel-1).yPos,400,50);         // debug
 
 	    //// Sun board ////
 		addSunBoard(sunboard,ScoreBoardText);
