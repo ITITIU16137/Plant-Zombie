@@ -10,17 +10,17 @@ public class LevelControl {
 	
 	public int gameLevel=1;
 	
-	public int setLimitness()
+	public int setScoreLimitness()
 	{
 		if(gameLevel==2)
 		{
-			return 10;
+			return 10*50;
 		}
 		else if(gameLevel==3)
 		{
-			return 20;
+			return 30*50;
 		}
-		return 5;
+		return 5*50;
 	}
 	
 	public void drawPlants(Plants p) throws SlickException

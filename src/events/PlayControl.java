@@ -8,7 +8,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import java.util.ArrayList;
 
 public class PlayControl {
-	
+
 	public LevelControl level=new LevelControl();
 	public int limitness = 0;
 	Physic phy = new Physic();
@@ -26,15 +26,15 @@ public class PlayControl {
 	Graphics g;
 	Sound Punch;
 	Sound ZomWalk;
-	int scoresun;
+	int scoreSun;
 
 	//--------------------------------------PLANTS--------------------------------------
 	public void renderPlants(Plants p) throws SlickException      {level.drawPlants(p);}
-	
+
 	//--------------------------------------Sun Flowers---------------------------------
 	public int getDelayTimeSun(int maxTime)     {return (int)(Math.random()*maxTime)+1;}
 	public void renderSunFlowers(SunFlower s)   {s.draw();}
-	
+
 	//--------------------------------------BULLET---------------------------------------
 			public void shoot()
 			{
@@ -57,7 +57,7 @@ public class PlayControl {
 
 			public void renderBullet(Graphics g) throws SlickException    // draw bullets
 			{
-				
+
 				for(int i=0;i<bullets.size();i++)
 				{
 					tempBullet=bullets.get(i);
@@ -80,8 +80,7 @@ public class PlayControl {
 			if(tempZombie.getHp()<=0)
 			{
 				removeZombie(tempZombie);
-				limitness++;
-				checkToSwitchLevel();
+				//checkToSwitchLevel();
 				Punch.play();
 			}
 			if(phy.Collision(tempZombie, bullets))
@@ -116,7 +115,7 @@ public class PlayControl {
 
 			if(tempSun.yPos <= stopPos[tempSun.getRandomInt()])
 				tempSun.yPos += 1;
-			}			
+			}
 	}
 	public void renderSun()              // draw suns
 	{
@@ -130,19 +129,19 @@ public class PlayControl {
 	public void removeSun(Sun b)     {sun.remove(b);}
 	public void checkToSwitchLevel()
 	{
-		if(limitness==level.setLimitness())
+		if(scoreSun*50>=level.setScoreLimitness() && bullets.size()==0)// temporary bug fixing
 		{
+			clearScore();
 			level.gameLevel++;
-			limitness=0;
 		}
 	}
 	public void delete()             {removeSun(tempSun);}
-	
+
 	public void onClickSun() {
 			for (int i=0; i<sun.size(); i++) {
 				if (checkSunMouse(sun.get(i)) == true ) {
 					sun.remove(i);
-					scoresun+=1;
+					scoreSun+=1;
 				}
 			}
 	}
@@ -151,12 +150,12 @@ public class PlayControl {
 	public boolean checkSunMouse (Sun sun) {
 		double x = Play.getShooter().getxPos();
 		double y = Play.getShooter().getyPos();
-		if (y >= sun.yPos -30  && y <= sun.yPos + 77 && x <= sun.xPos + 56 && x >= sun.xPos -100) 
+		if (y >= sun.yPos -30  && y <= sun.yPos + 77 && x <= sun.xPos + 56 && x >= sun.xPos -100)
 		return true;
-		else 
+		else
 		return false;
 	}
-	
+
 	///////////////Check Game to GameOver ////////////////////
 	public void checkGame(StateBasedGame sbg,double x) {
 			if(x<165)
@@ -164,7 +163,7 @@ public class PlayControl {
 				zombies.clear();
 				bullets.clear();
 				sun.clear();
-				clearscore();
+				clearScore();
 				sbg.getState(2);
 				sbg.enterState(2);
 			}
@@ -172,4 +171,3 @@ public class PlayControl {
 	public ArrayList<Zombies> getZombies() {return zombies;}
 	public void setZombies(ArrayList<Zombies> zombies) {PlayControl.zombies = zombies;}
 }
-	
