@@ -214,6 +214,8 @@ public class Play extends BasicGameState
 				if(controller.getZombies().get(i) == null) continue;
 			    controller.checkGame(sbg,controller.getZombies().get(i).xPos);
 			}
+		
+		controller.checkToSwitchLevel();
 	}
 	
 	private void addSunBoard(Image png,Text text) throws SlickException {

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class PlayControl {
 	
 	public LevelControl level=new LevelControl();
-	public int limitness=0;
+	//public int limitness=0;
 
 	Physic phy =new Physic();
 	private static ArrayList<Zombies> zombies = new ArrayList<>();
@@ -27,7 +27,7 @@ public class PlayControl {
 	Graphics g;
 	Sound Punch;
 	Sound ZomWalk;
-	int scoresun;
+	int scoreSun;
 
 //	private int check ;
 //	private int delayTimeSun=0;
@@ -111,8 +111,7 @@ public class PlayControl {
 			if(tempZombie.getHp()<=0)
 			{
 				removeZombie(tempZombie);
-				limitness++;
-				checkToSwitchLevel();
+				//checkToSwitchLevel();
 				Punch.play();
 			}
 			if(phy.Collision(tempZombie, bullets))
@@ -185,10 +184,10 @@ public class PlayControl {
 
 	public void checkToSwitchLevel()
 	{
-		if(limitness==level.setLimitness())
+		if(scoreSun*50==level.setScoreLimitness())
 		{
 			level.gameLevel++;
-			limitness=0;
+			clearScore();
 		}
 	}
 	public void delete() {
@@ -199,16 +198,16 @@ public class PlayControl {
 			for (int i=0; i<sun.size(); i++) {
 				if (checkSunMouse(sun.get(i)) == true ) {
 					sun.remove(i);
-					scoresun+=1;
+					scoreSun+=1;
 				}
 			}
 	}
 	public int printscore () {
-		return scoresun*50;
+		return scoreSun*50;
 	}
 	
-	public int clearscore() {
-		return scoresun*0;
+	public int clearScore() {
+		return scoreSun*0;
 	}
 	
 	public boolean checkSunMouse (Sun sun) {
@@ -228,7 +227,7 @@ public class PlayControl {
 				zombies.clear();
 				bullets.clear();
 				sun.clear();
-				clearscore();
+				clearScore();
 				sbg.getState(2);
 				sbg.enterState(2);
 			}
