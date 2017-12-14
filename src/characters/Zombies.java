@@ -12,11 +12,6 @@ public class Zombies extends GameObject{
 	
 	public Zombies() {}
 	
-	public Zombies(int x,int y)
-	{
-		super(x,y);
-	}
-	
 	public int getHp()                { return hp; }
 	public void setHp(int hp)         { this.hp = hp; }
 	public int getDamage()            { return damage; }
@@ -34,6 +29,26 @@ public class Zombies extends GameObject{
 		return (int)(Math.random()*maxTime)+1;
 	}
 	
+	public static String pngName="res/Zombies.png";
+	public static Animation png;
+	
+	public Zombies(int x, int y) throws SlickException 
+	{
+		super(x, y);
+		init();
+	}
+	
+	
+	public void init() throws SlickException
+	{
+		png=new Animation(new SpriteSheet(pngName,143,172),100);
+	}
+	
+	
+	public void draw()
+	{
+		png.draw((float)xPos,(float)yPos);
+	}
 	public void draw( ArrayList<Image> zom,double i)
 	{
 		//use this code to RESIZE image

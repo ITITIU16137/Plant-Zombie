@@ -18,7 +18,7 @@ public class Play extends BasicGameState
 	static PlayControl controller  =  new PlayControl();
 
 	private Zombies zombieControl=new Zombies();
-	private ArrayList<Image> zombieImages=new ArrayList<>();
+	
 	private Sun sunControll=new Sun();
 	private SunFlower sunflower;
 
@@ -33,8 +33,7 @@ public class Play extends BasicGameState
     private static Music coming;
     private static Text ScoreBoardText;
 
-	private double count=0;                                      //  this is
-	private double frequencyImage=0.002;                         //  for object speed
+	
 	private int delayText=0;									 //  this is
 	private int durationText=3000;                               //  for delay text
 	private int xposition,yposition;
@@ -49,7 +48,7 @@ public class Play extends BasicGameState
 		////  Types of shooters in an array  ////
 		shooter.add(new Peashooter(200,200));
 		shooter.add(new TripletPeashooter((int)shooter.get(0).xPos,(int)shooter.get(0).yPos));
-
+		shooter.add(new AgentPeashooter(200,200));
 		sunflower=new SunFlower(150,200);
 
 		zomInitPos[0]=120;
@@ -73,18 +72,6 @@ public class Play extends BasicGameState
 		sunInitPos[6]=686+27;
 		sunInitPos[7]=764+27;
 		sunInitPos[8]=851+27;
-
-
-		zombieImages.add(new Image("res/Zombie/male/walk1.png"));
-		zombieImages.add(new Image("res/Zombie/male/walk2.png"));
-		zombieImages.add(new Image("res/Zombie/male/walk3.png"));
-		zombieImages.add(new Image("res/Zombie/male/walk4.png"));
-		zombieImages.add(new Image("res/Zombie/male/walk5.png"));
-		zombieImages.add(new Image("res/Zombie/male/walk6.png"));
-		zombieImages.add(new Image("res/Zombie/male/walk7.png"));
-		zombieImages.add(new Image("res/Zombie/male/walk8.png"));
-		zombieImages.add(new Image("res/Zombie/male/walk9.png"));
-		zombieImages.add(new Image("res/Zombie/male/walk10.png"));
 
 		background = new Image("res/Night.png");
 		text = new Image("res/text.png");
@@ -116,11 +103,11 @@ public class Play extends BasicGameState
 		}
 
 		controller.renderBullet(g);                                 //draw pea bullets										  //draw triplet bullets
-		controller.renderZombie(zombieImages, this.count);                    //draw zombies
+		//controller.renderZombie(zombieImages, this.count);                    //draw zombies
+		controller.renderZombie();
 		controller.renderSun();
 
-		this.count+=this.frequencyImage ;                                     //print multiple images to create animation
-		if(this.count>10){this.count=0;}
+		
 
 		g.setColor(Color.white);
 
@@ -184,6 +171,15 @@ public class Play extends BasicGameState
 			{
 				controller.addBullet(new FireBullet(shooter.get(controller.level.gameLevel-1).xPos+120,shooter.get(controller.level.gameLevel-1).yPos+25));
 			}
+			else if(controller.level.gameLevel==2)
+			{
+				controller.addBullet(new FireBullet(shooter.get(controller.level.gameLevel-1).xPos+120,shooter.get(controller.level.gameLevel-1).yPos+25));
+			}
+			else if(controller.level.gameLevel==3)
+			{
+				controller.addBullet(new RocketBullet(shooter.get(controller.level.gameLevel-1).xPos+120,shooter.get(controller.level.gameLevel-1).yPos+25));
+
+			}
 			pow.play();
 			System.out.println("PEASHOOTER SHOOTING");
 		}
@@ -214,9 +210,9 @@ public class Play extends BasicGameState
 		for(int i=0;i<controller.getZombies().size();i++)
 			{
 				if(controller.getZombies().get(i) == null) continue;
-				controller.zomWalk();
-			    controller.clearscore();
-			    controller.renderZombie(zombieImages, this.count);
+				//controller.zomWalk();
+			    //controller.clearscore();
+			    //controller.renderZombie();
 			    controller.checkGame(sbg,controller.getZombies().get(i).xPos);
 			}
 		}
@@ -234,6 +230,8 @@ public class Play extends BasicGameState
 		if (input1.isKeyPressed( Input.KEY_ESCAPE)) {
 			gc.setPaused(false );
 		}
+		
+		controller.checkToSwitchLevel();
 	}
 
 	private void addSunBoard(Image png,Text text) throws SlickException {

@@ -21,7 +21,7 @@ public class PlayControl {
 	public Graphics g;
 	private Sound Punch;
 	public Sound ZomWalk;
-	private int scoresun;
+	private int scoreSun;
 	public int limitness = 0;
 	public int zomcount = 0;
 
@@ -87,12 +87,12 @@ public class PlayControl {
 		}
 
 	}
-	public void renderZombie(ArrayList<Image> png,double n)
+	public void renderZombie()
 	{
 		for(int i=0;i<zombies.size();i++)
 		{
 			tempZombie=zombies.get(i);
-			tempZombie.draw(png,n);
+			tempZombie.draw();
 		}
 	}
 	
@@ -127,9 +127,9 @@ public class PlayControl {
 	public void removeSun(Sun b)     {sun.remove(b);}
 	public void checkToSwitchLevel()
 	{
-		if(scoresun*50>=level.setScoreLimitness() && bullets.size()==0)// temporary bug fixing
+		if(scoreSun*50>=level.setScoreLimitness() && bullets.size()==0)// temporary bug fixing
 		{
-	//		clearScore();
+			clearScore();
 			level.gameLevel++;
 		}
 	}
@@ -139,7 +139,7 @@ public class PlayControl {
 			for (int i=0; i<sun.size(); i++) {
 				if (checkSunMouse(sun.get(i)) == true ) {
 					sun.remove(i);
-					scoresun+=1;
+					scoreSun+=1;
 				}
 			}
 	}
