@@ -98,6 +98,7 @@ public class PlayControl {
 			tempZombie.draw(png,n);
 		}
 	}
+	
 	public void addZombie(Zombies z)      {zombies.add(z);}
 	public void removeZombie(Zombies z)   {zombies.remove(z);}
 
@@ -131,7 +132,7 @@ public class PlayControl {
 	{
 		if(scoreSun*50>=level.setScoreLimitness() && bullets.size()==0)// temporary bug fixing
 		{
-			clearScore();
+	//		clearScore();
 			level.gameLevel++;
 		}
 	}
@@ -145,8 +146,8 @@ public class PlayControl {
 				}
 			}
 	}
-	public int printscore ()       {return scoresun*50;}
-	public int clearscore()        {return scoresun*0;}
+	public int printscore ()       {return scoreSun*50;}
+	public int clearscore()        {return scoreSun*0;}
 	public boolean checkSunMouse (Sun sun) {
 		double x = Play.getShooter().getxPos();
 		double y = Play.getShooter().getyPos();
@@ -163,7 +164,7 @@ public class PlayControl {
 				zombies.clear();
 				bullets.clear();
 				sun.clear();
-				clearScore();
+			//	clearScore();
 				sbg.getState(2);
 				sbg.enterState(2);
 			}
