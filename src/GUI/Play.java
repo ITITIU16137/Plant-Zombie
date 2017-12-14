@@ -27,8 +27,9 @@ public class Play extends BasicGameState
 	private Integer[] stopPos=new Integer[5];
 
 	private static Image background,text,sunboard;
-	private static Image pausebutton,playbutton;
+	private static Image pausebutton,playbutton,pauseimage;
     private static Sound pow;
+
     private static Music coming;
     private static Text ScoreBoardText;
 
@@ -91,7 +92,13 @@ public class Play extends BasicGameState
 		ScoreBoardText = new Text (17.0f);
 	    //Sound-Music
 	    coming = new Music("res/Play/zombies_coming.ogg");
-	    		}
+
+	    pauseimage = new Image ("res/pause.png");
+	    pausebutton = new Image ("res/pause button.png");
+	    playbutton = new Image ("res/playbutton.png");
+	    pow = new Sound("res/Play/POW.wav");
+	}
+
 
 	public void render (GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
@@ -126,6 +133,9 @@ public class Play extends BasicGameState
 		addSunBoard(sunboard,ScoreBoardText);
 		drawpausebutton(pausebutton);
 		drawplaybutton(playbutton);
+		if (gc.isPaused()==true ) {
+			drawImage(pauseimage);
+		}
 	}
 
 	public void update (GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -210,21 +220,19 @@ public class Play extends BasicGameState
 			    controller.checkGame(sbg,controller.getZombies().get(i).xPos);
 			}
 		}
-		Input input = gc.getInput();
+		Input input1 = gc.getInput();
 		xposition = Mouse.getX();
 		yposition = Mouse.getY();
 		if ((xposition > 930 && xposition < 980) && (yposition >677 && yposition < 750 ) ) {
-			if (input.isMouseButtonDown(0)) {
+			if (input1.isMouseButtonDown(0)) {
 				gc.setPaused(true);
 			}
 
 		}
 
 
-		if ((xposition > 863 && xposition < 900) && (yposition >690 && yposition < 736 ) ) {
-			if (input.isMouseButtonDown(0)) {
-			gc.setPaused(false);
-			}
+		if (input1.isKeyPressed( Input.KEY_ESCAPE)) {
+			gc.setPaused(false );
 		}
 	}
 
@@ -240,6 +248,11 @@ public class Play extends BasicGameState
 	private void drawplaybutton (Image png) {
 		png.draw(860,25,png.getWidth()/22,png.getHeight()/22);
 	}
+	
+	private void drawImage (Image png) {
+		png.draw(0,0,png.getWidth()+800,png.getHeight()+800);
+	}
+	
 	public int getID()
 	{
         	return 1;
