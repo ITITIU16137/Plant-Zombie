@@ -22,13 +22,13 @@ public class PlayControl {
 	Graphics g;
 	Sound Punch;
 	Sound ZomWalk;
-	private int xsun, ysun, delay=0, duration=5000, xflow=100, yflow=100, x, y;
+	private int xsun, ysun, delay=0, duration=5000, xflow=100, yflow=150, x, y;
 	private double a, b;
 //	Random ran = new Random();
 	private int check ;
 	private int delayTimeSun=0;
 	private int delaySun=getDelayTimeSun(80);
-
+	Random ran = new Random();
 //	double a, b, c, d;
 	public int getDelayTimeSun(int maxTime)
 	{
@@ -165,7 +165,9 @@ public class PlayControl {
 		}*/
 	}
 	//-------------------------------SUN FROM SUNFLOWER------------------------------------
-	public void set(int xsun, int ysun) throws SlickException {
+	public void set() throws SlickException {
+			xsun=ran.nextInt(500)+201;
+			ysun=ran.nextInt(395)+201;
 			System.out.println("Sun   "+xsun+ "   " +ysun);
 			a=(ysun-yflow)/(xsun-xflow);
 			b=yflow-a*xflow;
@@ -174,10 +176,10 @@ public class PlayControl {
 			for(int i=0;i<sun.size();i++)
 			{
 				tempSun=sun.get(i);
-
+				//sun.add(tempSun);
 				if(tempSun.xPos<=xsun)
-					tempSun.xPos += 1;
-				}
+					tempSun.xPos ++;
+			}
 	}
 	public void renderSunFrowFlower(Graphics g,Image png) {
 		for(int i=0;i<sun.size();i++)

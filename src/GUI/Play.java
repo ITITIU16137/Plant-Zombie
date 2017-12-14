@@ -230,7 +230,7 @@ public class Play extends BasicGameState
 			xsun=ran.nextInt(650)+201;
 			ysun=ran.nextInt(395)+201;
 			controller.addSun(new Sun(100,100));
-			controller.set(xsun, ysun);
+			controller.set();
 			delaySun=getDelayTimeSun(5000);
 			this.delayTimeSun=0;
 			
@@ -239,6 +239,7 @@ public class Play extends BasicGameState
 		shooter.attack();
 		controller.zomWalk();
 		controller.fall();
+		controller.set();
 		sunflow.add(new SunFlower(100,100,S1));
 	//	System.out.println(x+y);
 		
